@@ -1,0 +1,17 @@
+.navbar-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .left-align {
+        padding-left: 50px;
+    }
+
+    .right-align {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 50px;
+    }
+}

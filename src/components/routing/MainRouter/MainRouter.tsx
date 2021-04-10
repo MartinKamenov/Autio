@@ -9,6 +9,7 @@ import {Home} from '../../pages';
 
 import './MainRouter.scss';
 import { Navbar, Footer } from '../../common';
+import { NAVBAR_HEIGHT } from '../../../constants/other';
  
 const MainRouter: React.FC = () => {
     return (

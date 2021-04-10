@@ -1,0 +1,1 @@
+export const PRIMARY = '#ff0000';

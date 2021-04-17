@@ -5,7 +5,7 @@ import {
     Redirect,
     Route
 } from 'react-router-dom';
-import {Home} from '../../pages';
+import {Home, Brand} from '../../pages';
 
 import './MainRouter.scss';
 import { Navbar, Footer } from '../../common';
@@ -24,6 +24,10 @@ const MainRouter: React.FC = () => {
                     <Route
                         path='/home'
                         component={Home}
+                        exact/>
+                    <Route
+                        path='/brand/:id'
+                        component={Brand}
                         exact/>
                 </Switch>
             </div>

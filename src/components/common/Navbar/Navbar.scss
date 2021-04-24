@@ -4,6 +4,9 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    position: fixed;
+    z-index: 2;
+    top: 0px;
 
     .left-align {
         padding-left: 50px;
@@ -27,5 +30,21 @@
         align-items: center;
         justify-content: flex-end;
         padding-right: 50px;
+        nav {
+            display: block;
+            a {
+                text-decoration: none;
+            }
+        }
+
+        .nav-element {
+            padding: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+        .nav-element-alternative {
+            padding: 10px;
+            margin-left: 10px;
+        }
     }
 }

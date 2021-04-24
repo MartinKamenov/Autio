@@ -15,7 +15,9 @@ const MainRouter: React.FC = () => {
     return (
         <Router>
             <Navbar/>
-            <div className='routing-content'>
+            <div className='routing-content' style={{
+                marginTop: NAVBAR_HEIGHT
+            }}>
                 <Switch>
                     <Route
                         render={() => <Redirect to='/home'/>}

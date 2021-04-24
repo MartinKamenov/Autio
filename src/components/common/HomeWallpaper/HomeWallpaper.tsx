@@ -19,7 +19,7 @@ const HomeWallpaper: React.FC = () => {
                 <div className='image-overlay'/>
             </div>
             <div className='home-content-container'>
-                <h1>Search by key word</h1>
+                <h1><b>Search by key word</b></h1>
                 <div className='description'>
                     Search any car-related word you want and find a list of relevant cars
                     and everything you need to know about them!

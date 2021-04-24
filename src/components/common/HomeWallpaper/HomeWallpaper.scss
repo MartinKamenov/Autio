@@ -44,4 +44,22 @@
             max-width: 80vw;
         }
     }
+
+    .home-wallpaper-separator {
+        position: absolute;
+        z-index: -1;
+    }
+
+    .polygon-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;    
+        height: 200px; 
+        h1 {
+            z-index: 2;
+            margin-top: -50px;
+            font-size: 80px;
+        }
+    }
 }

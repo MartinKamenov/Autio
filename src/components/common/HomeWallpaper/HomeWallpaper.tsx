@@ -2,6 +2,7 @@ import React from 'react';
 import { NAVBAR_HEIGHT } from '../../../constants/other';
 import './HomeWallpaper.scss';
 import { Dropdown } from '../../base';
+import AutoCompleteSearch from '../../base/AutoCompleteSearch';
 
 const HomeWallpaper: React.FC = () => {
     return (
@@ -25,6 +26,10 @@ const HomeWallpaper: React.FC = () => {
                     <br/>
                     Including reviews from real owners!
                 </div>
+                <AutoCompleteSearch
+                    className='auto-complete'
+                    apiWrapperUrl='/models'
+                    placeholder='For example: Audi A4, 3TDI, automatic, sedan...'/>
             </div>
         </div>
     );

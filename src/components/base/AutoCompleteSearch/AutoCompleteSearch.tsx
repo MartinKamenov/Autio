@@ -1,19 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
+import './AutoCompleteSearch.scss';
+import { Icon } from '..';
 
 // This component should be connected to backend endpoints,
 // and the onChange event's handler should be debounced
 
 export interface autoCompleteSearchProps {
-    value: string,
-    onChange: (value: string) => any
+    apiWrapperUrl: string;
+    placeholder?: string;
+    className?: string;
+    style?: object;
 }
- 
+
 const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
-    value,
-    onChange
+    apiWrapperUrl,
+    placeholder='',
+    className='',
+    style={}
 }) => {
+    const [value, setValue] = useState('');
     return (
-        <input value={value} onChange={({ target: { value } }) => onChange(value)} />
+        <div className={className}>
+            <div className='auto-complete-prefix'>
+                <Icon icon='search' style={{
+                    fontSize: 30,
+                    color: 'gray',
+                }}/>
+            </div>
+            <input
+                value={value}
+                onChange={({ target: { value } }) => setValue(value)}
+                placeholder={placeholder}
+                style={style}
+                className={`auto-complete-input`}/>
+        </div>
     );
 }
  

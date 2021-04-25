@@ -8,6 +8,7 @@ import { CarEntry } from '../../../types';
 // and the onChange event's handler should be debounced
 const DEBOUNCE_TIMER: number = 500;
 let timeout: NodeJS.Timeout | null = null;
+let lastQueryValue: string | null = null;
 
 export interface autoCompleteSearchProps {
     apiWrapperUrl: string;
@@ -44,7 +45,11 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
 
         timeout = setTimeout(async() => {
             //make api call
+            if(lastQueryValue !== null && lastQueryValue === value) {
+                return;
+            }
             setLoadingResults(true);
+            lastQueryValue = value;
             const updatedCars = await fetchCarsData(value);
             setFetched(true);
             setLoadingResults(false);

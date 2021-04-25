@@ -24,6 +24,7 @@ input.auto-complete-input {
     margin-left: 30px;
     margin-right: 30px;
     background-color: white;
+
     ul {
         margin: 0px;
         padding: 0px;
@@ -37,10 +38,17 @@ input.auto-complete-input {
         font-size: 20px;
         padding: 10px;
         border-bottom: 1px solid gray;
+        background-color: white;
+        -webkit-transition: background-color 300ms linear;
+        -ms-transition: background-color 300ms linear;
+        transition: background-color 300ms linear;
 
         &:hover {
-            background-color: gray;
+            background-color: #c45c60;
             cursor: pointer;
+            -webkit-transition: background-color 300ms linear;
+            -ms-transition: background-color 300ms linear;
+            transition: background-color 300ms linear;
         }
 
         div.dropdown-image-container {

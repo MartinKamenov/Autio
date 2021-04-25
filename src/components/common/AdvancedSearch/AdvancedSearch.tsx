@@ -41,19 +41,18 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = () => {
                             </div>
                         </div>
                     </div>
+                    <div style={{marginLeft: 40, width: 'calc(100% - 80px)', height: 1, backgroundColor: '#aaaaaa'}}/>
                     <div className='row clean'>
                         <div className='col-md-6'>
                             <div className='flex-column left'>
                                 <div className='label-wrapper'>
                                     <label>Year</label>
                                 </div>
-                                <Dropdown options={[
-                                    'Audi',
-                                    'BMW',
-                                    'Mercedes'
-                                ]} value='Audi'
-                                onChange={() => {}}
-                                className='dropdown'/>
+                                <div className='from-to-container'>
+                                    <input/>
+                                    <span className='separator'>to</span>
+                                    <input/>
+                                </div>
                             </div>
                             <div className='flex-column left'>
                                 <div className='label-wrapper'>
@@ -73,13 +72,11 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = () => {
                                 <div className='label-wrapper'>
                                     <label>Horse power</label>
                                 </div>
-                                <Dropdown options={[
-                                    'A3',
-                                    'A3',
-                                    'A5'
-                                ]} value='A3'
-                                onChange={() => {}}
-                                className='dropdown'/>
+                                <div className='from-to-container'>
+                                    <input/>
+                                    <span className='separator'>to</span>
+                                    <input/>
+                                </div>
                             </div>
                             <div className='flex-column rigth'>
                                 <div className='label-wrapper'>
@@ -95,6 +92,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = () => {
                             </div>
                         </div>
                     </div>
+                    <button className='search-btn'>SEARCH</button>
                 </div>
             </div>
         </div>

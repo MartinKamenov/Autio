@@ -19,7 +19,7 @@ input.auto-complete-input {
 .dropdown-results {
     z-index: 10;
     overflow-y: auto;
-    max-height: 200px;
+    max-height: 243px;
     width: calc(100% - 60px);
     margin-left: 30px;
     margin-right: 30px;
@@ -60,6 +60,10 @@ input.auto-complete-input {
                 height: 60px;
                 background-color: white;
             }
+        }
+
+        .name {
+            text-align: left;
         }
     }
 

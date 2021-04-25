@@ -26,6 +26,7 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
     const [carEntries, setCarEntries] = useState<CarEntry[]>([]);
     const [loadingResults, setLoadingResults] = useState(false);
     const [fetched, setFetched] = useState(false);
+    const [focused, setFocused] = useState(false);
 
     const fetchCarsData = async (text: string): Promise<CarEntry[]> => {
         const { data: cars } = await getData(apiWrapperUrl, { query: text });
@@ -37,7 +38,7 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
             clearTimeout(timeout);
         }
 
-        if(!value) {
+        if(!focused) {
             return;
         }
 
@@ -49,10 +50,12 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
             setLoadingResults(false);
             setCarEntries(updatedCars);
         }, DEBOUNCE_TIMER);
-    }, [value]);
+    }, [value, focused]);
 
     return (
-        <div className={className}>
+        <div className={className}
+            onFocus={() => setFocused(true)}
+            onBlur={() => setFocused(false)}>
             <div className='auto-complete-prefix'>
                 <Icon icon='search' style={{
                     fontSize: 30,
@@ -65,7 +68,7 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
                 placeholder={placeholder}
                 style={style}
                 className='auto-complete-input' />
-            {(fetched || loadingResults) && <div className='dropdown-results'>
+            {focused && (fetched || loadingResults) && <div className='dropdown-results'>
                 {loadingResults ? <LoadingIndicator/> : (
                     <ul>
                         {carEntries.length === 0 && (
@@ -77,7 +80,7 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
                                     <div className='dropdown-image-container'>
                                         <img src={entry.imageHref}></img>
                                     </div>
-                                    <div>{entry.name}</div>
+                                    <div className='name'>{entry.name}</div>
                                 </li>
                             ))
                         }

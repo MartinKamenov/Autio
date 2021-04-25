@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './AutoCompleteSearch.scss';
-import { Icon } from '..';
+import { Icon, LoadingIndicator } from '..';
 import { getData } from '../../../services/apiService';
 import { CarEntry } from '../../../types';
 
@@ -24,9 +24,11 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
 }) => {
     const [value, setValue] = useState('');
     const [carEntries, setCarEntries] = useState<CarEntry[]>([]);
+    const [loadingResults, setLoadingResults] = useState(false);
+    const [fetched, setFetched] = useState(false);
 
     const fetchCarsData = async (text: string): Promise<CarEntry[]> => {
-        const { data: cars } = await getData('/search', { query: text });
+        const { data: cars } = await getData(apiWrapperUrl, { query: text });
         return cars;
     };
 
@@ -35,9 +37,16 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
             clearTimeout(timeout);
         }
 
-        timeout = setTimeout( async () => {
+        if(!value) {
+            return;
+        }
+
+        timeout = setTimeout(async() => {
             //make api call
+            setLoadingResults(true);
             const updatedCars = await fetchCarsData(value);
+            setFetched(true);
+            setLoadingResults(false);
             setCarEntries(updatedCars);
         }, DEBOUNCE_TIMER);
     }, [value]);
@@ -55,17 +64,26 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
                 onChange={({ target: { value } }) => setValue(value)}
                 placeholder={placeholder}
                 style={style}
-                className={`auto-complete-input`} />
-            <div className={'dropdown-results'}>
-                <ul>{
-                    carEntries.map(entry => (
-                        <li key={entry._id} className={'result'}>
-                            <img src={entry.imageHref}></img>
-                            <div>{entry.name}</div>
-                        </li>
-                    ))
-                }</ul>
-            </div>
+                className='auto-complete-input' />
+            {(fetched || loadingResults) && <div className='dropdown-results'>
+                {loadingResults ? <LoadingIndicator/> : (
+                    <ul>
+                        {carEntries.length === 0 && (
+                            <li className='no-result'>No results found</li>
+                        )}
+                        {
+                            carEntries.map(entry => (
+                                <li key={entry._id} className={'result'}>
+                                    <div className='dropdown-image-container'>
+                                        <img src={entry.imageHref}></img>
+                                    </div>
+                                    <div>{entry.name}</div>
+                                </li>
+                            ))
+                        }
+                    </ul>
+                )}
+            </div>}
         </div>
     );
 }

@@ -34,7 +34,7 @@ const HomeWallpaper: React.FC = () => {
                 </div>
                 <AutoCompleteSearch
                     className='auto-complete'
-                    apiWrapperUrl='/models'
+                    apiWrapperUrl='/search'
                     placeholder='For example: Audi A4, 3TDI, automatic, sedan...'/>
             </div>
         </div>

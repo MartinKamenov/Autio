@@ -1,0 +1,37 @@
+.advanced-search-wrapper {
+    width: 100%;
+
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .flex-column {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .inner-container {
+        width: 80%;
+    }
+
+    .left {
+        text-align: left;
+        align-items: center;
+    }
+
+    .rigth {
+        text-align: left;
+        align-items: center;
+    }
+
+    .dropdown {
+        width: 80%;
+    }
+
+    .label-wrapper {
+        text-align: left;
+        width: 80%;
+    }
+}

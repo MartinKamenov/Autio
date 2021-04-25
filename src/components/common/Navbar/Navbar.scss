@@ -33,18 +33,20 @@
         nav {
             display: block;
             a {
+                font-weight: 600;
+                font-size: 18px;
                 text-decoration: none;
             }
         }
 
         .nav-element {
             padding: 10px;
-            margin-left: 10px;
-            margin-right: 10px;
+            margin-left: 15px;
+            margin-right: 15px;
         }
         .nav-element-alternative {
             padding: 10px;
-            margin-left: 10px;
+            margin-left: 15px;
         }
     }
 }

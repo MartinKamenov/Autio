@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './AutoCompleteSearch.scss';
 import { Icon } from '..';
 
 // This component should be connected to backend endpoints,
 // and the onChange event's handler should be debounced
+const DEBOUNCE_TIMER: number = 500;
+let timeout: NodeJS.Timeout | null = null;
 
 export interface autoCompleteSearchProps {
     apiWrapperUrl: string;
@@ -19,6 +21,21 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
     style={}
 }) => {
     const [value, setValue] = useState('');
+
+    const fetchCarsData = (text: string) => {
+    };
+
+    useEffect(() => {
+        if(timeout) {
+            clearTimeout(timeout);
+        }
+        
+        timeout = setTimeout(() => {
+            //make api call
+            fetchCarsData(value);
+        }, DEBOUNCE_TIMER);
+    }, [value]);
+
     return (
         <div className={className}>
             <div className='auto-complete-prefix'>

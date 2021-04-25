@@ -1,0 +1,47 @@
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+
+    .logo {
+        width: 200px;
+        margin-bottom: 20px;
+    }
+
+    nav {
+        padding: 10px;
+    }
+
+    .nav-element {
+        font-weight: 600;
+        font-size: 18px;
+        text-decoration: none;
+    }
+
+    .nav-element-alternative {
+        padding: 10px;
+        font-weight: 600;
+        font-size: 18px;
+        text-decoration: none;
+    }
+
+    .contact-information {
+        color: gray;
+        margin-top: auto;
+        margin-bottom: 20px;
+        .email {
+            font-weight: bold;
+        }
+        div {
+            text-align: center;
+        }
+
+        .separator {
+            width: 400px;
+            max-width: 100%;
+            height: 1px;
+            background-color: #aaaaaa;
+        }
+    }
+}

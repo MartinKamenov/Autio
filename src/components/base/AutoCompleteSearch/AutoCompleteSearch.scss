@@ -15,3 +15,22 @@ input.auto-complete-input {
     margin-top: 15px;
     margin-left: 15px;
 }
+
+.dropdown-results {
+    position: fixed;
+    z-index: 3;
+    overflow-y: auto;
+    max-height: 120px;
+
+    .result {
+        display: flex;
+        color: black;
+        align-items: center;
+        font-size: 20px;
+        height: 60px;
+
+        img {
+            height: 60px;
+        }
+    }
+}

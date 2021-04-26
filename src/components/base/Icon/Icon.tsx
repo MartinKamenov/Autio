@@ -3,13 +3,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faSearch,
     faQuestionCircle,
-    IconDefinition
+    IconDefinition,
+    faCheckCircle
 } from '@fortawesome/free-solid-svg-icons';
 
 const iconMapper: {
     [key: string]: IconDefinition
 } = {
     'search': faSearch,
+    'check-circle': faCheckCircle
 };
 
 export interface IconProps {

@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-div, p, a, li, ul, label {
+div, p, a, li, ul, label, h3, h4, h5, h6 {
   font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
 }
 h1, h2 {

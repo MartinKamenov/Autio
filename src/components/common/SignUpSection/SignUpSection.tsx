@@ -19,19 +19,19 @@ const SignUpSection: React.FC = () => {
         },
         {
             src: '/assets/message.png',
-            x: 'calc(50% - 90px)',
+            x: '50%',
             y: '-50px',
             height: '60px'
         },
         {
             src: '/assets/circle.png',
-            x: 'calc(50% - 30px)',
+            x: 'calc(50% + 60px)',
             y: '170px',
             height: '20px'
         },
         {
             src: '/assets/tyre.png',
-            x: '50%',
+            x: 'calc(50% + 120px)',
             y: '230px',
             height: '70px'
         },
@@ -40,34 +40,36 @@ const SignUpSection: React.FC = () => {
         <div className='sign-up-section-wrapper'>
             <h1 style={{color: COLORS.ALTERNATIVE_FONT}}><b>SIGN UP TODAY</b></h1>
             <h4 style={{color: COLORS.FONT}}>for an optimal AUTIO experience!</h4>
-            <div className='message-container'>
-                {icons.map((icon, i) => (
-                    <img
-                        src={icon.src}
-                        style={{
-                            position: 'absolute',
-                            opacity: 0.3,
-                            height: icon.height,
-                            marginLeft: icon.x,
-                            marginTop: icon.y
-                        }}/>
-                ))}
-                <div className='message-point'>
-                    <Icon icon='check-circle' className='point-icon'/>
-                    Write reviews and comments,
-                    leave likes and interact with the
-                    amazing community of fellow car lovers
-                </div>
-                <div className='message-point'>
-                    <Icon icon='check-circle' className='point-icon'/>
-                    Save all your favorite models for
-                    faster and easier access
-                </div>
-                <div className='message-point'>
-                    <Icon icon='check-circle' className='point-icon'/>
-                    Always stay up to date - get
-                    personalized notifications when
-                    a new model is added
+            <div className='container'>
+                <div className='message-container'>
+                    {icons.map((icon, i) => (
+                        <img
+                            src={icon.src}
+                            style={{
+                                position: 'absolute',
+                                opacity: 0.3,
+                                height: icon.height,
+                                marginLeft: icon.x,
+                                marginTop: icon.y
+                            }}/>
+                    ))}
+                    <div className='message-point'>
+                        <Icon icon='check-circle' className='point-icon'/>
+                        Write reviews and comments,
+                        leave likes and interact with the
+                        amazing community of fellow car lovers
+                    </div>
+                    <div className='message-point'>
+                        <Icon icon='check-circle' className='point-icon'/>
+                        Save all your favorite models for
+                        faster and easier access
+                    </div>
+                    <div className='message-point'>
+                        <Icon icon='check-circle' className='point-icon'/>
+                        Always stay up to date - get
+                        personalized notifications when
+                        a new model is added
+                    </div>
                 </div>
             </div>
         </div>

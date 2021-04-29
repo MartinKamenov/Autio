@@ -17,6 +17,7 @@ import {
     Footer
 } from '../../common';
 import { NAVBAR_HEIGHT } from '../../../constants/other';
+import { AuthPage } from '../../pages/Auth/Auth';
  
 const MainRouter: React.FC = () => {
     return (
@@ -41,6 +42,10 @@ const MainRouter: React.FC = () => {
                     <Route
                         path='/search'
                         component={Search}
+                        />
+                    <Route 
+                        path='/login'
+                        component={AuthPage}
                         exact/>
                 </Switch>
             </div>

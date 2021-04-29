@@ -1,3 +1,5 @@
+@import '../../../cssVariables.scss';
+
 .home-wallpaper-container {
     width: 100%;
 
@@ -51,6 +53,9 @@
     }
 
     .polygon-content {
+        .primaryHeader {
+            color: $PRIMARY_COLOR
+        }
         display: flex;
         flex-direction: column;
         justify-content: flex-start;

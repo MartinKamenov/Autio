@@ -1,0 +1,56 @@
+@import '../../../cssVariables.scss';
+
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .form-title {
+        color: $DARKER_RED_COLOR;
+        margin-bottom: 5%;
+        font-weight: 700;
+    }
+    
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    
+        label {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            width: 240px;
+
+            input {
+                border-radius: 4px;
+                border: 2px solid lightgray;
+            }
+        }
+
+        button {
+            width: 27%;
+            background-color: $DARKER_RED_COLOR;
+            color: white;
+            border-radius: 4px;
+            border: transparent;
+            font-weight: 600;
+            width: 240px;
+            height: 32px;
+            margin-top: 35px;
+            margin-bottom: 15px;
+        }
+    }
+
+    .signup {
+        display: flex;
+        justify-content: center;
+        font-size: 13px;
+
+        .modeChange {
+            color: $DARKER_RED_COLOR;
+            cursor: pointer;
+        }
+    }
+}
+

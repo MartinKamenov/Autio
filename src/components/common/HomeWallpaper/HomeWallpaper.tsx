@@ -21,7 +21,7 @@ const HomeWallpaper: React.FC = () => {
                     backgroundColor: COLORS.FONT
                 }} className='home-wallpaper-separator'/>
             <div className='polygon-content'>
-                <h1 style={{color: COLORS.PRIMARY}}><b>OR</b></h1>
+                <h1 className={"primaryHeader"} ><b>OR</b></h1>
                 <h5 style={{color: COLORS.NAVBAR_BG_COLOR}}>search by specific parameters</h5>
             </div>
             <div className='home-content-container'>

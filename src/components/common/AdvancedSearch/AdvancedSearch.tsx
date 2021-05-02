@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import './AdvancedSearch.scss';
 import { Dropdown } from '../../base';
+import { getData } from '../../../services/apiService';
+import { async } from 'q';
 
 export interface AdvancedSearchProps {
     
 }
  
-const AdvancedSearch: React.FC<AdvancedSearchProps> = () => {
+const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
+
+}) => {
+    const [options, setOptions] = useState({});
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = async() => {
+        const {data} = await getData('/enums');
+        const reducedData = data
+        .reduce((
+            acc: object,
+            cur: {id: string, values: any[]}
+        ) => ({...acc, [cur.id]: cur.values}), {});
+        setOptions(reducedData);
+    };
+
     return (
         <div className='advanced-search-wrapper'>
             <div className='container'>

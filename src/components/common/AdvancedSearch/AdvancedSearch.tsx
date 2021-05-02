@@ -1,12 +1,71 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './AdvancedSearch.scss';
-import { Dropdown } from '../../base';
+import {
+    Dropdown,
+    LoadingIndicator,
+    MultipleSelectDropdown
+} from '../../base';
+import { getData } from '../../../services/apiService';
+
+export type Filters = {
+    brandNames: string[];
+    modelNames: string[];
+    coupeTypes: string[];
+    fromYear: string;
+    toYear: string;
+    fromPower: string;
+    toPower: string;
+};
 
 export interface AdvancedSearchProps {
-    
+    filters: Filters;
+    setFilters: Function;
+    onSubmit?: (ev: any) => void;
 }
  
-const AdvancedSearch: React.FC<AdvancedSearchProps> = () => {
+const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
+    filters,
+    setFilters,
+    onSubmit
+}) => {
+    const [options, setOptions] = useState<any>({});
+    const [loading, setLoading] = useState(true);
+    const [models, setModels] = useState([]);
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        const filteredModels = options.brands ? options.brands
+            .filter((o: any) => !filters.brandNames.length || filters.brandNames
+            .includes(o.shortName))
+            .map((o: any) => o.models.map((m: any) => ({...m, label: `${o.name} ${m.name}`})))
+            .flat() : [];
+        
+        setModels(filteredModels);
+    }, [filters.brandNames, options.brands]);
+
+    const fetchData = async() => {
+        const {data} = await getData('/enums');
+        const reducedData = data
+        .reduce((
+            acc: object,
+            cur: {id: string, values: any[]}
+        ) => ({...acc, [cur.id]: cur.values}), {});
+
+        setOptions(reducedData);
+        setLoading(false);
+    };
+
+    const handleChange = (key: string, value: string | string[]) => {
+        setFilters({...filters, [key]: value});
+    }
+
+    if(loading) {
+        return <LoadingIndicator style={{display: 'flex', justifyContent: 'center'}}/>;
+    }
+
     return (
         <div className='advanced-search-wrapper'>
             <div className='container'>
@@ -17,13 +76,17 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = () => {
                                 <div className='label-wrapper'>
                                     <label>Brand</label>
                                 </div>
-                                <Dropdown options={[
-                                    'Audi',
-                                    'BMW',
-                                    'Mercedes'
-                                ]} value='Audi'
-                                onChange={() => {}}
-                                className='dropdown'/>
+                                <MultipleSelectDropdown
+                                inputStyle={{width: '100%', height: 40}}
+                                options={options.brands ?
+                                    options.brands.map((o: any) => ({
+                                        label: o.name,
+                                        value: o.shortName,
+                                        imageHref: o.imageHref
+                                    })) : []}
+                                value={filters.brandNames}
+                                onChange={(v) => handleChange('brandNames', v)}
+                                containerClassName='dropdown'/>
                             </div>
                         </div>
                         <div className='col-md-6'>
@@ -31,13 +94,16 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = () => {
                                 <div className='label-wrapper'>
                                     <label>Model</label>
                                 </div>
-                                <Dropdown options={[
-                                    'A3',
-                                    'A3',
-                                    'A5'
-                                ]} value='A3'
-                                onChange={() => {}}
-                                className='dropdown'/>
+                                <MultipleSelectDropdown
+                                inputStyle={{width: '100%', height: 40}}
+                                options={models.map((m: any) => ({
+                                    value: m.name,
+                                    label: m.label,
+                                    imageHref: m.imageHref
+                                }))}
+                                value={filters.modelNames}
+                                onChange={(v) => handleChange('modelNames', v)}
+                                containerClassName='dropdown'/>
                             </div>
                         </div>
                     </div>
@@ -49,22 +115,37 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = () => {
                                     <label>Year</label>
                                 </div>
                                 <div className='from-to-container'>
-                                    <input/>
+                                    <input
+                                        type='number'
+                                        value={filters.fromYear}
+                                        onChange={({
+                                            target: {
+                                                value
+                                            }
+                                        }) => handleChange('fromYear', value)}/>
                                     <span className='separator'>to</span>
-                                    <input/>
+                                    <input
+                                        type='number'
+                                        value={filters.toYear}
+                                        onChange={({
+                                            target: {
+                                                value
+                                            }
+                                        }) => handleChange('toYear', value)}/>
                                 </div>
                             </div>
                             <div className='flex-column left'>
                                 <div className='label-wrapper'>
                                     <label>Engine type</label>
                                 </div>
-                                <Dropdown options={[
-                                    'Audi',
-                                    'BMW',
-                                    'Mercedes'
-                                ]} value='Audi'
+                                <MultipleSelectDropdown options={[
+                                    {value: 'Audi'},
+                                    {value: 'BMW'},
+                                    {value: 'Mercedes'}
+                                ]} value={['Audi']}
+                                inputStyle={{width: '100%', height: 40}}
                                 onChange={() => {}}
-                                className='dropdown'/>
+                                containerClassName='dropdown'/>
                             </div>
                         </div>
                         <div className='col-md-6'>
@@ -73,26 +154,43 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = () => {
                                     <label>Horse power</label>
                                 </div>
                                 <div className='from-to-container'>
-                                    <input/>
+                                    <input
+                                        type='number'
+                                        value={filters.fromPower}
+                                        onChange={({
+                                            target: {
+                                                value
+                                            }
+                                        }) => handleChange('fromPower', value)}/>
                                     <span className='separator'>to</span>
-                                    <input/>
+                                    <input
+                                        type='number'
+                                        value={filters.toPower}
+                                        onChange={({
+                                            target: {
+                                                value
+                                            }
+                                        }) => handleChange('toPower', value)}/>
                                 </div>
                             </div>
                             <div className='flex-column rigth'>
                                 <div className='label-wrapper'>
-                                    <label>Transmission</label>
+                                    <label>Coupe Types</label>
                                 </div>
                                 <Dropdown options={[
-                                    'A3',
-                                    'A3',
-                                    'A5'
-                                ]} value='A3'
+                                    'sedan',
+                                    'avant',
+                                ]} value={['sedan']}
                                 onChange={() => {}}
                                 className='dropdown'/>
                             </div>
                         </div>
                     </div>
-                    <button className='search-btn'>SEARCH</button>
+                    <button
+                        className='search-btn'
+                        onClick={onSubmit}>
+                        SEARCH
+                    </button>
                 </div>
             </div>
         </div>

@@ -3,8 +3,8 @@ import './Dropdown.scss';
 
 interface DropdownTypes {
     options: string[],
-    value: string,
-    onChange: (value: string) => any;
+    value: string | string[],
+    onChange: (value: string | string[]) => any;
     className?: string;
     style?: object;
 };

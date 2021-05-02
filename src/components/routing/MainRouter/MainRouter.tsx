@@ -5,10 +5,17 @@ import {
     Redirect,
     Route
 } from 'react-router-dom';
-import {Home, Brand} from '../../pages';
+import {
+    Home,
+    Brand,
+    Search
+} from '../../pages';
 
 import './MainRouter.scss';
-import { Navbar, Footer } from '../../common';
+import {
+    Navbar,
+    Footer
+} from '../../common';
 import { NAVBAR_HEIGHT } from '../../../constants/other';
  
 const MainRouter: React.FC = () => {
@@ -30,6 +37,10 @@ const MainRouter: React.FC = () => {
                     <Route
                         path='/brand/:id'
                         component={Brand}
+                        exact/>
+                    <Route
+                        path='/search'
+                        component={Search}
                         exact/>
                 </Switch>
             </div>

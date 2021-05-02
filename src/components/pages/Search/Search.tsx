@@ -2,9 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { AdvancedSearch } from '../../common';
 import { RouteComponentProps } from 'react-router';
 import './Search.scss';
-import { getData, queryToObject, queryToString } from '../../../services/apiService';
+import { getData, queryToObject, queryToString, QueryObject } from '../../../services/apiService';
 import { Filters } from '../../common/AdvancedSearch/AdvancedSearch';
- 
+import { arrayResult, singleResult } from '../../../services/typeService';
+
+const queryToFilters = (query: QueryObject): Filters => {
+    const result: Filters = {
+        brandNames: arrayResult(query.brandNames),
+        modelNames: arrayResult(query.modelNames),
+        coupeTypes: arrayResult(query.coupeTypes),
+        fromYear: singleResult(query.fromYear),
+        toYear: singleResult(query.toYear),
+        fromPower: singleResult(query.fromPower),
+        toPower: singleResult(query.toPower)
+    };
+
+    return result;
+}
+
 const Search: React.FC<RouteComponentProps> = ({
     history
 }) => {
@@ -22,6 +37,8 @@ const Search: React.FC<RouteComponentProps> = ({
     useEffect(() => {
         const search = history.location.search;
         const query = queryToObject(search);
+        const filt = queryToFilters(query);
+        setFilters(filt);
         
         fetchData(query);
     }, [history.location.search]);
@@ -41,7 +58,7 @@ const Search: React.FC<RouteComponentProps> = ({
                 filters={filters}
                 setFilters={setFilters}
                 onSubmit={onSubmit}/>
-            <div className='row clean'>
+            <div className='row clean items-container'>
                 {items.map((item: any, i) => (
                     <div key={i}
                         className='col-md-3'

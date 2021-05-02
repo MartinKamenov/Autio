@@ -7,7 +7,6 @@ interface DropdownTypes {
     onChange: (value: string | string[]) => any;
     className?: string;
     style?: object;
-    multiple?: boolean;
 };
 
 const Dropdown: React.FC<DropdownTypes> = ({
@@ -15,15 +14,13 @@ const Dropdown: React.FC<DropdownTypes> = ({
     value,
     onChange,
     style={},
-    className='',
-    multiple=false
+    className=''
 }) => {
     return (
         <select
             className={`custom-dropdown ${className}`}
             value={value}
             style={style}
-            multiple={multiple}
             onChange={({target: {value}}) => onChange(value)}>
             {options.map((option, i) => (
                 <option key={i} value={option}>{option}</option>

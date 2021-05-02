@@ -1,8 +1,11 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './AdvancedSearch.scss';
-import { Dropdown, LoadingIndicator } from '../../base';
+import {
+    Dropdown,
+    LoadingIndicator,
+    MultipleSelectDropdown
+} from '../../base';
 import { getData } from '../../../services/apiService';
-import { async } from 'q';
 
 export type Filters = {
     brandNames: string[];
@@ -27,10 +30,22 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
 }) => {
     const [options, setOptions] = useState<any>({});
     const [loading, setLoading] = useState(true);
+    const [models, setModels] = useState([]);
 
     useEffect(() => {
         fetchData();
     }, []);
+
+    useEffect(() => {
+        debugger;
+        const filteredModels = options.brands ? options.brands
+            .filter((o: any) => !filters.brandNames.length || filters.brandNames
+            .includes(o.shortName))
+            .map((o: any) => o.models.map((m: any) => ({...m, label: `${o.name} ${m.name}`})))
+            .flat() : [];
+        
+        setModels(filteredModels);
+    }, [filters.brandNames, options.brands]);
 
     const fetchData = async() => {
         const {data} = await getData('/enums');
@@ -62,12 +77,17 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                 <div className='label-wrapper'>
                                     <label>Brand</label>
                                 </div>
-                                <Dropdown
-                                multiple
-                                options={[]}
+                                <MultipleSelectDropdown
+                                inputStyle={{width: '100%', height: 40}}
+                                options={options.brands ?
+                                    options.brands.map((o: any) => ({
+                                        label: o.name,
+                                        value: o.shortName,
+                                        imageHref: o.imageHref
+                                    })) : []}
                                 value={filters.brandNames}
                                 onChange={(v) => handleChange('brandNames', v)}
-                                className='dropdown'/>
+                                containerClassName='dropdown'/>
                             </div>
                         </div>
                         <div className='col-md-6'>
@@ -75,12 +95,16 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                 <div className='label-wrapper'>
                                     <label>Model</label>
                                 </div>
-                                <Dropdown
-                                multiple
-                                options={[]}
+                                <MultipleSelectDropdown
+                                inputStyle={{width: '100%', height: 40}}
+                                options={models.map((m: any) => ({
+                                    value: m.name,
+                                    label: m.label,
+                                    imageHref: m.imageHref
+                                }))}
                                 value={filters.modelNames}
                                 onChange={(v) => handleChange('modelNames', v)}
-                                className='dropdown'/>
+                                containerClassName='dropdown'/>
                             </div>
                         </div>
                     </div>
@@ -93,6 +117,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                 </div>
                                 <div className='from-to-container'>
                                     <input
+                                        type='number'
                                         value={filters.fromYear}
                                         onChange={({
                                             target: {
@@ -101,6 +126,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                         }) => handleChange('fromYear', value)}/>
                                     <span className='separator'>to</span>
                                     <input
+                                        type='number'
                                         value={filters.toYear}
                                         onChange={({
                                             target: {
@@ -113,13 +139,14 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                 <div className='label-wrapper'>
                                     <label>Engine type</label>
                                 </div>
-                                <Dropdown options={[
-                                    'Audi',
-                                    'BMW',
-                                    'Mercedes'
-                                ]} value='Audi'
+                                <MultipleSelectDropdown options={[
+                                    {value: 'Audi'},
+                                    {value: 'BMW'},
+                                    {value: 'Mercedes'}
+                                ]} value={['Audi']}
+                                inputStyle={{width: '100%', height: 40}}
                                 onChange={() => {}}
-                                className='dropdown'/>
+                                containerClassName='dropdown'/>
                             </div>
                         </div>
                         <div className='col-md-6'>
@@ -129,6 +156,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                 </div>
                                 <div className='from-to-container'>
                                     <input
+                                        type='number'
                                         value={filters.fromPower}
                                         onChange={({
                                             target: {
@@ -137,6 +165,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                         }) => handleChange('fromPower', value)}/>
                                     <span className='separator'>to</span>
                                     <input
+                                        type='number'
                                         value={filters.toPower}
                                         onChange={({
                                             target: {
@@ -154,7 +183,6 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                     'avant',
                                 ]} value={['sedan']}
                                 onChange={() => {}}
-                                multiple
                                 className='dropdown'/>
                             </div>
                         </div>

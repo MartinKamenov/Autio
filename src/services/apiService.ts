@@ -4,7 +4,6 @@ import { API_URL } from '../constants/http';
 export type QueryObject = {[key: string]: string | string[]};
 
 export const queryToString = (queryObject: QueryObject): string => {
-    debugger;
     const queryArray = Object.entries(queryObject);
     const queryString = queryArray
         .filter(([_, value]) => Array.isArray(value) ? value.length : value)
@@ -17,7 +16,6 @@ export const queryToString = (queryObject: QueryObject): string => {
 }
 
 export const queryToObject = (search: string): QueryObject => {
-    debugger;
     const result = search.substring(1)
         .split('&').reduce((acc: QueryObject, cur) => {
             const [key, value] = cur.split('=');

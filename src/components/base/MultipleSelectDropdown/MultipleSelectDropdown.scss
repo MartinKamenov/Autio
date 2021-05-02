@@ -9,6 +9,9 @@
         z-index: 2;
         .custom-multi-option {
             cursor: pointer;
+            &:hover {
+                background-color: #edcacb;
+            }
             &.selected {
                 background-color: #c45c60;
             }
@@ -20,7 +23,7 @@
             color: black;
             padding-left: 10px;
             padding-right: 10px;
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid gray;
 
             img {
                 height: 50px;

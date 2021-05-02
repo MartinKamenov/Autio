@@ -5,6 +5,7 @@ import './Search.scss';
 import { getData, queryToObject, queryToString, QueryObject } from '../../../services/apiService';
 import { Filters } from '../../common/AdvancedSearch/AdvancedSearch';
 import { arrayResult, singleResult } from '../../../services/typeService';
+import { LoadingIndicator } from '../../base';
 
 const queryToFilters = (query: QueryObject): Filters => {
     const result: Filters = {
@@ -24,6 +25,7 @@ const Search: React.FC<RouteComponentProps> = ({
     history
 }) => {
     const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(true);
     const [filters, setFilters] = useState<Filters>({
         brandNames: [],
         modelNames: [],
@@ -43,9 +45,16 @@ const Search: React.FC<RouteComponentProps> = ({
         fetchData(query);
     }, [history.location.search]);
 
+    useEffect(() => {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0;
+    }, []);
+
     const fetchData = async(search: object) => {
+        setLoading(true);
         const {data} = await getData('/search/advanced', search);
         setItems(data.items);
+        setLoading(false);
     };
 
     const onSubmit = () => {
@@ -58,7 +67,14 @@ const Search: React.FC<RouteComponentProps> = ({
                 filters={filters}
                 setFilters={setFilters}
                 onSubmit={onSubmit}/>
-            <div className='row clean items-container'>
+            {loading ? (
+                <LoadingIndicator style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center'
+                }}/>
+            ) : (
+                <div className='row clean items-container'>
                 {items.map((item: any, i) => (
                     <div key={i}
                         className='col-md-3'
@@ -77,7 +93,8 @@ const Search: React.FC<RouteComponentProps> = ({
                         <div>{item.name}</div>
                     </div>
                 ))}
-            </div>
+                </div>
+            )}
         </div>
     );
 };

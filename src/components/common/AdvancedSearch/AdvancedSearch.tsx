@@ -37,7 +37,6 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
     }, []);
 
     useEffect(() => {
-        debugger;
         const filteredModels = options.brands ? options.brands
             .filter((o: any) => !filters.brandNames.length || filters.brandNames
             .includes(o.shortName))

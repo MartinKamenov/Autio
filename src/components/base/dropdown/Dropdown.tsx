@@ -3,10 +3,11 @@ import './Dropdown.scss';
 
 interface DropdownTypes {
     options: string[],
-    value: string,
-    onChange: (value: string) => any;
+    value: string | string[],
+    onChange: (value: string | string[]) => any;
     className?: string;
     style?: object;
+    multiple?: boolean;
 };
 
 const Dropdown: React.FC<DropdownTypes> = ({
@@ -14,13 +15,15 @@ const Dropdown: React.FC<DropdownTypes> = ({
     value,
     onChange,
     style={},
-    className=''
+    className='',
+    multiple=false
 }) => {
     return (
         <select
             className={`custom-dropdown ${className}`}
             value={value}
             style={style}
+            multiple={multiple}
             onChange={({target: {value}}) => onChange(value)}>
             {options.map((option, i) => (
                 <option key={i} value={option}>{option}</option>

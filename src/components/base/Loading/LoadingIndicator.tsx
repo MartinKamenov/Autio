@@ -10,8 +10,8 @@ export interface LoadingIndicatorProps {
  
 const LoadingIndicator: React.FC<LoadingIndicatorProps> = ({
     message,
-    className,
-    style
+    className='',
+    style={}
 }) => {
     return (
         <div style={style} className={className}>

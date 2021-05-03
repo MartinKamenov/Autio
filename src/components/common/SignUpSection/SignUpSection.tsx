@@ -2,6 +2,7 @@ import React from 'react';
 import * as COLORS from '../../../constants/colors';
 import './SignUpSection.scss';
 import { Icon } from '../../base';
+import { Link } from 'react-router-dom';
  
 const SignUpSection: React.FC = () => {
     const icons = [
@@ -34,7 +35,7 @@ const SignUpSection: React.FC = () => {
             x: 'calc(50% + 120px)',
             y: '230px',
             height: '70px'
-        },
+        }
     ];
     return (
         <div className='sign-up-section-wrapper'>
@@ -70,6 +71,13 @@ const SignUpSection: React.FC = () => {
                         personalized notifications when
                         a new model is added
                     </div>
+                </div>
+                <div className="arrow-container">
+                    <Link to="/register">
+                        <img src="/assets/Group 1.png"></img>
+                        <div className="signup-text">CREATE AN ACCOUNT</div>
+                    </Link>
+                    
                 </div>
             </div>
         </div>

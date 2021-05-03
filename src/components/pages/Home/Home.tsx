@@ -15,7 +15,8 @@ const Home: React.FC<RouteComponentProps> = ({
         fromYear: '',
         toYear: '',
         fromPower: '',
-        toPower: ''
+        toPower: '',
+        page: '1'
     });
 
     const onSubmit = () => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { AdvancedSearch } from '../../common';
+import { AdvancedSearch, Pagination } from '../../common';
 import { RouteComponentProps } from 'react-router';
 import './Search.scss';
 import { getData, queryToObject, queryToString, QueryObject } from '../../../services/apiService';
@@ -15,7 +15,8 @@ const queryToFilters = (query: QueryObject): Filters => {
         fromYear: singleResult(query.fromYear),
         toYear: singleResult(query.toYear),
         fromPower: singleResult(query.fromPower),
-        toPower: singleResult(query.toPower)
+        toPower: singleResult(query.toPower),
+        page: singleResult(query.page) || '1'
     };
 
     return result;
@@ -26,6 +27,7 @@ const Search: React.FC<RouteComponentProps> = ({
 }) => {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [lastPage, setLastPage] = useState(1);
     const [filters, setFilters] = useState<Filters>({
         brandNames: [],
         modelNames: [],
@@ -33,7 +35,8 @@ const Search: React.FC<RouteComponentProps> = ({
         fromYear: '',
         toYear: '',
         fromPower: '',
-        toPower: ''
+        toPower: '',
+        page: '1'
     });
 
     useEffect(() => {
@@ -54,11 +57,13 @@ const Search: React.FC<RouteComponentProps> = ({
         setLoading(true);
         const {data} = await getData('/search/advanced', {...search, pageSize: 24});
         setItems(data.items);
+        setLastPage(data.totalPagesCount);
         setLoading(false);
     };
 
-    const onSubmit = () => {
-        history.push(`/search${queryToString(filters)}`);
+    const onSubmit = (_: any, newFilters?: Filters) => {
+        const updateFilters = newFilters ? newFilters : filters;
+        history.push(`/search${queryToString(updateFilters)}`);
     };
 
     return (
@@ -74,32 +79,58 @@ const Search: React.FC<RouteComponentProps> = ({
                     alignItems: 'center'
                 }}/>
             ) : (
-                <div className='row clean items-container'>
-                {items.map((item: any, i) => (
-                    <div key={i}
-                        className='col-lg-3 col-md-4 col-sm-6'
+                <>
+                    <Pagination
                         style={{
-                            minHeight: 400,
-                            display: 'flex',
-                            flexDirection: 'column',
-                            alignItems: 'center'
-                        }}>
-                        <div style={{
-                            height: 250,
-                            width: '100%',
-                            overflow: 'hidden',
-                            backgroundSize: 'cover',
-                            backgroundPosition: 'center center',
-                            backgroundRepeat: 'no-repeat',
-                            borderRadius: 10,
-                            backgroundImage: `url(${item.imageHref.replace('/thumb', '')})`
+                            marginTop: 20
+                        }}
+                        page={parseInt(filters.page, 10)}
+                        lastPage={lastPage}
+                        onChange={(newPage) => {
+                            onSubmit(null, {
+                                ...filters,
+                                page: newPage.toString()
+                            })
                         }}/>
-                        <h3>{item.brandShortName} {item.modelName}</h3>
-                        <div>{item.name}</div>
+                    <div className='row clean items-container'>
+                    {items.map((item: any, i) => (
+                        <div key={i}
+                            className='col-lg-3 col-md-4 col-sm-6'
+                            style={{
+                                minHeight: 400,
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center'
+                            }}>
+                            <div style={{
+                                height: 250,
+                                width: '100%',
+                                overflow: 'hidden',
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center center',
+                                backgroundRepeat: 'no-repeat',
+                                borderRadius: 10,
+                                backgroundImage: `url(${item.imageHref.replace('/thumb', '')})`
+                            }}/>
+                            <h3>{item.brandShortName} {item.modelName}</h3>
+                            <div>{item.name}</div>
+                        </div>
+                    ))}
                     </div>
-                ))}
-                </div>
+                </>
             )}
+            <Pagination
+                style={{
+                    marginBottom: 20
+                }}
+                page={parseInt(filters.page, 10)}
+                lastPage={lastPage}
+                onChange={(newPage) => {
+                    onSubmit(null, {
+                        ...filters,
+                        page: newPage.toString()
+                    })
+                }}/>
         </div>
     );
 };

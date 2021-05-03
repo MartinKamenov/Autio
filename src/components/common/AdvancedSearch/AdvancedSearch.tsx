@@ -15,11 +15,12 @@ export type Filters = {
     toYear: string;
     fromPower: string;
     toPower: string;
+    page: string;
 };
 
 export interface AdvancedSearchProps {
     filters: Filters;
-    setFilters: Function;
+    setFilters: (filters: Filters) => void;
     onSubmit?: (ev: any) => void;
 }
  

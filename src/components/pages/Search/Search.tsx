@@ -79,7 +79,7 @@ const Search: React.FC<RouteComponentProps> = ({
                     <div key={i}
                         className='col-lg-3 col-md-4 col-sm-6'
                         style={{
-                            height: 300,
+                            minHeight: 400,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center'

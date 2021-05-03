@@ -30,6 +30,10 @@ input.auto-complete-input {
         padding: 0px;
     }
 
+    .result-link {
+        text-decoration: none;
+    }
+
     li.result {
         display: flex;
         flex-direction: row;

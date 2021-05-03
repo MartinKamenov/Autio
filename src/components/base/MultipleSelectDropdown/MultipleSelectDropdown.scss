@@ -1,5 +1,34 @@
 .custom-multi-select {
     width: 100%;
+
+    .custom-input {
+        padding-right: 30px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .sufix-container {
+        position: absolute;
+        z-index: 1;
+        right: 10px;
+        top: 10px;
+        cursor: pointer;
+
+        .suffix-icon {
+            &.revert {
+                -webkit-animation:spin 0.2s linear forwards;
+                -moz-animation:spin 0.2s linear forwards;
+                animation:spin 0.2s linear forwards;
+            }
+            &.normal {
+                -webkit-animation:spinBack 0.2s linear forwards;
+                -moz-animation:spinBack 0.2s linear forwards;
+                animation:spinBack 0.2s linear forwards;
+            }
+        }
+    }
+
     .custom-multi-dropdown {
         position: absolute;
         max-height: 300px;
@@ -7,6 +36,7 @@
         background-color: white;
         width: 100%;
         z-index: 2;
+        
         .custom-multi-option {
             cursor: pointer;
             &:hover {
@@ -40,5 +70,21 @@
                 transform: scale(1.5);
             }
         }
+    }
+
+    @-moz-keyframes spin { 100% { -moz-transform: rotate(180deg); } }
+    @-webkit-keyframes spin { 100% { -webkit-transform: rotate(180deg); } }
+    @keyframes spin { 100% { -webkit-transform: rotate(180deg); transform:rotate(180deg); } }
+    @-moz-keyframes spinBack {
+        0% { -moz-transform: rotate(180deg); }
+        100% { -moz-transform: rotate(0deg); }
+    }
+    @-webkit-keyframes spinBack {
+        0% { -moz-transform: rotate(180deg); }
+        100% { -webkit-transform: rotate(0deg); }
+    }
+    @keyframes spinBack {
+        0% { -webkit-transform: rotate(180deg); transform:rotate(180deg); }
+        100% { -webkit-transform: rotate(0deg); transform:rotate(0deg); }
     }
 }

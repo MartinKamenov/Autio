@@ -4,34 +4,41 @@ import {
     faSearch,
     faQuestionCircle,
     IconDefinition,
-    faCheckCircle
+    faCheckCircle,
+    faChevronDown,
+    faChevronUp
 } from '@fortawesome/free-solid-svg-icons';
 
 const iconMapper: {
     [key: string]: IconDefinition
 } = {
     'search': faSearch,
-    'check-circle': faCheckCircle
+    'check-circle': faCheckCircle,
+    'chevron-down': faChevronDown,
+    'chevron-up': faChevronUp
 };
 
 export interface IconProps {
     icon: string;
     style?: object;
     className?: string;
+    onClick?: (ev: any) => void;
 }
 
 const Icon: React.FC<IconProps> = (props) => {
     const {
         icon,
         style,
-        className
+        className,
+        onClick
     } = props;
 
     return (
         <FontAwesomeIcon
             icon={iconMapper[icon] || faQuestionCircle}
             style={style}
-            className={className}/>
+            className={className}
+            onClick={onClick}/>
     );
 };
  

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './MultipleSelectDropdown.scss';
+import Icon from '../Icon';
 
 export interface MultipleSelectDropdownProps {
     options: {
@@ -15,20 +16,22 @@ export interface MultipleSelectDropdownProps {
     dropdownClassName?: string,
     inputClassName?: string,
     containerClassName?: string,
-    customOptionRenderer?: (option: any, index: number) => any
+    customOptionRenderer?: (option: any, index: number) => any,
+    placeHolder?: string
 }
  
 const MultipleSelectDropdown: React.FC<MultipleSelectDropdownProps> = ({
     value,
     options,
     dropdownStyle,
-    dropdownClassName,
+    dropdownClassName='',
     inputStyle,
-    inputClassName,
-    containerClassName,
+    inputClassName='',
+    containerClassName='',
     containerStyle,
     onChange,
-    customOptionRenderer
+    customOptionRenderer,
+    placeHolder
 }) => {
     const [opened, setOpened] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
@@ -70,9 +73,15 @@ const MultipleSelectDropdown: React.FC<MultipleSelectDropdownProps> = ({
             ref={ref}
             onFocus={() => setOpened(true)}>
             <input
+                placeholder={placeHolder}
                 value={value.join(', ')}
                 style={inputStyle}
-                className={inputClassName}/>
+                className={`custom-input ${inputClassName}`}/>
+            <div className='sufix-container'>
+                <Icon icon='chevron-down'
+                    className={`suffix-icon ${opened ? 'revert' : 'normal'}`}
+                    onClick={() => setOpened(!opened)}/>
+            </div>
             {opened && <div style={dropdownStyle} className={`custom-multi-dropdown ${dropdownClassName}`}>
                 {
                     options.map(customOptionRenderer ? customOptionRenderer : (option) => (

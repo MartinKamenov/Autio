@@ -85,6 +85,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                         imageHref: o.imageHref
                                     })) : []}
                                 value={filters.brandNames}
+                                placeHolder='No brand is selected'
                                 onChange={(v) => handleChange('brandNames', v)}
                                 containerClassName='dropdown'/>
                             </div>
@@ -102,6 +103,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                     imageHref: m.imageHref
                                 }))}
                                 value={filters.modelNames}
+                                placeHolder='No model is selected'
                                 onChange={(v) => handleChange('modelNames', v)}
                                 containerClassName='dropdown'/>
                             </div>
@@ -136,15 +138,17 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                             </div>
                             <div className='flex-column left'>
                                 <div className='label-wrapper'>
-                                    <label>Engine type</label>
+                                    <label>Coupe types</label>
                                 </div>
-                                <MultipleSelectDropdown options={[
-                                    {value: 'Audi'},
-                                    {value: 'BMW'},
-                                    {value: 'Mercedes'}
-                                ]} value={['Audi']}
+                                <MultipleSelectDropdown
+                                    options={options.coupeTypes ?
+                                        options.coupeTypes.map((o: any) => ({
+                                            value: o.name
+                                        })) : []}
+                                value={filters.coupeTypes}
+                                placeHolder='No coupe type is selected'
                                 inputStyle={{width: '100%', height: 40}}
-                                onChange={() => {}}
+                                onChange={(v) => handleChange('coupeTypes', v)}
                                 containerClassName='dropdown'/>
                             </div>
                         </div>

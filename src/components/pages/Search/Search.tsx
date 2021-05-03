@@ -52,7 +52,7 @@ const Search: React.FC<RouteComponentProps> = ({
 
     const fetchData = async(search: object) => {
         setLoading(true);
-        const {data} = await getData('/search/advanced', search);
+        const {data} = await getData('/search/advanced', {...search, pageSize: 24});
         setItems(data.items);
         setLoading(false);
     };
@@ -77,18 +77,23 @@ const Search: React.FC<RouteComponentProps> = ({
                 <div className='row clean items-container'>
                 {items.map((item: any, i) => (
                     <div key={i}
-                        className='col-md-3'
+                        className='col-lg-3 col-md-4 col-sm-6'
                         style={{
                             height: 300,
                             display: 'flex',
                             flexDirection: 'column',
                             alignItems: 'center'
                         }}>
-                        <img src={item.imageHref.replace('/thumb', '')}
-                            style={{
-                                height: 200,
-                                borderRadius: 10
-                            }}/>
+                        <div style={{
+                            height: 250,
+                            width: '100%',
+                            overflow: 'hidden',
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center center',
+                            backgroundRepeat: 'no-repeat',
+                            borderRadius: 10,
+                            backgroundImage: `url(${item.imageHref.replace('/thumb', '')})`
+                        }}/>
                         <h3>{item.brandShortName} {item.modelName}</h3>
                         <div>{item.name}</div>
                     </div>

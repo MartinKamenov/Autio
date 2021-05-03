@@ -62,7 +62,7 @@ const Search: React.FC<RouteComponentProps> = ({
     };
 
     const onSubmit = (_: any, newFilters?: Filters) => {
-        const updateFilters = newFilters ? newFilters : filters;
+        const updateFilters = newFilters ? newFilters : {...filters, page: '1'};
         history.push(`/search${queryToString(updateFilters)}`);
     };
 
@@ -95,25 +95,29 @@ const Search: React.FC<RouteComponentProps> = ({
                     <div className='row clean items-container'>
                     {items.map((item: any, i) => (
                         <div key={i}
-                            className='col-lg-3 col-md-4 col-sm-6'
-                            style={{
-                                minHeight: 400,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center'
-                            }}>
-                            <div style={{
-                                height: 250,
-                                width: '100%',
-                                overflow: 'hidden',
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center center',
-                                backgroundRepeat: 'no-repeat',
-                                borderRadius: 10,
-                                backgroundImage: `url(${item.imageHref.replace('/thumb', '')})`
-                            }}/>
-                            <h3>{item.brandShortName} {item.modelName}</h3>
-                            <div>{item.name}</div>
+                            className='col-lg-3 col-md-4 col-sm-6'>
+                            <div className='details-container'>
+                                <div style={{
+                                    height: 250,
+                                    width: '100%',
+                                    overflow: 'hidden',
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center center',
+                                    backgroundRepeat: 'no-repeat',
+                                    borderRadius: 10,
+                                    backgroundImage: `url(${item.imageHref.replace('/thumb', '')})`
+                                }}/>
+                                <h3 className='title'>{item.brandShortName} {item.modelName}</h3>
+                                <div className='details'>
+                                    <div>Name: {item.name}</div>
+                                    <div>Power: {item.power}hp</div>
+                                    <div>Doors: {item.doors}</div>
+                                    <div>Coupe type: {item.type}</div>
+                                    <div>Max speed: {item.max_speed}km/h</div>
+                                    <div>Produced from: {item.start}</div>
+                                    <div>Produced to: {item.end || 'ongoing'}</div>
+                                </div>
+                            </div>
                         </div>
                     ))}
                     </div>

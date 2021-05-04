@@ -17,11 +17,19 @@
             width: 65%;
             max-width: 80vw;
         }
+
+        .description {
+            width: 40%;
+        }
+
+        .home-content-container {
+            top: 15vw;
+        }
     }
 
     
     // Big screen should have 2 images in the wallpaper
-    @media screen and (max-width: 991px) and (min-width: 768px) {
+    @media screen and (max-width: 992px) and (min-width: 768px) {
         .images-row, .image-overlay {
             height: calc(49.2vw);
 
@@ -36,6 +44,14 @@
 
         .auto-complete {
             width: 65vw;
+        }
+
+        .description {
+            width: 60%;
+        }
+
+        .home-content-container {
+            top: 20vw;
         }
     }
 
@@ -59,6 +75,14 @@
         .auto-complete {
             width: 70vw;
         }
+
+        .description {
+            width: 70%;
+        }
+
+        .home-content-container {
+            top: 30vw;
+        }
     }
 
     .images-row {
@@ -81,7 +105,6 @@
         position: absolute;
         width: 70%;
         color: white;
-        top: 15vw;
         left: calc(15% - 2.5px);
         padding: 10px;
         display: flex;
@@ -89,7 +112,6 @@
         align-items: center;
 
         .description {
-            width: 40%;
             text-align: center;
         }
 

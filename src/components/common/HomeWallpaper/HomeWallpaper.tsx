@@ -10,9 +10,17 @@ const HomeWallpaper: React.FC = () => {
     return (
         <div className='home-wallpaper-container'>
             <div className='images-row'>
-                <img src='/assets/wallpaper1.jpg' alt='audi'/>
-                <img src='/assets/wallpaper2.jpg' alt='bmw'/>
-                <img src='/assets/wallpaper3.jpg' alt='lamborghini'/>
+                <img
+                    src='/assets/wallpaper1.jpg'
+                    alt='audi'
+                    className='medium-visible'/>
+                <img
+                    src='/assets/wallpaper2.jpg'
+                    alt='bmw'/>
+                <img
+                    src='/assets/wallpaper3.jpg'
+                    alt='lamborghini'
+                    className='large-visible'/>
                 
                 <div className='image-overlay'/>
             </div>

@@ -3,24 +3,77 @@
 .home-wallpaper-container {
     width: 100%;
 
+    // Big screen should have the 3 images in the wallpaper
+    @media screen and (min-width: 992px) {
+        .images-row, .image-overlay {
+            height: calc(32.66vw);
+
+            img {
+                width: 33%;
+            }
+        }
+
+        .auto-complete {
+            width: 65%;
+            max-width: 80vw;
+        }
+    }
+
+    
+    // Big screen should have 2 images in the wallpaper
+    @media screen and (max-width: 991px) and (min-width: 768px) {
+        .images-row, .image-overlay {
+            height: calc(49.2vw);
+
+            img {
+                width: 49.5%;
+            }
+
+            .large-visible {
+                display: none;
+            }
+        }
+
+        .auto-complete {
+            width: 65vw;
+        }
+    }
+
+    // Big screen should have only one image in the wallpaper
+    @media screen and (max-width: 767px) {
+        .images-row, .image-overlay {
+            height: calc(99.2vw);
+
+            img {
+                width: 100%;
+            }
+
+            .large-visible {
+                display: none;
+            }
+            .medium-visible {
+                display: none;
+            }
+        }
+
+        .auto-complete {
+            width: 70vw;
+        }
+    }
+
     .images-row {
         display: flex;
         flex-direction: row;
         width: 100%;
         justify-content: space-between;
         align-items: flex-start;
-
-        img {
-            width: 33%;
-        }
+        overflow: hidden;
     }
 
     .image-overlay {
         background-color: #00000055;
-        height: 100%;
         position: absolute;
         width: 100%;
-        height: calc(32.66vw);
     }
 
     .home-content-container {
@@ -42,8 +95,6 @@
 
         .auto-complete {
             margin-top: 20px;
-            width: 65%;
-            max-width: 80vw;
         }
     }
 

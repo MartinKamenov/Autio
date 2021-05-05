@@ -108,10 +108,7 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
                                 <Link
                                     className='result-link'
                                     to={entry.shortName ? `/search?brandNames[]=${entry.shortName}` : 
-
-                                    // This link should link directly to the details of the
-                                    // car modification
-                                    `/search?brandNames[]=${entry.brandShortName || ''}`}>
+                                    `/modifications/${entry.id}`}>
                                     <li key={entry._id} className={'result'}>
                                         <div className='dropdown-image-container'>
                                             <img src={entry.imageHref}></img>

@@ -8,7 +8,8 @@ import {
 import {
     Home,
     Brand,
-    Search
+    Search,
+    ModificationDetails
 } from '../../pages';
 
 import './MainRouter.scss';
@@ -42,6 +43,10 @@ const MainRouter: React.FC = () => {
                     <Route
                         path='/search'
                         component={Search}
+                        />
+                    <Route
+                        path='/modifications/:id'
+                        component={ModificationDetails}
                         />
                     <Route 
                         path='/login'

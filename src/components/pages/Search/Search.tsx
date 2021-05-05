@@ -6,6 +6,7 @@ import { getData, queryToObject, queryToString, QueryObject } from '../../../ser
 import { Filters } from '../../common/AdvancedSearch/AdvancedSearch';
 import { arrayResult, singleResult } from '../../../services/typeService';
 import { LoadingIndicator } from '../../base';
+import { Link } from 'react-router-dom';
 
 const queryToFilters = (query: QueryObject): Filters => {
     const result: Filters = {
@@ -96,7 +97,7 @@ const Search: React.FC<RouteComponentProps> = ({
                     {items.map((item: any, i) => (
                         <div key={i}
                             className='col-lg-3 col-md-4 col-sm-6'>
-                            <div className='details-container'>
+                            <Link className='details-container' to={`/modifications/${item.id}`}>
                                 <div style={{
                                     height: 250,
                                     width: '100%',
@@ -117,7 +118,7 @@ const Search: React.FC<RouteComponentProps> = ({
                                     <div>Produced from: {item.start}</div>
                                     <div>Produced to: {item.end || 'ongoing'}</div>
                                 </div>
-                            </div>
+                            </Link>
                         </div>
                     ))}
                     </div>

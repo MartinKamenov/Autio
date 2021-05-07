@@ -4,14 +4,6 @@
     margin-top: 35px;
     display: flex;
     position: relative;
-    
-    .image {
-        width: 50%;
-        img {
-            height: 100%;
-            width: 100%;
-        }
-    }
 
     .text-container {
         display: flex;
@@ -24,5 +16,44 @@
     .title {
         color: $DARKER_RED_COLOR;
         font-weight: 700;
+    }
+}
+
+.bottom-info-container {
+    margin-top: 55px;
+    display: flex;
+    position: relative;
+    justify-content: flex-end;
+    height: 450px;
+
+    .left-text {
+        width: 50%;
+        height: 100%;
+        position: absolute;
+        right: 50%;
+        color: white;
+        background: black;
+
+        .bottom-title {
+            position: absolute;
+            top: 28%;
+            left: 71%;
+            width: 355px;
+        }
+
+        .bottom-text {
+            position: absolute;
+            top: 55%;
+            left: 71%;
+            width: 450px;
+        }
+    }
+}
+
+.image {
+    width: 50%;
+    img {
+        height: 100%;
+        width: 100%;
     }
 }

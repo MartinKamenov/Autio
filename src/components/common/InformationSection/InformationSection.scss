@@ -1,0 +1,28 @@
+@import '../../../cssVariables.scss';
+
+.info-container {
+    margin-top: 35px;
+    display: flex;
+    position: relative;
+    
+    .image {
+        width: 50%;
+        img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .text-container {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        left: 41%;
+        top: 30%;
+    }
+
+    .title {
+        color: $DARKER_RED_COLOR;
+        font-weight: 700;
+    }
+}

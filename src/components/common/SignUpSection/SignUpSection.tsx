@@ -3,7 +3,7 @@ import * as COLORS from '../../../constants/colors';
 import './SignUpSection.scss';
 import { Icon } from '../../base';
 import { Link } from 'react-router-dom';
- 
+
 const SignUpSection: React.FC = () => {
     const icons = [
         {
@@ -39,8 +39,8 @@ const SignUpSection: React.FC = () => {
     ];
     return (
         <div className='sign-up-section-wrapper'>
-            <h1 style={{color: COLORS.ALTERNATIVE_FONT}}><b>SIGN UP TODAY</b></h1>
-            <h4 style={{color: COLORS.FONT}}>for an optimal AUTIO experience!</h4>
+            <h1 style={{ color: COLORS.ALTERNATIVE_FONT }}><b>SIGN UP TODAY</b></h1>
+            <h4 style={{ color: COLORS.FONT }}>for an optimal AUTIO experience!</h4>
             <div className='container'>
                 <div className='message-container'>
                     {icons.map((icon, i) => (
@@ -52,21 +52,21 @@ const SignUpSection: React.FC = () => {
                                 height: icon.height,
                                 marginLeft: icon.x,
                                 marginTop: icon.y
-                            }}/>
+                            }} />
                     ))}
                     <div className='message-point'>
-                        <Icon icon='check-circle' className='point-icon'/>
+                        <Icon icon='check-circle' className='point-icon' />
                         Write reviews and comments,
                         leave likes and interact with the
                         amazing community of fellow car lovers
                     </div>
                     <div className='message-point'>
-                        <Icon icon='check-circle' className='point-icon'/>
+                        <Icon icon='check-circle' className='point-icon' />
                         Save all your favorite models for
                         faster and easier access
                     </div>
                     <div className='message-point'>
-                        <Icon icon='check-circle' className='point-icon'/>
+                        <Icon icon='check-circle' className='point-icon' />
                         Always stay up to date - get
                         personalized notifications when
                         a new model is added
@@ -77,11 +77,10 @@ const SignUpSection: React.FC = () => {
                         <img src="/assets/Group 1.png"></img>
                         <div className="signup-text">CREATE AN ACCOUNT</div>
                     </Link>
-                    
                 </div>
             </div>
         </div>
     );
 }
- 
+
 export default SignUpSection;

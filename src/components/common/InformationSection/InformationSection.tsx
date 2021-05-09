@@ -3,7 +3,7 @@ import './InformationSection.scss';
 
 export const InformationSection = () => {
     return (
-        <>
+        <div className='information-section-container'>
             <div className="info-container">
                 <div className="image">
                     <img src="/assets/Group 3.png" alt='Looking for a new car?' />
@@ -24,6 +24,6 @@ export const InformationSection = () => {
                     <img src="/assets/Group 2.png" alt='For passionate car enthusiast' />
                 </div>
             </div>
-        </>
+        </div>
     )
 }

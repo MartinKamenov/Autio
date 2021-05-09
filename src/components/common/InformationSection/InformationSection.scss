@@ -1,59 +1,64 @@
 @import '../../../cssVariables.scss';
 
-.info-container {
-    margin-top: 35px;
-    display: flex;
-    position: relative;
+.information-section-container {
+    width: 100%;
+    overflow-x: hidden;
 
-    .text-container {
+    .info-container {
+        margin-top: 35px;
         display: flex;
-        flex-direction: column;
-        position: absolute;
-        left: 41%;
-        top: 30%;
+        position: relative;
+
+        .text-container {
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            left: 41%;
+            top: 30%;
+        }
+
+        .title {
+            color: $DARKER_RED_COLOR;
+            font-weight: 700;
+        }
     }
 
-    .title {
-        color: $DARKER_RED_COLOR;
-        font-weight: 700;
+    .bottom-info-container {
+        margin-top: 55px;
+        display: flex;
+        position: relative;
+        justify-content: flex-end;
+        height: 450px;
+
+        .left-text {
+            width: 50%;
+            height: 100%;
+            position: absolute;
+            right: 50%;
+            color: white;
+            background: black;
+
+            .bottom-title {
+                position: absolute;
+                top: 28%;
+                left: 71%;
+                width: 355px;
+            }
+
+            .bottom-text {
+                position: absolute;
+                top: 55%;
+                left: 71%;
+                width: 450px;
+            }
+        }
     }
-}
 
-.bottom-info-container {
-    margin-top: 55px;
-    display: flex;
-    position: relative;
-    justify-content: flex-end;
-    height: 450px;
-
-    .left-text {
+    .image {
         width: 50%;
-        height: 100%;
-        position: absolute;
-        right: 50%;
-        color: white;
-        background: black;
-
-        .bottom-title {
-            position: absolute;
-            top: 28%;
-            left: 71%;
-            width: 355px;
+        img {
+            height: 100%;
+            width: 100%;
         }
-
-        .bottom-text {
-            position: absolute;
-            top: 55%;
-            left: 71%;
-            width: 450px;
-        }
-    }
-}
-
-.image {
-    width: 50%;
-    img {
-        height: 100%;
-        width: 100%;
     }
 }

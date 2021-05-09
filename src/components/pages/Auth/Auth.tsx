@@ -5,6 +5,8 @@ import './Auth.scss';
 
 export const AuthPage = () => {
     const [isLoginMode, setLoginMode] = useState(true);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleModeChange = () => {
         setLoginMode((prevState) => {
@@ -19,8 +21,14 @@ export const AuthPage = () => {
             <h1 className='form-title'>{isLoginMode ? "Log in" : "Sign up"}</h1>
             <form>
                 <div className='form-container'>
-                    <Input labelValue="Email" />
-                    <Input labelValue="Password" />
+                    <Input labelValue="Email"
+                        value={email}
+                        onChange={({target: {value}}) => setEmail(value)}/>
+                    <Input
+                        labelValue="Password"
+                        value={password}
+                        type='password'
+                        onChange={({target: {value}}) => setPassword(value)}/>
                     <button type="submit">{isLoginMode ? "LOG IN" : "SIGN UP"}</button>
                 </div>
             </form>

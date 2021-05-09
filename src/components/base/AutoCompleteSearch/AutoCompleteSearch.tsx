@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import './AutoCompleteSearch.scss';
 import { Icon, LoadingIndicator } from '..';
 import { getData } from '../../../services/apiService';
@@ -31,10 +31,10 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
     const [focused, setFocused] = useState(false);
     const ref = useRef<HTMLDivElement>(null);
 
-    const fetchCarsData = async (text: string): Promise<CarEntry[]> => {
+    const fetchCarsData = useCallback(async (text: string): Promise<CarEntry[]> => {
         const { data: cars } = await getData(apiWrapperUrl, { query: text });
         return cars;
-    };
+    }, [apiWrapperUrl]);
 
     useEffect(() => {
         if (timeout) {
@@ -57,7 +57,7 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
             setLoadingResults(false);
             setCarEntries(updatedCars);
         }, DEBOUNCE_TIMER);
-    }, [value, focused]);
+    }, [value, focused, fetchCarsData]);
 
     useEffect(() => {
         if(focused) {
@@ -111,7 +111,7 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
                                     `/modifications/${entry.id}`}>
                                     <li key={entry._id} className={'result'}>
                                         <div className='dropdown-image-container'>
-                                            <img src={entry.imageHref}></img>
+                                            <img src={entry.imageHref} alt={entry.shortName || entry.name} />
                                         </div>
                                         <div className='name'>{entry.name}</div>
                                     </li>

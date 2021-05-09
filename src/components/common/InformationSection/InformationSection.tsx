@@ -6,7 +6,7 @@ export const InformationSection = () => {
         <>
             <div className="info-container">
                 <div className="image">
-                    <img src="/assets/Group 3.png"></img>
+                    <img src="/assets/Group 3.png" alt='Looking for a new car?' />
                 </div>
                 <div className="text-container">
                     <h1 className="title">Looking for a new car?</h1>
@@ -21,7 +21,7 @@ export const InformationSection = () => {
                     in the industry. We have a huge car database <br /> to make sure that you'll find the model you're looking for!</div>
                 </div>
                 <div className="image">
-                    <img src="/assets/Group 2.png"></img>
+                    <img src="/assets/Group 2.png" alt='For passionate car enthusiast' />
                 </div>
             </div>
         </>

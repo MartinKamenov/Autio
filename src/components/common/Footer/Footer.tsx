@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
             <PolygonSeparator style={{
                 backgroundColor: COLORS.ALTERNATIVE_FONT
             }}/>
-            <img className='logo' src='/assets/logo.png'/>
+            <img className='logo' src='/assets/logo.png' alt='autio-home'/>
             <nav>
                 <Link to='/home' className='nav-element'
                     style={{color: COLORS.FONT}}>

@@ -45,6 +45,7 @@ const SignUpSection: React.FC = () => {
                 <div className='message-container'>
                     {icons.map((icon, i) => (
                         <img
+                            alt={`not clickable icon ${i + 1}`}
                             src={icon.src}
                             style={{
                                 position: 'absolute',
@@ -74,7 +75,7 @@ const SignUpSection: React.FC = () => {
                 </div>
                 <div className="arrow-container">
                     <Link to="/register">
-                        <img src="/assets/Group 1.png"></img>
+                        <img src="/assets/Group 1.png" alt='Create an account' />
                         <div className="signup-text">CREATE AN ACCOUNT</div>
                     </Link>
                 </div>

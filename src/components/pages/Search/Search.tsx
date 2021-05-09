@@ -107,8 +107,7 @@ const Search: React.FC<RouteComponentProps> = ({
                                         </div>
                                     )}
                                     style={{
-                                        marginTop: 10,
-                                        marginBottom: 10
+                                        margin: '10px auto'
                                     }}/>
                             </Link>
                         </div>

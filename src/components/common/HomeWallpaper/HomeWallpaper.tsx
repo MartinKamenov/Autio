@@ -1,7 +1,5 @@
 import React from 'react';
-import { NAVBAR_HEIGHT } from '../../../constants/other';
 import './HomeWallpaper.scss';
-import { Dropdown } from '../../base';
 import AutoCompleteSearch from '../../base/AutoCompleteSearch';
 import { PolygonSeparator } from '../../base';
 import * as COLORS from '../../../constants/colors';

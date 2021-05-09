@@ -2,7 +2,8 @@ import React from 'react';
 import * as COLORS from '../../../constants/colors';
 import './SignUpSection.scss';
 import { Icon } from '../../base';
- 
+import { Link } from 'react-router-dom';
+
 const SignUpSection: React.FC = () => {
     const icons = [
         {
@@ -34,16 +35,17 @@ const SignUpSection: React.FC = () => {
             x: 'calc(50% + 120px)',
             y: '230px',
             height: '70px'
-        },
+        }
     ];
     return (
         <div className='sign-up-section-wrapper'>
-            <h1 style={{color: COLORS.ALTERNATIVE_FONT}}><b>SIGN UP TODAY</b></h1>
-            <h4 style={{color: COLORS.FONT}}>for an optimal AUTIO experience!</h4>
+            <h1 style={{ color: COLORS.ALTERNATIVE_FONT }}><b>SIGN UP TODAY</b></h1>
+            <h4 style={{ color: COLORS.FONT }}>for an optimal AUTIO experience!</h4>
             <div className='container'>
                 <div className='message-container'>
                     {icons.map((icon, i) => (
                         <img
+                            alt={`not clickable icon ${i + 1}`}
                             src={icon.src}
                             style={{
                                 position: 'absolute',
@@ -51,29 +53,35 @@ const SignUpSection: React.FC = () => {
                                 height: icon.height,
                                 marginLeft: icon.x,
                                 marginTop: icon.y
-                            }}/>
+                            }} />
                     ))}
                     <div className='message-point'>
-                        <Icon icon='check-circle' className='point-icon'/>
+                        <Icon icon='check-circle' className='point-icon' />
                         Write reviews and comments,
                         leave likes and interact with the
                         amazing community of fellow car lovers
                     </div>
                     <div className='message-point'>
-                        <Icon icon='check-circle' className='point-icon'/>
+                        <Icon icon='check-circle' className='point-icon' />
                         Save all your favorite models for
                         faster and easier access
                     </div>
                     <div className='message-point'>
-                        <Icon icon='check-circle' className='point-icon'/>
+                        <Icon icon='check-circle' className='point-icon' />
                         Always stay up to date - get
                         personalized notifications when
                         a new model is added
                     </div>
                 </div>
+                <div className="arrow-container">
+                    <Link to="/register">
+                        <img src="/assets/Group 1.png" alt='Create an account' />
+                        <div className="signup-text">CREATE AN ACCOUNT</div>
+                    </Link>
+                </div>
             </div>
         </div>
     );
 }
- 
+
 export default SignUpSection;

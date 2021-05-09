@@ -4,6 +4,7 @@ import { AdvancedSearch, SignUpSection } from '../../common';
 import { Filters } from '../../common/AdvancedSearch/AdvancedSearch';
 import { RouteComponentProps } from 'react-router';
 import { queryToString } from '../../../services/apiService';
+import { InformationSection } from '../../common/InformationSection/InformationSection';
 
 const Home: React.FC<RouteComponentProps> = ({
     history
@@ -24,14 +25,15 @@ const Home: React.FC<RouteComponentProps> = ({
     }
 
     return (
-        <>
+        <div className="home-container">
             <HomeWallpaper/>
             <AdvancedSearch
                 filters={filters}
                 setFilters={setFilters}
                 onSubmit={onSubmit}/>
             <SignUpSection/>
-        </>
+            <InformationSection />
+        </div>
     );
 }
 

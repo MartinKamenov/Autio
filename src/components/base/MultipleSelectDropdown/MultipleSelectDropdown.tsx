@@ -34,6 +34,8 @@ const MultipleSelectDropdown: React.FC<MultipleSelectDropdownProps> = ({
     placeHolder
 }) => {
     const [opened, setOpened] = useState(false);
+    const [visibleOptions, setVisibleOptions] = useState([...options]);
+    const [currentSearch, setCurrentSearch] = useState('');
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -64,6 +66,17 @@ const MultipleSelectDropdown: React.FC<MultipleSelectDropdownProps> = ({
         currentValues.splice(currentValues.indexOf(val), 1) :
         currentValues.push(val);
         onChange(currentValues);
+        setCurrentSearch('');
+        setVisibleOptions(options);
+    }
+
+    const onInputChange = (v: string) => {
+        const prevValue = value.join(', ') + (currentSearch ? `, ` : '');
+        const newInputValue = v.substring(prevValue.length, v.length).toLowerCase();
+
+        setCurrentSearch(newInputValue);
+        setVisibleOptions([...options]
+            .filter((o) => (o.label || o.value).toLowerCase().includes(newInputValue)));
     }
 
     return (
@@ -74,9 +87,11 @@ const MultipleSelectDropdown: React.FC<MultipleSelectDropdownProps> = ({
             onFocus={() => setOpened(true)}>
             <input
                 placeholder={placeHolder}
-                value={value.join(', ')}
+                value={value.join(', ') + (currentSearch ? `, ${currentSearch}` : '')}
                 style={inputStyle}
-                className={`custom-input ${inputClassName}`}/>
+                className={`custom-input ${inputClassName}`}
+                onChange={({target: {value}}) => onInputChange(value)}
+                />
             <div className='sufix-container'>
                 <Icon icon='chevron-down'
                     className={`suffix-icon ${opened ? 'revert' : 'normal'}`}
@@ -84,7 +99,7 @@ const MultipleSelectDropdown: React.FC<MultipleSelectDropdownProps> = ({
             </div>
             {opened && <div style={dropdownStyle} className={`custom-multi-dropdown ${dropdownClassName}`}>
                 {
-                    options.map(customOptionRenderer ? customOptionRenderer : (option) => (
+                    visibleOptions.map(customOptionRenderer ? customOptionRenderer : (option) => (
                         <div key={option.value}
                         className={`custom-multi-option ${value.includes(option.value) ? 'selected' : ''}`}
                         onClick={() => toggleId(option.value)}>

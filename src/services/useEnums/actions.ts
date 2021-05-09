@@ -12,9 +12,13 @@ export const getEnumsSuccess = (payload: EnumDataResult[]) => {
             cur: {id: string, values: EnumDataResult['values']}
         ) => ({...acc, [cur.id]: cur.values}), {});
 
+    const brandsMapper = reducedData.brands.reduce((acc: any, curr: any) =>
+        ({...acc, [curr.shortName]: curr.name}), {});
+
     return {
         type: ACTION_TYPES.GET_ENUMS_SUCCESS,
-        payload: reducedData
+        payload: reducedData,
+        brandsMapper
     }
 };
 

@@ -5,7 +5,13 @@ import { getData } from '../apiService';
 import { EnumsState } from './types';
  
 const useEnums = (): EnumsState => {
-    const {loading, enums, fetched, error} = useSelector((globalState: any) => globalState.enums);
+    const {
+        loading,
+        enums,
+        fetched,
+        error,
+        mappers,
+    } = useSelector((globalState: any) => globalState.enums);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -23,8 +29,9 @@ const useEnums = (): EnumsState => {
     return {
         loading,
         enums,
+        mappers,
         fetched,
-        error
+        error,
     };
 }
  

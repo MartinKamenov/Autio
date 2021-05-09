@@ -44,7 +44,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
             .flat() : [];
         
         setModels(filteredModels);
-    }, [filters.brandNames, options.brands]);
+    }, [filters.brandNames, options]);
 
     const handleChange = (key: string, value: string | string[]) => {
         setFilters({...filters, [key]: value});

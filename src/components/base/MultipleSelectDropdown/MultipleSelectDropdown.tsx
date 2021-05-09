@@ -34,9 +34,17 @@ const MultipleSelectDropdown: React.FC<MultipleSelectDropdownProps> = ({
     placeHolder
 }) => {
     const [opened, setOpened] = useState(false);
-    const [visibleOptions, setVisibleOptions] = useState([...options]);
+    const [visibleOptions, setVisibleOptions] = useState<{
+        label?: string | undefined;
+        value: string;
+        imageHref?: string | undefined;
+    }[]>([]);
     const [currentSearch, setCurrentSearch] = useState('');
     const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        setVisibleOptions([...options]);
+    }, [options]);
 
     useEffect(() => {
         if(opened) {
@@ -67,17 +75,32 @@ const MultipleSelectDropdown: React.FC<MultipleSelectDropdownProps> = ({
         currentValues.push(val);
         onChange(currentValues);
         setCurrentSearch('');
-        setVisibleOptions(options);
+        setVisibleOptions([...options]);
     }
 
     const onInputChange = (v: string) => {
-        const prevValue = value.join(', ') + (currentSearch ? `, ` : '');
+        const prevValue = value.join(', ') + (currentSearch && value.length ? `, ` : '');
+
+        // User tries to delete value from the input
+        if(v.length < value.join(', ').length) {
+            setVisibleOptions([...options]);
+            const valueCopy = [...value];
+            valueCopy.pop();
+            onChange(valueCopy);
+            return;
+        } else if(v.length === 0) {
+            setVisibleOptions([...options]);
+            setCurrentSearch('');
+            onChange([]);
+        }
         const newInputValue = v.substring(prevValue.length, v.length).toLowerCase();
 
         setCurrentSearch(newInputValue);
         setVisibleOptions([...options]
             .filter((o) => (o.label || o.value).toLowerCase().includes(newInputValue)));
     }
+
+    const visibleValue = (currentSearch ? [...value, currentSearch] : value).join(', ');
 
     return (
         <div
@@ -87,7 +110,7 @@ const MultipleSelectDropdown: React.FC<MultipleSelectDropdownProps> = ({
             onFocus={() => setOpened(true)}>
             <input
                 placeholder={placeHolder}
-                value={value.join(', ') + (currentSearch ? `, ${currentSearch}` : '')}
+                value={visibleValue}
                 style={inputStyle}
                 className={`custom-input ${inputClassName}`}
                 onChange={({target: {value}}) => onInputChange(value)}

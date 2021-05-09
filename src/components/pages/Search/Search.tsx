@@ -8,6 +8,7 @@ import { arrayResult, singleResult } from '../../../services/typeService';
 import { LoadingIndicator, Card } from '../../base';
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
+import { useEnums } from '../../../services/useEnums';
 
 const queryToFilters = (query: QueryObject): Filters => {
     const result: Filters = {
@@ -40,6 +41,10 @@ const Search: React.FC<RouteComponentProps> = ({
         toPower: '',
         page: '1'
     });
+
+    const {
+        mappers: { brandsMapper }
+    } = useEnums();
 
     useEffect(() => {
         const search = history.location.search;
@@ -102,7 +107,7 @@ const Search: React.FC<RouteComponentProps> = ({
                                     content={() => (
                                         <div className='description-wrapper'>
                                             <h5 className='title'>
-                                                {item.brandShortName} {item.modelName} {item.name}
+                                                {brandsMapper[item.brandShortName]} {item.modelName} {item.name}
                                             </h5>
                                         </div>
                                     )}

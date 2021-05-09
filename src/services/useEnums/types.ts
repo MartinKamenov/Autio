@@ -18,5 +18,8 @@ export type EnumsState = {
     enums: {
         brands: any[],
         coupeTypes: any[]
+    },
+    mappers: {
+        brandsMapper: {[brandShortName: string]: string}
     }
 };

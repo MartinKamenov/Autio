@@ -3,10 +3,13 @@ const initialState: EnumsState = {
     loading: true,
     enums: {
         brands: [],
-        coupeTypes: []
+        coupeTypes: [],
     },
     error: '',
-    fetched: false
+    fetched: false,
+    mappers: {
+        brandsMapper: {}
+    }
 }
 
 export default initialState;

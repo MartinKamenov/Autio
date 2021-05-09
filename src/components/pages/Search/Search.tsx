@@ -5,7 +5,7 @@ import './Search.scss';
 import { getData, queryToObject, queryToString, QueryObject } from '../../../services/apiService';
 import { Filters } from '../../common/AdvancedSearch/AdvancedSearch';
 import { arrayResult, singleResult } from '../../../services/typeService';
-import { LoadingIndicator } from '../../base';
+import { LoadingIndicator, Card } from '../../base';
 import { Link } from 'react-router-dom';
 
 const queryToFilters = (query: QueryObject): Filters => {
@@ -96,28 +96,20 @@ const Search: React.FC<RouteComponentProps> = ({
                     <div className='row clean items-container'>
                     {items.map((item: any, i) => (
                         <div key={i}
-                            className='col-lg-3 col-md-4 col-sm-6'>
+                            className='col-lg-3 col-md-4 col-sm-6 column-element'>
                             <Link className='details-container' to={`/modifications/${item.id}`}>
-                                <div style={{
-                                    height: 250,
-                                    width: '100%',
-                                    overflow: 'hidden',
-                                    backgroundSize: 'cover',
-                                    backgroundPosition: 'center center',
-                                    backgroundRepeat: 'no-repeat',
-                                    borderRadius: 10,
-                                    backgroundImage: `url(${item.imageHref.replace('/thumb', '')})`
-                                }}/>
-                                <h3 className='title'>{item.brandShortName} {item.modelName}</h3>
-                                <div className='details'>
-                                    <div>Name: {item.name}</div>
-                                    <div>Power: {item.power}hp</div>
-                                    <div>Doors: {item.doors}</div>
-                                    <div>Coupe type: {item.type}</div>
-                                    <div>Max speed: {item.max_speed}km/h</div>
-                                    <div>Produced from: {item.start}</div>
-                                    <div>Produced to: {item.end || 'ongoing'}</div>
-                                </div>
+                                <Card imageHref={item.imageHref.replace('/thumb', '')}
+                                    content={() => (
+                                        <div className='description-wrapper'>
+                                            <h5 className='title'>
+                                                {item.brandShortName} {item.modelName} {item.name}
+                                            </h5>
+                                        </div>
+                                    )}
+                                    style={{
+                                        marginTop: 10,
+                                        marginBottom: 10
+                                    }}/>
                             </Link>
                         </div>
                     ))}

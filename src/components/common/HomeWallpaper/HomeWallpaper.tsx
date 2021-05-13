@@ -3,8 +3,10 @@ import './HomeWallpaper.scss';
 import AutoCompleteSearch from '../../base/AutoCompleteSearch';
 import { PolygonSeparator } from '../../base';
 import * as COLORS from '../../../constants/colors';
+import { useTranslation, languageKeys } from '../../../services/translations';
 
 const HomeWallpaper: React.FC = () => {
+    const {t} = useTranslation();
     return (
         <div className='home-wallpaper-container'>
             <div className='images-row'>
@@ -27,21 +29,20 @@ const HomeWallpaper: React.FC = () => {
                     backgroundColor: COLORS.FONT
                 }} className='home-wallpaper-separator'/>
             <div className='polygon-content'>
-                <h1 className={"primaryHeader"} ><b>OR</b></h1>
-                <h5 style={{color: COLORS.NAVBAR_BG_COLOR}}>search by specific parameters</h5>
+                <h1 className={"primaryHeader"} ><b>{t(languageKeys.home.or)}</b></h1>
+                <h5 style={{color: COLORS.NAVBAR_BG_COLOR}}>{t(languageKeys.home.searchParams)}</h5>
             </div>
             <div className='home-content-container'>
-                <h1><b>Search by key word</b></h1>
+                <h1><b>{t(languageKeys.home.search_header)}</b></h1>
                 <div className='description'>
-                    Search any car-related word you want and find a list of relevant cars
-                    and everything you need to know about them!
+                    {t(languageKeys.home.searchDescription1)}
                     <br/>
-                    Including reviews from real owners!
+                    {t(languageKeys.home.searchDescription2)}
                 </div>
                 <AutoCompleteSearch
                     className='auto-complete'
                     apiWrapperUrl='/search'
-                    placeholder='For example: Audi A4, 3TDI, automatic, sedan...'/>
+                    placeholder={t(languageKeys.home.searchPlaceHolder)}/>
             </div>
         </div>
     );

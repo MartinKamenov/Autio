@@ -185,7 +185,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                 <Dropdown options={[
                                     'sedan',
                                     'avant',
-                                ]} value={['sedan']}
+                                ].map((v) => ({value: v}))} value={'sedan'}
                                 onChange={() => {}}
                                 className='dropdown'/>
                             </div>

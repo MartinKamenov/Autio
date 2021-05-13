@@ -1,6 +1,9 @@
 import { TranslationObject } from "../types";
 
 const translationObject: TranslationObject = {
+    navbar: {
+        brands: 'Марки'
+    },
     home: {
         search_header: 'Търсене по ключови думи'
     },

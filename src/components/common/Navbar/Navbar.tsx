@@ -3,8 +3,13 @@ import { NAVBAR_HEIGHT } from '../../../constants/other';
 import * as COLORS from '../../../constants/colors';
 import './Navbar.scss';
 import { Link } from 'react-router-dom';
+import { Dropdown } from '../../base';
+import useTranslation from '../../../services/translations/useTranslation';
+import { languageKeys } from '../../../services/translations/languages';
 
 const Navbar: React.FC = () => {
+    const {t, setLanguage, languageKey} = useTranslation();
+
     return (
         <div className='navbar-container'
             style={{
@@ -20,7 +25,7 @@ const Navbar: React.FC = () => {
                 <nav>
                     <Link to='/brands' className='nav-element'
                         style={{color: COLORS.FONT}}>
-                        Brands
+                        {t(languageKeys.navbar.brands)}
                     </Link>
                 </nav>
                 <nav>
@@ -40,6 +45,17 @@ const Navbar: React.FC = () => {
                         style={{color: COLORS.ALTERNATIVE_FONT}}>
                         Login / Sign up
                     </Link>
+                </nav>
+                <nav>
+                    <Dropdown options={[{
+                            label: 'English',
+                            value: 'en'
+                        },{
+                            label: 'Български',
+                            value: 'bg'
+                        }]}
+                        value={languageKey}
+                        onChange={setLanguage}/>
                 </nav>
             </div>
         </div>

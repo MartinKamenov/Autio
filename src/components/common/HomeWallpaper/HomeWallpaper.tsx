@@ -3,10 +3,11 @@ import './HomeWallpaper.scss';
 import AutoCompleteSearch from '../../base/AutoCompleteSearch';
 import { PolygonSeparator } from '../../base';
 import * as COLORS from '../../../constants/colors';
-import { translate } from '../../../services/translations';
 import { languageKeys } from '../../../services/translations/languages';
+import useTranslation from '../../../services/translations/useTranslation';
 
 const HomeWallpaper: React.FC = () => {
+    const {t} = useTranslation();
     return (
         <div className='home-wallpaper-container'>
             <div className='images-row'>
@@ -33,7 +34,7 @@ const HomeWallpaper: React.FC = () => {
                 <h5 style={{color: COLORS.NAVBAR_BG_COLOR}}>search by specific parameters</h5>
             </div>
             <div className='home-content-container'>
-                <h1><b>{translate(languageKeys.home.search_header)}</b></h1>
+                <h1><b>{t(languageKeys.home.search_header)}</b></h1>
                 <div className='description'>
                     Search any car-related word you want and find a list of relevant cars
                     and everything you need to know about them!

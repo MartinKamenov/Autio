@@ -4,8 +4,7 @@ import * as COLORS from '../../../constants/colors';
 import './Navbar.scss';
 import { Link } from 'react-router-dom';
 import { Dropdown } from '../../base';
-import useTranslation from '../../../services/translations/useTranslation';
-import { languageKeys } from '../../../services/translations/languages';
+import { useTranslation, languageKeys } from '../../../services/translations';
 
 const Navbar: React.FC = () => {
     const {t, setLanguage, languageKey} = useTranslation();
@@ -31,19 +30,19 @@ const Navbar: React.FC = () => {
                 <nav>
                     <Link to='/trending' className='nav-element'
                         style={{color: COLORS.FONT}}>
-                        Trending
+                        {t(languageKeys.navbar.trending)}
                     </Link>
                 </nav>
                 <nav>
                     <Link to='/about' className='nav-element'
                         style={{color: COLORS.FONT}}>
-                        About
+                        {t(languageKeys.navbar.about)}
                     </Link>
                 </nav>
                 <nav>
                     <Link to='/login' className='nav-element-alternative'
                         style={{color: COLORS.ALTERNATIVE_FONT}}>
-                        Login / Sign up
+                        {t(languageKeys.navbar.login)}
                     </Link>
                 </nav>
                 <nav>

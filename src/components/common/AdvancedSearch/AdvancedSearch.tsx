@@ -6,6 +6,7 @@ import {
     MultipleSelectDropdown
 } from '../../base';
 import { getData } from '../../../services/apiService';
+import { useTranslation, languageKeys } from '../../../services/translations';
 
 export type Filters = {
     brandNames: string[];
@@ -32,6 +33,8 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
     const [options, setOptions] = useState<any>({});
     const [loading, setLoading] = useState(true);
     const [models, setModels] = useState([]);
+
+    const {t} = useTranslation();
 
     useEffect(() => {
         fetchData();
@@ -75,7 +78,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                         <div className='col-md-6'>
                             <div className='flex-column left'>
                                 <div className='label-wrapper'>
-                                    <label>Brand</label>
+                                    <label>{t(languageKeys.advancedSearch.brand)}</label>
                                 </div>
                                 <MultipleSelectDropdown
                                 inputStyle={{width: '100%', height: 40}}
@@ -86,7 +89,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                         imageHref: o.imageHref
                                     })) : []}
                                 value={filters.brandNames}
-                                placeHolder='No brand is selected'
+                                placeHolder={t(languageKeys.advancedSearch.brandPlaceholder)}
                                 onChange={(v) => handleChange('brandNames', v)}
                                 containerClassName='dropdown'/>
                             </div>
@@ -94,7 +97,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                         <div className='col-md-6'>
                             <div className='flex-column rigth'>
                                 <div className='label-wrapper'>
-                                    <label>Model</label>
+                                    <label>{t(languageKeys.advancedSearch.model)}</label>
                                 </div>
                                 <MultipleSelectDropdown
                                 inputStyle={{width: '100%', height: 40}}
@@ -104,7 +107,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                     imageHref: m.imageHref
                                 }))}
                                 value={filters.modelNames}
-                                placeHolder='No model is selected'
+                                placeHolder={t(languageKeys.advancedSearch.modelPlaceholder)}
                                 onChange={(v) => handleChange('modelNames', v)}
                                 containerClassName='dropdown'/>
                             </div>
@@ -115,7 +118,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                         <div className='col-md-6'>
                             <div className='flex-column left'>
                                 <div className='label-wrapper'>
-                                    <label>Year</label>
+                                    <label>{t(languageKeys.advancedSearch.year)}</label>
                                 </div>
                                 <div className='from-to-container'>
                                     <input
@@ -126,7 +129,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                                 value
                                             }
                                         }) => handleChange('fromYear', value)}/>
-                                    <span className='separator'>to</span>
+                                    <span className='separator'>{t(languageKeys.advancedSearch.toLabel)}</span>
                                     <input
                                         type='number'
                                         value={filters.toYear}
@@ -139,7 +142,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                             </div>
                             <div className='flex-column left'>
                                 <div className='label-wrapper'>
-                                    <label>Coupe types</label>
+                                    <label>{t(languageKeys.advancedSearch.coupeTypes)}</label>
                                 </div>
                                 <MultipleSelectDropdown
                                     options={options.coupeTypes ?
@@ -147,7 +150,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                             value: o.name
                                         })) : []}
                                 value={filters.coupeTypes}
-                                placeHolder='No coupe type is selected'
+                                placeHolder={t(languageKeys.advancedSearch.coupeTypesPlaceholder)}
                                 inputStyle={{width: '100%', height: 40}}
                                 onChange={(v) => handleChange('coupeTypes', v)}
                                 containerClassName='dropdown'/>
@@ -156,7 +159,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                         <div className='col-md-6'>
                             <div className='flex-column rigth'>
                                 <div className='label-wrapper'>
-                                    <label>Horse power</label>
+                                    <label>{t(languageKeys.advancedSearch.horsePower)}</label>
                                 </div>
                                 <div className='from-to-container'>
                                     <input
@@ -167,7 +170,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                                 value
                                             }
                                         }) => handleChange('fromPower', value)}/>
-                                    <span className='separator'>to</span>
+                                    <span className='separator'>{t(languageKeys.advancedSearch.toLabel)}</span>
                                     <input
                                         type='number'
                                         value={filters.toPower}
@@ -178,7 +181,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                         }) => handleChange('toPower', value)}/>
                                 </div>
                             </div>
-                            <div className='flex-column rigth'>
+                            {/* <div className='flex-column rigth'>
                                 <div className='label-wrapper'>
                                     <label>Coupe Types</label>
                                 </div>
@@ -188,13 +191,13 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                 ].map((v) => ({value: v}))} value={'sedan'}
                                 onChange={() => {}}
                                 className='dropdown'/>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <button
                         className='search-btn'
                         onClick={onSubmit}>
-                        SEARCH
+                        {t(languageKeys.advancedSearch.search_submit)}
                     </button>
                 </div>
             </div>

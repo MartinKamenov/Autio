@@ -16,6 +16,40 @@ const translationObject: TranslationObject = {
         searchDescription2: 'Including reviews from real owners!',
         searchPlaceHolder: 'For example: Audi A4, 3TDI, automatic, sedan...'
     },
+    signUpSection: {
+        signUpHeader1: 'SIGN UP TODAY',
+        signUpHeader2: 'for an optimal AUTIO experience!',
+        bulet1: `Write reviews and comments, leave likes and interact with the amazing community of fellow car lovers`,
+        bulet2: `Save all your favorite models for faster and easier access`,
+        bulet3: `Always stay up to date - get personalized notifications when a new model is added`,
+        createAnAccount: 'CREATE AN ACCOUNT'
+    },
+    informationSection: {
+        header1: 'Looking for a new car?',
+        description1: `
+        We have just the tool for you!
+        Autio allows you to see all the information you need about
+        every car you may be considering or just want to look up. You
+        can also read through informative reviews from real owners to
+        help you make the best choice!
+        `,
+        header2: 'For the passionate car enthusiast',
+        description2: `
+        Autio is for all you car lovers out there,
+        who love to stay up to date with the latest releases
+        and innovations in the industry. We have a huge car database
+        to make sure that you'll find the model you're looking for!`
+    },
+    authentication: {
+        loginHeader: 'Log in',
+        registerHeader: 'Register',
+        email: 'Email',
+        password: 'Password',
+        loginSubmit: 'LOG IN',
+        registerSubmit: 'REGISTER',
+        loginLinkDesc: 'Don\'t have an account?',
+        registerLinkDesc: 'Already have an account?'
+    },
     advancedSearch: {
         brand: 'Brand',
         brandPlaceholder: 'No brand is selected',
@@ -26,7 +60,7 @@ const translationObject: TranslationObject = {
         toLabel: 'to',
         coupeTypes: 'Coupe type',
         coupeTypesPlaceholder: 'No coupe type is selected',
-        search_submit: 'SEARCH'
+        searchSubmit: 'SEARCH'
     },
     toggle: 'Change language'
 };

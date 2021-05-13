@@ -14,6 +14,30 @@ export type TranslationObject = {
         searchDescription2: string,
         searchPlaceHolder: string,
     },
+    signUpSection: {
+        signUpHeader1: string,
+        signUpHeader2: string,
+        bulet1: string,
+        bulet2: string,
+        bulet3: string,
+        createAnAccount: string
+    },
+    informationSection: {
+        header1: string,
+        description1: string,
+        header2: string,
+        description2: string
+    },
+    authentication: {
+        loginHeader: string,
+        registerHeader: string,
+        email: string,
+        password: string,
+        loginSubmit: string,
+        registerSubmit: string,
+        loginLinkDesc: string,
+        registerLinkDesc: string
+    },
     advancedSearch: {
         brand: string,
         brandPlaceholder: string,
@@ -24,7 +48,7 @@ export type TranslationObject = {
         toLabel: string,
         coupeTypes: string,
         coupeTypesPlaceholder: string,
-        search_submit: string
+        searchSubmit: string
     },
     toggle: string
 };

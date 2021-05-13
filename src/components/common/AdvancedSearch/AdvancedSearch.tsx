@@ -197,7 +197,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                     <button
                         className='search-btn'
                         onClick={onSubmit}>
-                        {t(languageKeys.advancedSearch.search_submit)}
+                        {t(languageKeys.advancedSearch.searchSubmit)}
                     </button>
                 </div>
             </div>

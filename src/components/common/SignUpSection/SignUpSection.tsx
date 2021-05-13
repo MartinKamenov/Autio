@@ -3,8 +3,10 @@ import * as COLORS from '../../../constants/colors';
 import './SignUpSection.scss';
 import { Icon } from '../../base';
 import { Link } from 'react-router-dom';
+import { useTranslation, languageKeys } from '../../../services/translations';
 
 const SignUpSection: React.FC = () => {
+    const {t} = useTranslation();
     const icons = [
         {
             src: '/assets/car.png',
@@ -39,8 +41,8 @@ const SignUpSection: React.FC = () => {
     ];
     return (
         <div className='sign-up-section-wrapper'>
-            <h1 style={{ color: COLORS.ALTERNATIVE_FONT }}><b>SIGN UP TODAY</b></h1>
-            <h4 style={{ color: COLORS.FONT }}>for an optimal AUTIO experience!</h4>
+            <h1 style={{ color: COLORS.ALTERNATIVE_FONT }}><b>{t(languageKeys.signUpSection.signUpHeader1)}</b></h1>
+            <h4 style={{ color: COLORS.FONT }}>{t(languageKeys.signUpSection.signUpHeader2)}</h4>
             <div className='container'>
                 <div className='message-container'>
                     {icons.map((icon, i) => (
@@ -57,26 +59,21 @@ const SignUpSection: React.FC = () => {
                     ))}
                     <div className='message-point'>
                         <Icon icon='check-circle' className='point-icon' />
-                        Write reviews and comments,
-                        leave likes and interact with the
-                        amazing community of fellow car lovers
+                        {t(languageKeys.signUpSection.bulet1)}
                     </div>
                     <div className='message-point'>
                         <Icon icon='check-circle' className='point-icon' />
-                        Save all your favorite models for
-                        faster and easier access
+                        {t(languageKeys.signUpSection.bulet2)}
                     </div>
                     <div className='message-point'>
                         <Icon icon='check-circle' className='point-icon' />
-                        Always stay up to date - get
-                        personalized notifications when
-                        a new model is added
+                        {t(languageKeys.signUpSection.bulet3)}
                     </div>
                 </div>
                 <div className="arrow-container">
                     <Link to="/register">
                         <img src="/assets/Group 1.png" alt='Create an account' />
-                        <div className="signup-text">CREATE AN ACCOUNT</div>
+                        <div className="signup-text">{t(languageKeys.signUpSection.createAnAccount)}</div>
                     </Link>
                 </div>
             </div>

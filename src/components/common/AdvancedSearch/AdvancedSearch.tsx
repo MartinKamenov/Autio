@@ -5,6 +5,7 @@ import {
     LoadingIndicator,
     MultipleSelectDropdown
 } from '../../base';
+import { useEnums } from '../../../services/useEnums';
 import { getData } from '../../../services/apiService';
 import { useTranslation, languageKeys } from '../../../services/translations';
 
@@ -30,15 +31,13 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
     setFilters,
     onSubmit
 }) => {
-    const [options, setOptions] = useState<any>({});
-    const [loading, setLoading] = useState(true);
-    const [models, setModels] = useState([]);
+    const {
+        loading,
+        enums: options
+    } = useEnums();
 
+    const [models, setModels] = useState<any[]>([]);
     const {t} = useTranslation();
-
-    useEffect(() => {
-        fetchData();
-    }, []);
 
     useEffect(() => {
         const filteredModels = options.brands ? options.brands
@@ -48,19 +47,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
             .flat() : [];
         
         setModels(filteredModels);
-    }, [filters.brandNames, options.brands]);
-
-    const fetchData = async() => {
-        const {data} = await getData('/enums');
-        const reducedData = data
-        .reduce((
-            acc: object,
-            cur: {id: string, values: any[]}
-        ) => ({...acc, [cur.id]: cur.values}), {});
-
-        setOptions(reducedData);
-        setLoading(false);
-    };
+    }, [filters.brandNames, options]);
 
     const handleChange = (key: string, value: string | string[]) => {
         setFilters({...filters, [key]: value});

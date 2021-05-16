@@ -6,6 +6,8 @@ import { useTranslation, languageKeys } from '../../../services/translations';
 
 export const AuthPage = () => {
     const [isLoginMode, setLoginMode] = useState(true);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const {t} = useTranslation();
 
     const handleModeChange = () => {
@@ -23,8 +25,13 @@ export const AuthPage = () => {
                 t(languageKeys.authentication.registerHeader)}</h1>
             <form>
                 <div className='form-container'>
-                    <Input labelValue={t(languageKeys.authentication.email)} />
-                    <Input labelValue={t(languageKeys.authentication.password)} />
+                    <Input labelValue={t(languageKeys.authentication.email)}
+                        value={email}
+                        onChange={({target: {value}}) => setEmail(value)} />
+                    <Input labelValue={t(languageKeys.authentication.password)}
+                        value={password}
+                        type='password'
+                        onChange={({target: {value}}) => setPassword(value)}/>
                     <button type="submit">{isLoginMode ?
                         t(languageKeys.authentication.loginSubmit) :
                         t(languageKeys.authentication.registerSubmit)}</button>

@@ -16,9 +16,9 @@ const Navbar: React.FC = () => {
                 backgroundColor: COLORS.NAVBAR_BG_COLOR
             }}>
             <div className='left-align'>
-                <a href='/home'>
+                <Link to='/home'>
                     <img src='/assets/logo.png' alt='autio'/>
-                </a>
+                </Link>
             </div>
             <div className='right-align'>
                 <nav>

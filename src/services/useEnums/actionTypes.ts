@@ -1,0 +1,3 @@
+export const GET_ENUMS = 'GET_ENUMS';
+export const GET_ENUMS_SUCCESS = 'GET_ENUMS_SUCCESS';
+export const GET_ENUMS_FAILURE = 'GET_ENUMS_FAILURE';

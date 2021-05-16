@@ -3,13 +3,21 @@ import './Input.scss';
 
 export interface InputProps {
     labelValue: string;
+    value: string,
+    onChange: (event: any) => void;
+    type?: string;
 }
 
-export const Input = (props: InputProps) => {
+export const Input: React.FC<InputProps> = ({
+    labelValue,
+    value,
+    onChange,
+    type='text'
+}) => {
     return (
         <label className="label">
-            {props.labelValue}
-            <input />
+            {labelValue}
+            <input onChange={onChange} value={value} type={type}/>
         </label>
     );
 }

@@ -47,6 +47,7 @@ const SignUpSection: React.FC = () => {
                 <div className='message-container'>
                     {icons.map((icon, i) => (
                         <img
+                            key={i}
                             alt={`not clickable icon ${i + 1}`}
                             src={icon.src}
                             style={{

@@ -3,8 +3,12 @@ import { NAVBAR_HEIGHT } from '../../../constants/other';
 import * as COLORS from '../../../constants/colors';
 import './Navbar.scss';
 import { Link } from 'react-router-dom';
+import { Dropdown } from '../../base';
+import { useTranslation, languageKeys } from '../../../services/translations';
 
 const Navbar: React.FC = () => {
+    const {t, setLanguage, languageKey} = useTranslation();
+
     return (
         <div className='navbar-container'
             style={{
@@ -20,26 +24,37 @@ const Navbar: React.FC = () => {
                 <nav>
                     <Link to='/brands' className='nav-element'
                         style={{color: COLORS.FONT}}>
-                        Brands
+                        {t(languageKeys.navbar.brands)}
                     </Link>
                 </nav>
                 <nav>
                     <Link to='/trending' className='nav-element'
                         style={{color: COLORS.FONT}}>
-                        Trending
+                        {t(languageKeys.navbar.trending)}
                     </Link>
                 </nav>
                 <nav>
                     <Link to='/about' className='nav-element'
                         style={{color: COLORS.FONT}}>
-                        About
+                        {t(languageKeys.navbar.about)}
                     </Link>
                 </nav>
                 <nav>
                     <Link to='/login' className='nav-element-alternative'
                         style={{color: COLORS.ALTERNATIVE_FONT}}>
-                        Login / Sign up
+                        {t(languageKeys.navbar.login)}
                     </Link>
+                </nav>
+                <nav>
+                    <Dropdown options={[{
+                            label: 'English',
+                            value: 'en'
+                        },{
+                            label: 'Български',
+                            value: 'bg'
+                        }]}
+                        value={languageKey}
+                        onChange={setLanguage}/>
                 </nav>
             </div>
         </div>

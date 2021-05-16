@@ -1,7 +1,9 @@
 import React from 'react';
 import './InformationSection.scss';
+import { useTranslation, languageKeys } from '../../../services/translations';
 
 export const InformationSection = () => {
+    const {t} = useTranslation();
     return (
         <div className='information-section-container'>
             <div className="info-container">
@@ -9,7 +11,7 @@ export const InformationSection = () => {
                     <img src="/assets/Group 3.png" alt='Looking for a new car?' />
                 </div>
                 <div className="text-container">
-                    <h1 className="title">Looking for a new car?</h1>
+                    <h1 className="title">{t(languageKeys.informationSection.header1)}</h1>
                     <div>We have just the tool for you! <br />Autio allows you to see all the information you need about <br /> every car you may be considering
                  or just want to look up. You <br /> can also read through informative reviews from real owners to <br /> help you make the best choice!</div>
                 </div>

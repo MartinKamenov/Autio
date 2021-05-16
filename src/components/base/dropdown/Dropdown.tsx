@@ -2,9 +2,12 @@ import React from 'react';
 import './Dropdown.scss';
 
 interface DropdownTypes {
-    options: string[],
-    value: string | string[],
-    onChange: (value: string | string[]) => any;
+    options: {
+        label?: string,
+        value: string
+    }[],
+    value: string,
+    onChange: (value: string) => any;
     className?: string;
     style?: object;
 };
@@ -23,7 +26,7 @@ const Dropdown: React.FC<DropdownTypes> = ({
             style={style}
             onChange={({target: {value}}) => onChange(value)}>
             {options.map((option, i) => (
-                <option key={i} value={option}>{option}</option>
+                <option key={i} value={option.value}>{option.label || option.value}</option>
             ))}
         </select>
     );

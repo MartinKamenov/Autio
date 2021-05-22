@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import './Pagination.scss';
 import { VISIBLE_PAGE_NUMBERS } from '../../../constants/other';
 
@@ -6,7 +6,7 @@ export interface PaginationProps {
     page: number;
     lastPage: number;
     onChange: (newPage: number) => any;
-    style?: object;
+    style?: CSSProperties;
 }
  
 const Pagination: React.FC<PaginationProps> = ({
@@ -14,7 +14,7 @@ const Pagination: React.FC<PaginationProps> = ({
     lastPage,
     onChange,
     style
-}) => {
+}: PaginationProps) => {
     const pagesNumberArray = [1];
     for(let i = 2; i <= lastPage - 1; i++) {
         if(i >= page - Math.floor(VISIBLE_PAGE_NUMBERS / 2) &&

@@ -28,7 +28,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
     filters,
     setFilters,
     onSubmit
-}) => {
+}: AdvancedSearchProps) => {
     const {
         loading,
         enums: options

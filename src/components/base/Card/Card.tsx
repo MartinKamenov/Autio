@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import './Card.scss';
 
 export interface CardProps {
     imageHref: string,
-    content: Function,
+    content: () => React.ReactElement,
     className?: string,
-    style?: object
+    style?: CSSProperties
 }
  
 const Card: React.FC<CardProps> = ({
@@ -13,7 +13,7 @@ const Card: React.FC<CardProps> = ({
     content,
     className='',
     style={}
-}) => {
+}: CardProps) => {
     const ContentNode = content;
     return (
         <div className={`custom-card-container ${className}`} style={style}>

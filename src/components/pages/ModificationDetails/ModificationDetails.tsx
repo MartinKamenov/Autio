@@ -5,7 +5,7 @@ import { getData } from '../../../services/apiService';
  
 const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
     match
-}) => {
+}: RouteComponentProps<{id: string}>) => {
     const [data, setData] = useState<any>(null);
     useEffect(() => {
         const id = match.params.id;

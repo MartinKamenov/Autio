@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, CSSProperties } from 'react';
 import './MultipleSelectDropdown.scss';
 import Icon from '../Icon';
 
@@ -10,9 +10,9 @@ export interface MultipleSelectDropdownProps {
     }[],
     value: string[],
     onChange: (values: string[]) => void,
-    dropdownStyle?: object,
-    inputStyle?: object,
-    containerStyle?: object,
+    dropdownStyle?: CSSProperties,
+    inputStyle?: CSSProperties,
+    containerStyle?: CSSProperties,
     dropdownClassName?: string,
     inputClassName?: string,
     containerClassName?: string,
@@ -32,7 +32,7 @@ const MultipleSelectDropdown: React.FC<MultipleSelectDropdownProps> = ({
     onChange,
     customOptionRenderer,
     placeHolder
-}) => {
+}: MultipleSelectDropdownProps) => {
     const [opened, setOpened] = useState(false);
     const [visibleOptions, setVisibleOptions] = useState<{
         label?: string | undefined;

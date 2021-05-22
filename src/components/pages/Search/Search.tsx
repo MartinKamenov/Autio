@@ -27,7 +27,7 @@ const queryToFilters = (query: QueryObject): Filters => {
 
 const Search: React.FC<RouteComponentProps> = ({
     history
-}) => {
+}: RouteComponentProps) => {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [lastPage, setLastPage] = useState(1);
@@ -59,7 +59,9 @@ const Search: React.FC<RouteComponentProps> = ({
         $('html,body').animate({ scrollTop: 0 }, 1000);
     }, [history.location.search]);
 
-    const fetchData = async(search: object) => {
+    const fetchData = async(search: {
+        [key: string]: string | string[] 
+    }) => {
         setLoading(true);
         const {data} = await getData('/search/advanced', {...search, pageSize: 24});
         setItems(data.items);

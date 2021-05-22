@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, CSSProperties } from 'react';
 import './AutoCompleteSearch.scss';
 import { Icon, LoadingIndicator } from '..';
 import { getData } from '../../../services/apiService';
@@ -15,7 +15,7 @@ export interface autoCompleteSearchProps {
     apiWrapperUrl: string;
     placeholder?: string;
     className?: string;
-    style?: object;
+    style?: CSSProperties;
 }
 
 const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
@@ -23,7 +23,7 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
     placeholder = '',
     className = '',
     style = {}
-}) => {
+}: autoCompleteSearchProps) => {
     const [value, setValue] = useState('');
     const [carEntries, setCarEntries] = useState<CarEntry[]>([]);
     const [loadingResults, setLoadingResults] = useState(false);
@@ -106,6 +106,7 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
                         {
                             carEntries.map(entry => (
                                 <Link
+                                    key={entry.id}
                                     className='result-link'
                                     to={entry.shortName ? `/search?brandNames[]=${entry.shortName}` : 
                                         `/modifications/${entry.id}`}>

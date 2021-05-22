@@ -6,7 +6,7 @@ export type QueryObject = {[key: string]: string | string[]};
 export const queryToString = (queryObject: QueryObject): string => {
     const queryArray = Object.entries(queryObject);
     const queryString = queryArray
-        .filter(([_, value]) => Array.isArray(value) ? value.length : value)
+        .filter(([, value]) => Array.isArray(value) ? value.length : value)
         .map(([key, value]) => 
             Array.isArray(value) ? value.map((v) => `${key}[]=${v}`).join('&') : `${key}=${value}`
         ).join('&');

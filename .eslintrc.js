@@ -39,9 +39,10 @@ module.exports = {
         ],
         'max-len': [
             'error',
-            { 'code': 80 }
+            { 'code': 120 }
         ],
         "@typescript-eslint/no-explicit-any": "off",
-        "@typescript-eslint/explicit-module-boundary-types": "off"
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "react/prop-types": [2]
     }
 };

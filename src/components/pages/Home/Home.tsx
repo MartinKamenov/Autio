@@ -8,7 +8,7 @@ import { InformationSection } from '../../common/InformationSection/InformationS
 
 const Home: React.FC<RouteComponentProps> = ({
     history
-}) => {
+}: RouteComponentProps) => {
     const [filters, setFilters] = useState<Filters>({
         brandNames: [],
         modelNames: [],

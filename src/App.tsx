@@ -4,11 +4,14 @@ import {Provider} from 'react-redux';
 import { MainRouter } from './components/routing';
 import { store } from './redux';
 import 'bootstrap/dist/css/bootstrap.css';
+import UserProvider from './services/user/UserProvider';
 
 function App() {
   return (
     <Provider store={store}>
-      <MainRouter/>
+      <UserProvider>
+        <MainRouter/>
+      </UserProvider>
     </Provider>
   );
 }

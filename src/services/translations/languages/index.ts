@@ -57,7 +57,9 @@ export const languageKeys: TranslationObject = {
     toggle: 'toggle'
 };
 
-export default {
+const defaultExport = {
     en,
     bg
 };
+
+export default defaultExport;

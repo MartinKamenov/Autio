@@ -1,7 +1,7 @@
 import { UPDATE_LANGUAGE } from './actionTypes';
 import initialState from './initialState';
 
-export default (state = initialState, action: {
+const reducer = (state = initialState, action: {
     type: string,
     payload: string | undefined,
 }) => {
@@ -13,4 +13,6 @@ export default (state = initialState, action: {
             return {...state};
         }
     }
-}
+};
+
+export default reducer;

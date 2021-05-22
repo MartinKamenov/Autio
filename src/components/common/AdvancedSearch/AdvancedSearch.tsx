@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './AdvancedSearch.scss';
 import {
-    Dropdown,
     LoadingIndicator,
     MultipleSelectDropdown
 } from '../../base';
 import { useEnums } from '../../../services/useEnums';
-import { getData } from '../../../services/apiService';
 import { useTranslation, languageKeys } from '../../../services/translations';
 
 export type Filters = {

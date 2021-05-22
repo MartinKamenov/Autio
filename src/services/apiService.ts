@@ -44,3 +44,11 @@ export const queryToObject = (search: string): QueryObject => {
 export const getData = (url: string, queryParams = {}): AxiosPromise => {
     return axios.get(`${API_URL}${url}${queryToString(queryParams)}`);
 }
+
+export const postData = (url: string, body = {}): AxiosPromise => {
+    return axios.post(url, body);
+};
+
+export const putData = (url: string, body = {}): AxiosPromise => {
+    return axios.put(url, body);
+};

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import './Dropdown.scss';
 
 interface DropdownTypes {
@@ -9,8 +9,8 @@ interface DropdownTypes {
     value: string,
     onChange: (value: string) => any;
     className?: string;
-    style?: object;
-};
+    style?: CSSProperties;
+}
 
 const Dropdown: React.FC<DropdownTypes> = ({
     options,
@@ -18,7 +18,7 @@ const Dropdown: React.FC<DropdownTypes> = ({
     onChange,
     style={},
     className=''
-}) => {
+}: DropdownTypes) => {
     return (
         <select
             className={`custom-dropdown ${className}`}

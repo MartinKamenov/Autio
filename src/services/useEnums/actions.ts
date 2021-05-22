@@ -19,7 +19,7 @@ export const getEnumsSuccess = (payload: EnumDataResult[]) => {
         type: ACTION_TYPES.GET_ENUMS_SUCCESS,
         payload: reducedData,
         brandsMapper
-    }
+    };
 };
 
 export const getEnumsFailure = (payload: any) => ({

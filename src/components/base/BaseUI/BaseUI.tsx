@@ -10,7 +10,7 @@ export interface PolygonSeparatorProps {
 export const PolygonSeparator: React.FC<PolygonSeparatorProps> = ({
     style,
     className=''
-}) => (
+}: PolygonSeparatorProps) => (
     <div style={{
         clipPath: 'polygon(0 0, 100% 0%, 100% 30%, 0% 100%)',
         width: '100%',

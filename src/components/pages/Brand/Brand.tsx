@@ -1,17 +1,13 @@
 import React from 'react';
 import './Brand.scss';
-
-export interface BrandProps {
-    
-}
  
-const Brand: React.FC<BrandProps> = () => {
+const Brand: React.FC = () => {
     const brand = {
         name: 'Audi',
-        icon: 'https://audimediacenter-a.akamaihd.net/system/production/media/1282/images/bde751ee18fe149036c6b47d7595f6784f8901f8/AL090142_full.jpg?1581961854',
+        icon: 'https://img.icons8.com/ios/452/audi.png',
         color: 'black',
         backgroundColor: 'white',
-    }
+    };
     return (
         <div className='brand-page-container'>
             <div className='brand-nav' style={{backgroundColor: brand.backgroundColor, color: brand.color}}>
@@ -20,6 +16,6 @@ const Brand: React.FC<BrandProps> = () => {
             </div>
         </div>
     );
-}
+};
  
 export default Brand;

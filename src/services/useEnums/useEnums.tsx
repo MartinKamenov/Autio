@@ -33,6 +33,6 @@ const useEnums = (): EnumsState => {
         fetched,
         error,
     };
-}
+};
  
 export default useEnums;

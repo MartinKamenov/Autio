@@ -1,7 +1,7 @@
 import { translate } from './index';
-import { useSelector, useDispatch } from "react-redux";
-import { LanguageState } from "./types";
-import { useCallback } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { LanguageState } from './types';
+import { useCallback } from 'react';
 import { updateLanguage } from './actions';
 import { LANGUAGE_KEY } from './initialState';
 
@@ -19,13 +19,13 @@ const useTranslation = () => {
     const setLanguage = (val: string) => {
         dispatch(updateLanguage(val));
         localStorage.setItem(LANGUAGE_KEY, val);
-    }
+    };
 
     return {
         t,
         setLanguage,
         languageKey
-    }
+    };
 };
 
 export default useTranslation;

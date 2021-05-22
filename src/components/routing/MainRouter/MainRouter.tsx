@@ -43,11 +43,11 @@ const MainRouter: React.FC = () => {
                     <Route
                         path='/search'
                         component={Search}
-                        />
+                    />
                     <Route
                         path='/modifications/:id'
                         component={ModificationDetails}
-                        />
+                    />
                     <Route 
                         path='/login'
                         component={AuthPage}
@@ -57,6 +57,6 @@ const MainRouter: React.FC = () => {
             <Footer/>
         </Router>
     );
-}
+};
  
 export default MainRouter;

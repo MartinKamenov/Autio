@@ -13,11 +13,11 @@ export const Input: React.FC<InputProps> = ({
     value,
     onChange,
     type='text'
-}) => {
+}: InputProps) => {
     return (
         <label className="label">
             {labelValue}
             <input onChange={onChange} value={value} type={type}/>
         </label>
     );
-}
+};

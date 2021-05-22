@@ -34,11 +34,11 @@ const Pagination: React.FC<PaginationProps> = ({
                     className={`page-link ${number === page ? 'active' : ''}`}
                     key={number}
                     onClick={() => onChange(number)}>
-                {number}
+                    {number}
                 </div>
             ))}
         </div>
     );
-}
+};
  
 export default Pagination;

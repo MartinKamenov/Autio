@@ -47,18 +47,18 @@ const Navbar: React.FC = () => {
                 </nav>
                 <nav>
                     <Dropdown options={[{
-                            label: 'English',
-                            value: 'en'
-                        },{
-                            label: 'Български',
-                            value: 'bg'
-                        }]}
-                        value={languageKey}
-                        onChange={setLanguage}/>
+                        label: 'English',
+                        value: 'en'
+                    },{
+                        label: 'Български',
+                        value: 'bg'
+                    }]}
+                    value={languageKey}
+                    onChange={setLanguage}/>
                 </nav>
             </div>
         </div>
     );
-}
+};
 
 export default Navbar;

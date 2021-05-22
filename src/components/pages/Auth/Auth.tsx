@@ -14,7 +14,7 @@ export const AuthPage = () => {
         setLoginMode((prevState) => {
             return !prevState;
         });
-    }
+    };
 
     return (
         <div className='container' style={{
@@ -38,7 +38,7 @@ export const AuthPage = () => {
                 </div>
             </form>
             <div className='signup'>
-                <p style={{ marginRight: "5px" }}>{isLoginMode ?
+                <p style={{ marginRight: '5px' }}>{isLoginMode ?
                     t(languageKeys.authentication.loginLinkDesc) :
                     t(languageKeys.authentication.registerLinkDesc)}</p>
                 <p className="modeChange" onClick={handleModeChange}>{isLoginMode ?
@@ -46,5 +46,5 @@ export const AuthPage = () => {
                     t(languageKeys.authentication.loginHeader) + '.'}</p>
             </div>
         </div>
-    )
-}
+    );
+};

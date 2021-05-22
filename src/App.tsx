@@ -7,13 +7,13 @@ import 'bootstrap/dist/css/bootstrap.css';
 import UserProvider from './services/user/UserProvider';
 
 function App() {
-  return (
-    <Provider store={store}>
-      <UserProvider>
-        <MainRouter/>
-      </UserProvider>
-    </Provider>
-  );
+    return (
+        <Provider store={store}>
+            <UserProvider>
+                <MainRouter/>
+            </UserProvider>
+        </Provider>
+    );
 }
 
 export default App;

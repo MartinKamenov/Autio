@@ -16,7 +16,7 @@ export const InformationSection = () => {
                  or just want to look up. You <br /> can also read through informative reviews from real owners to <br /> help you make the best choice!</div>
                 </div>
             </div>
-            <div className="bottom-info-container" style={{ justifyContent: "flex-end"}}>                
+            <div className="bottom-info-container" style={{ justifyContent: 'flex-end'}}>                
                 <div className="left-text">
                     <h1 className="bottom-title">For the passionate <br /> car enthusiast</h1>
                     <div className="bottom-text">Autio is for all you car lovers out there, <br /> who love to stay up to date with the latest releases <br /> and innovations
@@ -27,5 +27,5 @@ export const InformationSection = () => {
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};

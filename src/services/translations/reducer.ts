@@ -6,12 +6,12 @@ const reducer = (state = initialState, action: {
     payload: string | undefined,
 }) => {
     switch(action.type) {
-        case UPDATE_LANGUAGE: {
-            return {...state, languageKey: action.payload};
-        }
-        default: {
-            return {...state};
-        }
+    case UPDATE_LANGUAGE: {
+        return {...state, languageKey: action.payload};
+    }
+    default: {
+        return {...state};
+    }
     }
 };
 

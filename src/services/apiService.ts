@@ -8,12 +8,12 @@ export const queryToString = (queryObject: QueryObject): string => {
     const queryString = queryArray
         .filter(([_, value]) => Array.isArray(value) ? value.length : value)
         .map(([key, value]) => 
-        Array.isArray(value) ? value.map((v) => `${key}[]=${v}`).join('&') : `${key}=${value}`
-    ).join('&');
+            Array.isArray(value) ? value.map((v) => `${key}[]=${v}`).join('&') : `${key}=${value}`
+        ).join('&');
     const query: string = queryString ?  '?' + queryString : '';
 
     return query;
-}
+};
 
 export const queryToObject = (search: string): QueryObject => {
     const result = search.substring(1)
@@ -39,11 +39,11 @@ export const queryToObject = (search: string): QueryObject => {
         }, {});
 
     return result;
-}
+};
 
 export const getData = (url: string, queryParams = {}): AxiosPromise => {
     return axios.get(`${API_URL}${url}${queryToString(queryParams)}`);
-}
+};
 
 export const postData = (url: string, body = {}): AxiosPromise => {
     return axios.post(url, body);

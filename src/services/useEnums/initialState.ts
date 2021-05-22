@@ -10,6 +10,6 @@ const initialState: EnumsState = {
     mappers: {
         brandsMapper: {}
     }
-}
+};
 
 export default initialState;

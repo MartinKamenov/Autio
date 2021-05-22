@@ -22,7 +22,7 @@ const Home: React.FC<RouteComponentProps> = ({
 
     const onSubmit = () => {
         history.push(`/search${queryToString(filters)}`);
-    }
+    };
 
     return (
         <div className="home-container">
@@ -35,6 +35,6 @@ const Home: React.FC<RouteComponentProps> = ({
             <InformationSection />
         </div>
     );
-}
+};
 
 export default Home;

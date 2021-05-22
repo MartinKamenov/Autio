@@ -20,4 +20,4 @@ export const Input: React.FC<InputProps> = ({
             <input onChange={onChange} value={value} type={type}/>
         </label>
     );
-}
+};

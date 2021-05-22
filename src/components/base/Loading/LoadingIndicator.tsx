@@ -19,6 +19,6 @@ const LoadingIndicator: React.FC<LoadingIndicatorProps> = ({
             {message && <h5>{message}</h5>}
         </div>
     );
-}
+};
  
 export default LoadingIndicator;

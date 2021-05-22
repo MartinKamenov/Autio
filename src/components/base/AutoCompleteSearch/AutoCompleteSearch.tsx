@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 // This component should be connected to backend endpoints,
 // and the onChange event's handler should be debounced
-const DEBOUNCE_TIMER: number = 500;
+const DEBOUNCE_TIMER = 500;
 let timeout: NodeJS.Timeout | null = null;
 let lastQueryValue: string | null = null;
 
@@ -70,7 +70,7 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
         return () => {
             document.body
                 .removeEventListener('click', closeWhenClickedOutside);
-        }
+        };
     }, [focused]);
 
     const closeWhenClickedOutside = (ev: any) => {
@@ -79,7 +79,7 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
         if(ref.current !== null && ref.current !== target && !ref.current.contains(target)) {
             setFocused(false);
         }
-    }
+    };
 
     return (
         <div className={className}
@@ -108,7 +108,7 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
                                 <Link
                                     className='result-link'
                                     to={entry.shortName ? `/search?brandNames[]=${entry.shortName}` : 
-                                    `/modifications/${entry.id}`}>
+                                        `/modifications/${entry.id}`}>
                                     <li key={entry._id} className={'result'}>
                                         <div className='dropdown-image-container'>
                                             <img src={entry.imageHref} alt={entry.shortName || entry.name} />
@@ -123,6 +123,6 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
             </div>}
         </div>
     );
-}
+};
 
 export default AutoCompleteSearch;

@@ -10,7 +10,7 @@ interface DropdownTypes {
     onChange: (value: string) => any;
     className?: string;
     style?: object;
-};
+}
 
 const Dropdown: React.FC<DropdownTypes> = ({
     options,

@@ -1,4 +1,5 @@
-import { TranslationObject } from "../types";
+/* eslint-disable max-len */
+import { TranslationObject } from '../types';
 
 const translationObject: TranslationObject = {
     navbar: {
@@ -19,9 +20,9 @@ const translationObject: TranslationObject = {
     signUpSection: {
         signUpHeader1: 'SIGN UP TODAY',
         signUpHeader2: 'for an optimal AUTIO experience!',
-        bulet1: `Write reviews and comments, leave likes and interact with the amazing community of fellow car lovers`,
-        bulet2: `Save all your favorite models for faster and easier access`,
-        bulet3: `Always stay up to date - get personalized notifications when a new model is added`,
+        bulet1: 'Write reviews and comments, leave likes and interact with the amazing community of fellow car lovers',
+        bulet2: 'Save all your favorite models for faster and easier access',
+        bulet3: 'Always stay up to date - get personalized notifications when a new model is added',
         createAnAccount: 'CREATE AN ACCOUNT'
     },
     informationSection: {

@@ -8,8 +8,8 @@ import {
     registerUser,
     registerUserSuccess
 } from './actions';
-import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useCallback } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useCallback } from 'react';
 import { getItem, setItem } from '../localStorage';
 import { getData, postData } from '../apiService';
 
@@ -68,7 +68,7 @@ const useUser = () => {
         setItem(USER_KEY, payload.token);
 
         dispatch(loginUserSuccess(payload));
-    }
+    };
 
     return {
         loading,

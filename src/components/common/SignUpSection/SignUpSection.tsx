@@ -80,6 +80,6 @@ const SignUpSection: React.FC = () => {
             </div>
         </div>
     );
-}
+};
 
 export default SignUpSection;

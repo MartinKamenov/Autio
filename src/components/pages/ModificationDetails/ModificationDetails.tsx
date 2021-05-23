@@ -5,7 +5,7 @@ import { getData } from '../../../services/apiService';
  
 const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
     match
-}) => {
+}: RouteComponentProps<{id: string}>) => {
     const [data, setData] = useState<any>(null);
     useEffect(() => {
         const id = match.params.id;
@@ -18,7 +18,7 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
         const {data} = await getData(`/modifications/${id}`);
 
         setData(data);
-    }
+    };
 
     if(!data) {
         return (
@@ -38,15 +38,15 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
             flexDirection: 'column',
             alignItems: 'center'
         }}>
-        <img
-            style={{width: 300}}
-            src={data.information.imageHref.replace('/thumb', '')}
-            alt={data.information.name}/>
-        <h3>{data.information.brandShortName} ({data.information.modelName})</h3>
-        <div>{data.information.name}</div>
-        {/* {JSON.stringify(data, undefined, 2)} */}
+            <img
+                style={{width: 300}}
+                src={data.information.imageHref.replace('/thumb', '')}
+                alt={data.information.name}/>
+            <h3>{data.information.brandShortName} ({data.information.modelName})</h3>
+            <div>{data.information.name}</div>
+            {/* {JSON.stringify(data, undefined, 2)} */}
         </div>
     );
-}
+};
  
 export default ModificationDetails;

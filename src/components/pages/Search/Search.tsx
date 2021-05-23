@@ -23,11 +23,11 @@ const queryToFilters = (query: QueryObject): Filters => {
     };
 
     return result;
-}
+};
 
 const Search: React.FC<RouteComponentProps> = ({
     history
-}) => {
+}: RouteComponentProps) => {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const [lastPage, setLastPage] = useState(1);
@@ -59,7 +59,9 @@ const Search: React.FC<RouteComponentProps> = ({
         $('html,body').animate({ scrollTop: 0 }, 1000);
     }, [history.location.search]);
 
-    const fetchData = async(search: object) => {
+    const fetchData = async(search: {
+        [key: string]: string | string[] 
+    }) => {
         setLoading(true);
         const {data} = await getData('/search/advanced', {...search, pageSize: 24});
         setItems(data.items);
@@ -96,27 +98,27 @@ const Search: React.FC<RouteComponentProps> = ({
                             onSubmit(null, {
                                 ...filters,
                                 page: newPage.toString()
-                            })
+                            });
                         }}/>
                     <div className='row clean items-container'>
-                    {items.map((item: any, i) => (
-                        <div key={i}
-                            className='col-lg-3 col-md-4 col-sm-6 column-element'>
-                            <Link className='details-container' to={`/modifications/${item.id}`}>
-                                <Card imageHref={item.imageHref.replace('/thumb', '')}
-                                    content={() => (
-                                        <div className='description-wrapper'>
-                                            <h5 className='title'>
-                                                {brandsMapper[item.brandShortName]} {item.modelName} {item.name}
-                                            </h5>
-                                        </div>
-                                    )}
-                                    style={{
-                                        margin: '10px auto'
-                                    }}/>
-                            </Link>
-                        </div>
-                    ))}
+                        {items.map((item: any, i) => (
+                            <div key={i}
+                                className='col-lg-3 col-md-4 col-sm-6 column-element'>
+                                <Link className='details-container' to={`/modifications/${item.id}`}>
+                                    <Card imageHref={item.imageHref.replace('/thumb', '')}
+                                        content={() => (
+                                            <div className='description-wrapper'>
+                                                <h5 className='title'>
+                                                    {brandsMapper[item.brandShortName]} {item.modelName} {item.name}
+                                                </h5>
+                                            </div>
+                                        )}
+                                        style={{
+                                            margin: '10px auto'
+                                        }}/>
+                                </Link>
+                            </div>
+                        ))}
                     </div>
                 </>
             )}
@@ -130,7 +132,7 @@ const Search: React.FC<RouteComponentProps> = ({
                     onSubmit(null, {
                         ...filters,
                         page: newPage.toString()
-                    })
+                    });
                 }}/>
         </div>
     );

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faSearch,
@@ -20,12 +20,12 @@ const iconMapper: {
 
 export interface IconProps {
     icon: string;
-    style?: object;
+    style?: CSSProperties;
     className?: string;
     onClick?: (ev: any) => void;
 }
 
-const Icon: React.FC<IconProps> = (props) => {
+const Icon: React.FC<IconProps> = (props: IconProps) => {
     const {
         icon,
         style,

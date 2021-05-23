@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback, CSSProperties } from 'react';
 import './AutoCompleteSearch.scss';
 import { Icon, LoadingIndicator } from '..';
 import { getData } from '../../../services/apiService';
@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 // This component should be connected to backend endpoints,
 // and the onChange event's handler should be debounced
-const DEBOUNCE_TIMER: number = 500;
+const DEBOUNCE_TIMER = 500;
 let timeout: NodeJS.Timeout | null = null;
 let lastQueryValue: string | null = null;
 
@@ -15,7 +15,7 @@ export interface autoCompleteSearchProps {
     apiWrapperUrl: string;
     placeholder?: string;
     className?: string;
-    style?: object;
+    style?: CSSProperties;
 }
 
 const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
@@ -23,7 +23,7 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
     placeholder = '',
     className = '',
     style = {}
-}) => {
+}: autoCompleteSearchProps) => {
     const [value, setValue] = useState('');
     const [carEntries, setCarEntries] = useState<CarEntry[]>([]);
     const [loadingResults, setLoadingResults] = useState(false);
@@ -70,7 +70,7 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
         return () => {
             document.body
                 .removeEventListener('click', closeWhenClickedOutside);
-        }
+        };
     }, [focused]);
 
     const closeWhenClickedOutside = (ev: any) => {
@@ -79,7 +79,7 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
         if(ref.current !== null && ref.current !== target && !ref.current.contains(target)) {
             setFocused(false);
         }
-    }
+    };
 
     return (
         <div className={className}
@@ -106,9 +106,10 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
                         {
                             carEntries.map(entry => (
                                 <Link
+                                    key={entry.id}
                                     className='result-link'
                                     to={entry.shortName ? `/search?brandNames[]=${entry.shortName}` : 
-                                    `/modifications/${entry.id}`}>
+                                        `/modifications/${entry.id}`}>
                                     <li key={entry._id} className={'result'}>
                                         <div className='dropdown-image-container'>
                                             <img src={entry.imageHref} alt={entry.shortName || entry.name} />
@@ -123,6 +124,6 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
             </div>}
         </div>
     );
-}
+};
 
 export default AutoCompleteSearch;

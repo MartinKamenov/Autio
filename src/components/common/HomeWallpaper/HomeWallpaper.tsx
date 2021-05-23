@@ -29,7 +29,7 @@ const HomeWallpaper: React.FC = () => {
                     backgroundColor: COLORS.FONT
                 }} className='home-wallpaper-separator'/>
             <div className='polygon-content'>
-                <h1 className={"primaryHeader"} ><b>{t(languageKeys.home.or)}</b></h1>
+                <h1 className={'primaryHeader'} ><b>{t(languageKeys.home.or)}</b></h1>
                 <h5 style={{color: COLORS.NAVBAR_BG_COLOR}}>{t(languageKeys.home.searchParams)}</h5>
             </div>
             <div className='home-content-container'>
@@ -46,6 +46,6 @@ const HomeWallpaper: React.FC = () => {
             </div>
         </div>
     );
-}
+};
 
 export default HomeWallpaper;

@@ -1,4 +1,5 @@
-import { TranslationObject } from "../types";
+/* eslint-disable max-len */
+import { TranslationObject } from '../types';
 
 const translationObject: TranslationObject = {
     navbar: {
@@ -55,6 +56,6 @@ const translationObject: TranslationObject = {
         searchSubmit: 'ТЪРСЕНЕ'
     },
     toggle: 'Смяна езика'
-}
+};
 
 export default translationObject;

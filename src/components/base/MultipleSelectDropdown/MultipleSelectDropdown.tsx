@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, CSSProperties } from 'react';
 import './MultipleSelectDropdown.scss';
 import Icon from '../Icon';
 
@@ -10,9 +10,9 @@ export interface MultipleSelectDropdownProps {
     }[],
     value: string[],
     onChange: (values: string[]) => void,
-    dropdownStyle?: object,
-    inputStyle?: object,
-    containerStyle?: object,
+    dropdownStyle?: CSSProperties,
+    inputStyle?: CSSProperties,
+    containerStyle?: CSSProperties,
     dropdownClassName?: string,
     inputClassName?: string,
     containerClassName?: string,
@@ -32,7 +32,7 @@ const MultipleSelectDropdown: React.FC<MultipleSelectDropdownProps> = ({
     onChange,
     customOptionRenderer,
     placeHolder
-}) => {
+}: MultipleSelectDropdownProps) => {
     const [opened, setOpened] = useState(false);
     const [visibleOptions, setVisibleOptions] = useState<{
         label?: string | undefined;
@@ -57,7 +57,7 @@ const MultipleSelectDropdown: React.FC<MultipleSelectDropdownProps> = ({
         return () => {
             document.body
                 .removeEventListener('click', closeWhenClickedOutside);
-        }
+        };
     }, [opened]);
 
     const closeWhenClickedOutside = (ev: any) => {
@@ -66,20 +66,20 @@ const MultipleSelectDropdown: React.FC<MultipleSelectDropdownProps> = ({
         if(ref.current !== null && ref.current !== target && !ref.current.contains(target)) {
             setOpened(false);
         }
-    }
+    };
 
     const toggleId = (val: string) => {
         const currentValues = [...value];
         currentValues.includes(val) ?
-        currentValues.splice(currentValues.indexOf(val), 1) :
-        currentValues.push(val);
+            currentValues.splice(currentValues.indexOf(val), 1) :
+            currentValues.push(val);
         onChange(currentValues);
         setCurrentSearch('');
         setVisibleOptions([...options]);
-    }
+    };
 
     const onInputChange = (v: string) => {
-        const prevValue = value.join(', ') + (currentSearch && value.length ? `, ` : '');
+        const prevValue = value.join(', ') + (currentSearch && value.length ? ', ' : '');
 
         // User tries to delete value from the input
         if(v.length < value.join(', ').length) {
@@ -98,7 +98,7 @@ const MultipleSelectDropdown: React.FC<MultipleSelectDropdownProps> = ({
         setCurrentSearch(newInputValue);
         setVisibleOptions([...options]
             .filter((o) => (o.label || o.value).toLowerCase().includes(newInputValue)));
-    }
+    };
 
     const visibleValue = (currentSearch ? [...value, currentSearch] : value).join(', ');
 
@@ -114,7 +114,7 @@ const MultipleSelectDropdown: React.FC<MultipleSelectDropdownProps> = ({
                 style={inputStyle}
                 className={`custom-input ${inputClassName}`}
                 onChange={({target: {value}}) => onInputChange(value)}
-                />
+            />
             <div className='sufix-container'>
                 <Icon icon='chevron-down'
                     className={`suffix-icon ${opened ? 'revert' : 'normal'}`}
@@ -124,12 +124,12 @@ const MultipleSelectDropdown: React.FC<MultipleSelectDropdownProps> = ({
                 {
                     visibleOptions.map(customOptionRenderer ? customOptionRenderer : (option) => (
                         <div key={option.value}
-                        className={`custom-multi-option ${value.includes(option.value) ? 'selected' : ''}`}
-                        onClick={() => toggleId(option.value)}>
+                            className={`custom-multi-option ${value.includes(option.value) ? 'selected' : ''}`}
+                            onClick={() => toggleId(option.value)}>
                             {option.imageHref && (
                                 <img
-                                src={option.imageHref}
-                                alt={option.value}/>
+                                    src={option.imageHref}
+                                    alt={option.value}/>
                             )}
                             <div className='value'>{option.label || option.value}</div>
                             {/* <input

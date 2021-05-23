@@ -28,7 +28,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
     filters,
     setFilters,
     onSubmit
-}) => {
+}: AdvancedSearchProps) => {
     const {
         loading,
         enums: options
@@ -40,7 +40,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
     useEffect(() => {
         const filteredModels = options.brands ? options.brands
             .filter((o: any) => !filters.brandNames.length || filters.brandNames
-            .includes(o.shortName))
+                .includes(o.shortName))
             .map((o: any) => o.models.map((m: any) => ({...m, label: `${o.name} ${m.name}`})))
             .flat() : [];
         
@@ -49,7 +49,7 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
 
     const handleChange = (key: string, value: string | string[]) => {
         setFilters({...filters, [key]: value});
-    }
+    };
 
     if(loading) {
         return <LoadingIndicator style={{display: 'flex', justifyContent: 'center'}}/>;
@@ -66,17 +66,17 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                     <label>{t(languageKeys.advancedSearch.brand)}</label>
                                 </div>
                                 <MultipleSelectDropdown
-                                inputStyle={{width: '100%', height: 40}}
-                                options={options.brands ?
-                                    options.brands.map((o: any) => ({
-                                        label: o.name,
-                                        value: o.shortName,
-                                        imageHref: o.imageHref
-                                    })) : []}
-                                value={filters.brandNames}
-                                placeHolder={t(languageKeys.advancedSearch.brandPlaceholder)}
-                                onChange={(v) => handleChange('brandNames', v)}
-                                containerClassName='dropdown'/>
+                                    inputStyle={{width: '100%', height: 40}}
+                                    options={options.brands ?
+                                        options.brands.map((o: any) => ({
+                                            label: o.name,
+                                            value: o.shortName,
+                                            imageHref: o.imageHref
+                                        })) : []}
+                                    value={filters.brandNames}
+                                    placeHolder={t(languageKeys.advancedSearch.brandPlaceholder)}
+                                    onChange={(v) => handleChange('brandNames', v)}
+                                    containerClassName='dropdown'/>
                             </div>
                         </div>
                         <div className='col-md-6'>
@@ -85,16 +85,16 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                     <label>{t(languageKeys.advancedSearch.model)}</label>
                                 </div>
                                 <MultipleSelectDropdown
-                                inputStyle={{width: '100%', height: 40}}
-                                options={models.map((m: any) => ({
-                                    value: m.name,
-                                    label: m.label,
-                                    imageHref: m.imageHref
-                                }))}
-                                value={filters.modelNames}
-                                placeHolder={t(languageKeys.advancedSearch.modelPlaceholder)}
-                                onChange={(v) => handleChange('modelNames', v)}
-                                containerClassName='dropdown'/>
+                                    inputStyle={{width: '100%', height: 40}}
+                                    options={models.map((m: any) => ({
+                                        value: m.name,
+                                        label: m.label,
+                                        imageHref: m.imageHref
+                                    }))}
+                                    value={filters.modelNames}
+                                    placeHolder={t(languageKeys.advancedSearch.modelPlaceholder)}
+                                    onChange={(v) => handleChange('modelNames', v)}
+                                    containerClassName='dropdown'/>
                             </div>
                         </div>
                     </div>
@@ -134,11 +134,11 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
                                         options.coupeTypes.map((o: any) => ({
                                             value: o.name
                                         })) : []}
-                                value={filters.coupeTypes}
-                                placeHolder={t(languageKeys.advancedSearch.coupeTypesPlaceholder)}
-                                inputStyle={{width: '100%', height: 40}}
-                                onChange={(v) => handleChange('coupeTypes', v)}
-                                containerClassName='dropdown'/>
+                                    value={filters.coupeTypes}
+                                    placeHolder={t(languageKeys.advancedSearch.coupeTypesPlaceholder)}
+                                    inputStyle={{width: '100%', height: 40}}
+                                    onChange={(v) => handleChange('coupeTypes', v)}
+                                    containerClassName='dropdown'/>
                             </div>
                         </div>
                         <div className='col-md-6'>
@@ -188,6 +188,6 @@ const AdvancedSearch: React.FC<AdvancedSearchProps> = ({
             </div>
         </div>
     );
-}
+};
  
 export default AdvancedSearch;

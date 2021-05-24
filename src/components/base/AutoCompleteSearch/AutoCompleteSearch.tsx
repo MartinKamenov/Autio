@@ -106,11 +106,11 @@ const AutoCompleteSearch: React.FC<autoCompleteSearchProps> = ({
                         {
                             carEntries.map(entry => (
                                 <Link
-                                    key={entry.id}
+                                    key={entry._id}
                                     className='result-link'
                                     to={entry.shortName ? `/search?brandNames[]=${entry.shortName}` : 
                                         `/modifications/${entry.id}`}>
-                                    <li key={entry._id} className={'result'}>
+                                    <li className={'result'}>
                                         <div className='dropdown-image-container'>
                                             <img src={entry.imageHref} alt={entry.shortName || entry.name} />
                                         </div>

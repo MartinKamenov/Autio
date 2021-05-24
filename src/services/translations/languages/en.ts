@@ -49,7 +49,9 @@ const translationObject: TranslationObject = {
         loginSubmit: 'LOG IN',
         registerSubmit: 'REGISTER',
         loginLinkDesc: 'Don\'t have an account?',
-        registerLinkDesc: 'Already have an account?'
+        registerLinkDesc: 'Already have an account?',
+        emailInvalid: 'Please enter a valid e-mail address',
+        passwordMustContain: 'Password must contain ...'
     },
     advancedSearch: {
         brand: 'Brand',

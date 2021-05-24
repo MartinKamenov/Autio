@@ -39,7 +39,9 @@ const translationObject: TranslationObject = {
         loginSubmit: 'ВЛИЗАНЕ',
         registerSubmit: 'РЕГИСТРИРАНЕ',
         loginLinkDesc: 'Нямате акаунт?',
-        registerLinkDesc: 'Вече имате акаунт?'
+        registerLinkDesc: 'Вече имате акаунт?',
+        emailInvalid: 'Моля въведете валиден имейл адрес',
+        passwordMustContain: 'Паролата трябва да съдържа...'
     },
     advancedSearch: {
         brand: 'Марка',

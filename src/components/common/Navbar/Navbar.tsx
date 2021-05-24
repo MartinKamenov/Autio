@@ -3,11 +3,13 @@ import { NAVBAR_HEIGHT } from '../../../constants/other';
 import * as COLORS from '../../../constants/colors';
 import './Navbar.scss';
 import { Link } from 'react-router-dom';
-import { Dropdown } from '../../base';
+import { Dropdown, LoadingIndicator } from '../../base';
 import { useTranslation, languageKeys } from '../../../services/translations';
+import { useUser } from '../../../services/user';
 
 const Navbar: React.FC = () => {
     const {t, setLanguage, languageKey} = useTranslation();
+    const {loading, user} = useUser();
 
     return (
         <div className='navbar-container'
@@ -40,10 +42,16 @@ const Navbar: React.FC = () => {
                     </Link>
                 </nav>
                 <nav>
-                    <Link to='/login' className='nav-element-alternative'
-                        style={{color: COLORS.ALTERNATIVE_FONT}}>
-                        {t(languageKeys.navbar.login)}
-                    </Link>
+                    {loading ? (
+                        <LoadingIndicator width={25}/>
+                    ) : user ? (
+                        <div>{user.email}</div>
+                    ) : (
+                        <Link to='/login' className='nav-element-alternative'
+                            style={{color: COLORS.ALTERNATIVE_FONT}}>
+                            {t(languageKeys.navbar.login)}
+                        </Link>
+                    )}
                 </nav>
                 <nav>
                     <Dropdown options={[{

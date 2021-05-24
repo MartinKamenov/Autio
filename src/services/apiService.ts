@@ -1,6 +1,15 @@
 import axios, { AxiosPromise } from 'axios';
 import { API_URL } from '../constants/http';
 
+const headers: {
+    [key: string]: string
+} = {};
+
+export const setHeaderOption = (key: string, value: string) => {
+    headers[key] = value;
+    return headers;
+};
+
 export type QueryObject = {[key: string]: string | string[]};
 
 export const queryToString = (queryObject: QueryObject): string => {
@@ -42,13 +51,19 @@ export const queryToObject = (search: string): QueryObject => {
 };
 
 export const getData = (url: string, queryParams = {}): AxiosPromise => {
-    return axios.get(`${API_URL}${url}${queryToString(queryParams)}`);
+    return axios.get(`${API_URL}${url}${queryToString(queryParams)}`, {
+        headers
+    });
 };
 
 export const postData = (url: string, body = {}): AxiosPromise => {
-    return axios.post(url, body);
+    return axios.post(`${API_URL}${url}`, body, {
+        headers
+    });
 };
 
 export const putData = (url: string, body = {}): AxiosPromise => {
-    return axios.put(url, body);
+    return axios.put(`${API_URL}${url}`, body, {
+        headers
+    });
 };

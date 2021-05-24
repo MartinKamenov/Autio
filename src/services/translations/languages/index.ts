@@ -40,7 +40,9 @@ export const languageKeys: TranslationObject = {
         loginSubmit: 'authentication.loginSubmit',
         registerSubmit: 'authentication.registerSubmit',
         loginLinkDesc: 'authentication.loginLinkDesc',
-        registerLinkDesc: 'authentication.registerLinkDesc'
+        registerLinkDesc: 'authentication.registerLinkDesc',
+        emailInvalid: 'authentication.emailInvalid',
+        passwordMustContain: 'authentication.passwordMustContain'
     },
     advancedSearch: {
         brand: 'advancedSearch.brand',

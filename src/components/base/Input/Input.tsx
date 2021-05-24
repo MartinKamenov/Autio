@@ -6,18 +6,20 @@ export interface InputProps {
     value: string,
     onChange: (event: any) => void;
     type?: string;
+    onBlur?: (event: any) => void;
 }
 
 export const Input: React.FC<InputProps> = ({
     labelValue,
     value,
     onChange,
-    type='text'
+    type='text',
+    onBlur
 }: InputProps) => {
     return (
         <label className="label">
             {labelValue}
-            <input onChange={onChange} value={value} type={type}/>
+            <input onBlur={onBlur} onChange={onChange} value={value} type={type}/>
         </label>
     );
 };

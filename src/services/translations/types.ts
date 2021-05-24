@@ -36,7 +36,9 @@ export type TranslationObject = {
         loginSubmit: string,
         registerSubmit: string,
         loginLinkDesc: string,
-        registerLinkDesc: string
+        registerLinkDesc: string;
+        emailInvalid: string;
+        passwordMustContain: string;
     },
     advancedSearch: {
         brand: string,

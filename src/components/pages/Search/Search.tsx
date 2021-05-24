@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { AdvancedSearch, Pagination } from '../../common';
+import { AdvancedSearch, Pagination, SearchItemsList } from '../../common';
 import { RouteComponentProps } from 'react-router';
 import './Search.scss';
 import { getData, queryToObject, queryToString, QueryObject } from '../../../services/apiService';
 import { Filters } from '../../common/AdvancedSearch/AdvancedSearch';
 import { arrayResult, singleResult } from '../../../services/typeService';
-import { LoadingIndicator, Card } from '../../base';
-import { Link } from 'react-router-dom';
+import { LoadingIndicator } from '../../base';
 import $ from 'jquery';
 import { useEnums } from '../../../services/useEnums';
 
@@ -100,26 +99,7 @@ const Search: React.FC<RouteComponentProps> = ({
                                 page: newPage.toString()
                             });
                         }}/>
-                    <div className='row clean items-container'>
-                        {items.map((item: any, i) => (
-                            <div key={i}
-                                className='col-lg-3 col-md-4 col-sm-6 column-element'>
-                                <Link className='details-container' to={`/modifications/${item.id}`}>
-                                    <Card imageHref={item.imageHref.replace('/thumb', '')}
-                                        content={() => (
-                                            <div className='description-wrapper'>
-                                                <h5 className='title'>
-                                                    {brandsMapper[item.brandShortName]} {item.modelName} {item.name}
-                                                </h5>
-                                            </div>
-                                        )}
-                                        style={{
-                                            margin: '10px auto'
-                                        }}/>
-                                </Link>
-                            </div>
-                        ))}
-                    </div>
+                    <SearchItemsList items={items} brandsMapper={brandsMapper}/>
                 </>
             )}
             <Pagination

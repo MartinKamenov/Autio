@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, FC } from 'react';
 import { NAVBAR_HEIGHT } from '../../../constants/other';
 import { Input } from '../../base/Input/Input';
 import './Auth.scss';
 import { useTranslation, languageKeys } from '../../../services/translations';
 import { useUser } from '../../../services/user';
 import useInput from '../../../services/useInput';
+import { LoadingIndicator } from '../../base';
+import { RouteComponentProps } from 'react-router';
 
 const validateEmail = (value: string) => {
     /* eslint-disable-next-line no-useless-escape */
@@ -17,7 +19,9 @@ const validateEmail = (value: string) => {
     }
 };
 
-export const AuthPage = () => {
+export const AuthPage: FC<RouteComponentProps> = ({
+    history
+}: RouteComponentProps) => {
     const [isLoginMode, setLoginMode] = useState(true);
 
     const { t } = useTranslation();
@@ -40,6 +44,12 @@ export const AuthPage = () => {
         setInputValue: setPasswordInputValue
     } = useInput((password) => password.length > 8);
 
+    useEffect(() => {
+        if(user) {
+            history.push('/home');
+        }
+    }, [user]);
+
 
     const handleModeChange = () => {
         setLoginMode((prevState) => {
@@ -47,7 +57,9 @@ export const AuthPage = () => {
         });
     };
 
-    const handleFormSubmit = () => {
+    const handleFormSubmit = (event: any) => {
+        event.stopPropagation();
+        event.preventDefault();
         if (!emailIsValid || !passwordIsValid) {
             return;
         }
@@ -57,8 +69,6 @@ export const AuthPage = () => {
         }
         else {
             register({ email, password });
-
-            console.log({user, loading});
         }
     };
 
@@ -84,9 +94,11 @@ export const AuthPage = () => {
                     {!passwordIsValid && passwordTouched && showPasswordError &&
                         <p style={{ color: 'red' }}>{t(languageKeys.authentication.passwordMustContain)}</p>
                     }
-                    <button type="submit">{isLoginMode ?
+                    {loading ? (
+                        <LoadingIndicator/>
+                    ) : (<button type="submit">{isLoginMode ?
                         t(languageKeys.authentication.loginSubmit) :
-                        t(languageKeys.authentication.registerSubmit)}</button>
+                        t(languageKeys.authentication.registerSubmit)}</button>)}
                 </div>
             </form>
             <div className='signup'>

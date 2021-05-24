@@ -11,7 +11,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useCallback } from 'react';
 import { getItem, setItem } from '../localStorage';
-import { getData, postData } from '../apiService';
+import { getData, postData, setHeaderOption } from '../apiService';
 
 const USER_KEY = 'USER_KEY';
 
@@ -27,7 +27,7 @@ const useUser = () => {
 
     const fetchLoginState = useCallback(async() => {
         dispatch(fetchUser());
-        const user: any = await getData('/users/loginState');
+        const {data: user}: any = await getData('/users/loginState');
         dispatch(fetchUserSuccess(user));
     }, [dispatch]);
 
@@ -42,6 +42,7 @@ const useUser = () => {
         if(!token) {
             return;
         }
+        setHeaderOption('token', `Bearer ${token}`);
 
         fetchLoginState();
     }, [initialyFetched, dispatch, fetchLoginState]);
@@ -52,8 +53,9 @@ const useUser = () => {
     }) => {
         dispatch(registerUser());
 
-        const payload: any = postData('/user', user);
+        const { data: payload } = await postData('/users', user);
         setItem(USER_KEY, payload.token);
+        setHeaderOption('token', `Bearer ${payload.token}`);
 
         dispatch(registerUserSuccess(payload));
     };
@@ -64,8 +66,9 @@ const useUser = () => {
     }) => {
         dispatch(loginUser());
 
-        const payload: any = postData('/user', user);
+        const { data: payload } = await postData('/users/login', user);
         setItem(USER_KEY, payload.token);
+        setHeaderOption('token', `Bearer ${payload.token}`);
 
         dispatch(loginUserSuccess(payload));
     };

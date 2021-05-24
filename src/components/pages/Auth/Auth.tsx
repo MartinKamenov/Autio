@@ -7,6 +7,7 @@ import { useUser } from '../../../services/user';
 import useInput from '../../../services/useInput';
 
 const validateEmail = (value: string) => {
+    /* eslint-disable-next-line no-useless-escape */
     const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
     if (value.match(regex)) {
         return true;
@@ -14,7 +15,7 @@ const validateEmail = (value: string) => {
     else {
         return false;
     }
-}
+};
 
 export const AuthPage = () => {
     const [isLoginMode, setLoginMode] = useState(true);
@@ -23,22 +24,30 @@ export const AuthPage = () => {
 
     const { loading, user, login, register } = useUser();
 
-    const { enteredValue: email, valueTouched: emailTouched, isValid: emailIsValid,
-        showError: showEmailError, setInputValue: setEmailInputValue } = useInput((email) => validateEmail(email)
-        );
+    const {
+        enteredValue: email,
+        valueTouched: emailTouched,
+        isValid: emailIsValid,
+        showError: showEmailError,
+        setInputValue: setEmailInputValue
+    } = useInput((email) => validateEmail(email));
 
-    const { enteredValue: password, valueTouched: passwordTouched, isValid: passwordIsValid,
-        showError: showPasswordError, setInputValue: setPasswordInputValue } = useInput((password) => password.length > 8
-        );
+    const {
+        enteredValue: password,
+        valueTouched: passwordTouched,
+        isValid: passwordIsValid,
+        showError: showPasswordError,
+        setInputValue: setPasswordInputValue
+    } = useInput((password) => password.length > 8);
 
 
     const handleModeChange = () => {
         setLoginMode((prevState) => {
             return !prevState;
         });
-    }
+    };
 
-    const handleFormSubmit = (event: any) => {
+    const handleFormSubmit = () => {
         if (!emailIsValid || !passwordIsValid) {
             return;
         }
@@ -49,9 +58,9 @@ export const AuthPage = () => {
         else {
             register({ email, password });
 
-            console.log(user);
+            console.log({user, loading});
         }
-    }
+    };
 
     return (
         <div className='container' style={{
@@ -81,7 +90,7 @@ export const AuthPage = () => {
                 </div>
             </form>
             <div className='signup'>
-                <p style={{ marginRight: "5px" }}>{isLoginMode ?
+                <p style={{ marginRight: '5px' }}>{isLoginMode ?
                     t(languageKeys.authentication.loginLinkDesc) :
                     t(languageKeys.authentication.registerLinkDesc)}</p>
                 <p className="modeChange" onClick={handleModeChange}>{isLoginMode ?
@@ -89,5 +98,5 @@ export const AuthPage = () => {
                     t(languageKeys.authentication.loginHeader) + '.'}</p>
             </div>
         </div>
-    )
-}
+    );
+};

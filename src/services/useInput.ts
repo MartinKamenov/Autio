@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 
-const DEBOUNCE_TIMER: number = 500;
+const DEBOUNCE_TIMER = 500;
 let emailTimeout: NodeJS.Timeout | null = null;
 const useInput = (validate: (text: string) => boolean) => {
     const [enteredValue, setValue] = useState('');
@@ -14,7 +14,7 @@ const useInput = (validate: (text: string) => boolean) => {
         }
         emailTimeout = setTimeout(() => {
             setShowError(true);
-        }, DEBOUNCE_TIMER)
+        }, DEBOUNCE_TIMER);
     }, [enteredValue]);
 
     const handleInput = (value: string) => {
@@ -25,6 +25,6 @@ const useInput = (validate: (text: string) => boolean) => {
     const isValid: boolean = validate(enteredValue);
 
     return { enteredValue, valueTouched, isValid, showError, setInputValue: handleInput };
-}
+};
 
 export default useInput;

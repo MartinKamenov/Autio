@@ -1,0 +1,15 @@
+.custom-all-visible-dropdwn {
+    display: flex;
+    flex-direction: column;
+
+    .visible-dropdwn-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 10px;
+
+        input.big-checkbox {
+            margin-right: 15px;
+        }
+    }
+}

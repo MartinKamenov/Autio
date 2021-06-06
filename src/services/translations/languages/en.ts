@@ -65,7 +65,10 @@ const translationObject: TranslationObject = {
         coupeTypesPlaceholder: 'No coupe type is selected',
         searchSubmit: 'SEARCH'
     },
-    toggle: 'Change language'
+    toggle: 'Change language',
+    search: {
+        submitSearch: 'Apply filters'
+    }
 };
 
 export default translationObject;

@@ -1,4 +1,7 @@
+/* eslint-disable quotes */
 import React from 'react';
+import styled from "styled-components";
+import * as COLORS from '../../../constants/colors';
 
 export interface PolygonSeparatorProps {
     style: {
@@ -18,3 +21,8 @@ export const PolygonSeparator: React.FC<PolygonSeparatorProps> = ({
         ...style
     }} className={className}/>
 );
+
+export const MainButton = styled.button`
+    background-color: ${COLORS.ALTERNATIVE_FONT};
+    color: ${COLORS.WHITE};
+`;

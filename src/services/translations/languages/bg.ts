@@ -55,7 +55,10 @@ const translationObject: TranslationObject = {
         coupeTypesPlaceholder: 'Няма селектиран тип на купе',
         searchSubmit: 'ТЪРСЕНЕ'
     },
-    toggle: 'Смяна езика'
+    toggle: 'Смяна езика',
+    search: {
+        submitSearch: 'Търсене'
+    }
 };
 
 export default translationObject;

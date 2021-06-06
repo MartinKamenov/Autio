@@ -54,9 +54,12 @@ export const languageKeys: TranslationObject = {
         toLabel: 'advancedSearch.toLabel',
         coupeTypes: 'advancedSearch.coupeTypes',
         coupeTypesPlaceholder: 'advancedSearch.coupeTypesPlaceholder',
-        searchSubmit: 'advancedSearch.searchSubmit'
+        searchSubmit: 'advancedSearch.searchSubmit',
     },
-    toggle: 'toggle'
+    toggle: 'toggle',
+    search: {
+        submitSearch: 'search.submitSearch'
+    }
 };
 
 const defaultExport = {

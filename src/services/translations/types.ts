@@ -52,7 +52,10 @@ export type TranslationObject = {
         coupeTypesPlaceholder: string,
         searchSubmit: string
     },
-    toggle: string
+    toggle: string,
+    search: {
+        submitSearch: string
+    }
 };
 
 export type LanguageState = {

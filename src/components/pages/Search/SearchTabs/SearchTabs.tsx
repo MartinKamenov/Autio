@@ -5,9 +5,9 @@ import Search from '../Search';
 import { Filters } from '../../../common/AdvancedSearch/AdvancedSearch';
 import { queryToObject, getData, queryToString, QueryObject } from '../../../../services/apiService';
 import { RouteComponentProps } from 'react-router';
-import { arrayResult, singleResult } from '../../../../services/typeService';
+import { arrayResult, singleResult, getSortingDirection } from '../../../../services/typeService';
 import $ from 'jquery';
-import { NAVBAR_HEIGHT } from '../../../../constants/other';
+import { NAVBAR_HEIGHT, DEFAULT_SORTING_VALUE } from '../../../../constants/other';
 
 const queryToFilters = (query: QueryObject): Filters => {
     const result: Filters = {
@@ -18,7 +18,9 @@ const queryToFilters = (query: QueryObject): Filters => {
         toYear: singleResult(query.toYear),
         fromPower: singleResult(query.fromPower),
         toPower: singleResult(query.toPower),
-        page: singleResult(query.page) || '1'
+        page: singleResult(query.page) || '1',
+        sortBy: singleResult(query.sortBy),
+        sortDir: getSortingDirection(query.sortDir)
     };
 
     return result;
@@ -38,7 +40,9 @@ const SearchTabs: React.FC<RouteComponentProps> = ({
         toYear: '',
         fromPower: '',
         toPower: '',
-        page: '1'
+        page: '1',
+        sortBy: DEFAULT_SORTING_VALUE,
+        sortDir: 'DESC'
     });
 
     useEffect(() => {

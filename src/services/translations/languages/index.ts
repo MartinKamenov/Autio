@@ -58,7 +58,13 @@ export const languageKeys: TranslationObject = {
     },
     toggle: 'toggle',
     search: {
+        sortBy: 'search.sortBy',
         submitSearch: 'search.submitSearch'
+    },
+    sorting: {
+        year: 'sorting.year',
+        brandName: 'sorting.brandName',
+        power: 'sorting.power'
     }
 };
 

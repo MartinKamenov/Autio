@@ -25,4 +25,7 @@ export const PolygonSeparator: React.FC<PolygonSeparatorProps> = ({
 export const MainButton = styled.button`
     background-color: ${COLORS.ALTERNATIVE_FONT};
     color: ${COLORS.WHITE};
+    border: none;
+    padding: 10px;
+    border-radius: 2px;
 `;

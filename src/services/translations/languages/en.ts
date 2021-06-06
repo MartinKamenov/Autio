@@ -67,7 +67,13 @@ const translationObject: TranslationObject = {
     },
     toggle: 'Change language',
     search: {
+        sortBy: 'Sort By',
         submitSearch: 'Apply filters'
+    },
+    sorting: {
+        year: 'Year',
+        brandName: 'Brand Name',
+        power: 'Horse Power'
     }
 };
 

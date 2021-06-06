@@ -54,7 +54,13 @@ export type TranslationObject = {
     },
     toggle: string,
     search: {
+        sortBy: string,
         submitSearch: string
+    },
+    sorting: {
+        year: string,
+        brandName: string,
+        power: string
     }
 };
 

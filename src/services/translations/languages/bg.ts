@@ -57,7 +57,13 @@ const translationObject: TranslationObject = {
     },
     toggle: 'Смяна езика',
     search: {
+        sortBy: 'Сортиране по',
         submitSearch: 'Търсене'
+    },
+    sorting: {
+        year: 'Година',
+        brandName: 'Марка',
+        power: 'Конски сили'
     }
 };
 

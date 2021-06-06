@@ -5,7 +5,8 @@ import { useEnums } from '../../../../services/useEnums';
 import { Filters } from '../../../common/AdvancedSearch/AdvancedSearch';
 import { MainButton } from '../../../base/BaseUI/BaseUI';
 import { useTranslation, languageKeys } from '../../../../services/translations';
-import { NAVBAR_HEIGHT } from '../../../../constants/other';
+import { NAVBAR_HEIGHT, DEFAULT_SORTING_VALUE, getSortingValues } from '../../../../constants/other';
+import { Dropdown } from '../../../base';
 
 export interface SearchSidebarProps {
     filters: Filters,
@@ -33,23 +34,31 @@ const SearchSidebar: React.FC<SearchSidebarProps> = ({
         <div className='search-sidebar' style={{
             height: `calc(100vh - ${NAVBAR_HEIGHT})`
         }}>
-            <div className='search-sidebar-content'><div className='header'>
-                <h5>{t(languageKeys.advancedSearch.brand)}</h5>
-            </div>
-            <VisibleDropdown options={brandOptions.map((b) => ({
-                value: b.shortName,
-                label: brandsMapper[b.shortName]
-            }))} onChange={(brandNames) => setFilters({...filters, brandNames})}
-            className='custom-dropdown-filter'
-            value={filters.brandNames}/>
-            <div className='header'>
-                <h5>{t(languageKeys.advancedSearch.coupeTypes)}</h5>
-            </div>
-            <VisibleDropdown options={coupeTypeOptions.map((b) => ({
-                value: b.name
-            }))} onChange={(coupeTypes) => setFilters({...filters, coupeTypes})}
-            className='custom-dropdown-filter'
-            value={filters.brandNames}/>
+            <div className='search-sidebar-content'>
+                <div className='header'>
+                    <h5>{t(languageKeys.search.sortBy)}</h5>
+                </div>
+                <Dropdown options={getSortingValues(t)}
+                    value={filters.sortBy}
+                    onChange={(sortBy) => setFilters({...filters, sortBy})}
+                    style={{width: '100%'}}/>
+                <div className='header'>
+                    <h5>{t(languageKeys.advancedSearch.brand)}</h5>
+                </div>
+                <VisibleDropdown options={brandOptions.map((b) => ({
+                    value: b.shortName,
+                    label: brandsMapper[b.shortName]
+                }))} onChange={(brandNames) => setFilters({...filters, brandNames})}
+                className='custom-dropdown-filter'
+                value={filters.brandNames}/>
+                <div className='header'>
+                    <h5>{t(languageKeys.advancedSearch.coupeTypes)}</h5>
+                </div>
+                <VisibleDropdown options={coupeTypeOptions.map((b) => ({
+                    value: b.name
+                }))} onChange={(coupeTypes) => setFilters({...filters, coupeTypes})}
+                className='custom-dropdown-filter'
+                value={filters.brandNames}/>
             </div>
             <div className='search-sidebar-action-bar'>
                 <MainButton onClick={onSubmit} className='action-button'>

@@ -45,7 +45,6 @@ const VisibleDropdown: React.SFC<VisibleDropdownProps> = ({
             style={style}>
             {options.map((option, i) => (
                 <div key={i} className='visible-dropdwn-item' onClick={() => localOnChange(option.value)}>
-                    {console.log(option.value)}
                     <input
                         className='big-checkbox'
                         type='checkbox'

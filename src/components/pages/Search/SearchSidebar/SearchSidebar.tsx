@@ -5,7 +5,7 @@ import { useEnums } from '../../../../services/useEnums';
 import { Filters } from '../../../common/AdvancedSearch/AdvancedSearch';
 import { MainButton } from '../../../base/BaseUI/BaseUI';
 import { useTranslation, languageKeys } from '../../../../services/translations';
-import { NAVBAR_HEIGHT, DEFAULT_SORTING_VALUE, getSortingValues } from '../../../../constants/other';
+import { NAVBAR_HEIGHT, getSortingValues } from '../../../../constants/other';
 import { Dropdown } from '../../../base';
 
 export interface SearchSidebarProps {

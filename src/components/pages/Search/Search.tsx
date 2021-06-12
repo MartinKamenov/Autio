@@ -1,85 +1,34 @@
-import React, { useEffect, useState } from 'react';
-import { AdvancedSearch, Pagination } from '../../common';
-import { RouteComponentProps } from 'react-router';
+import React from 'react';
+import { Pagination, SearchItemsList } from '../../common';
 import './Search.scss';
-import { getData, queryToObject, queryToString, QueryObject } from '../../../services/apiService';
 import { Filters } from '../../common/AdvancedSearch/AdvancedSearch';
-import { arrayResult, singleResult } from '../../../services/typeService';
-import { LoadingIndicator, Card } from '../../base';
-import { Link } from 'react-router-dom';
-import $ from 'jquery';
+import { LoadingIndicator } from '../../base';
 import { useEnums } from '../../../services/useEnums';
 
-const queryToFilters = (query: QueryObject): Filters => {
-    const result: Filters = {
-        brandNames: arrayResult(query.brandNames),
-        modelNames: arrayResult(query.modelNames),
-        coupeTypes: arrayResult(query.coupeTypes),
-        fromYear: singleResult(query.fromYear),
-        toYear: singleResult(query.toYear),
-        fromPower: singleResult(query.fromPower),
-        toPower: singleResult(query.toPower),
-        page: singleResult(query.page) || '1'
-    };
-
-    return result;
+export type SearchProps = {
+    loading: boolean;
+    onSubmit: (_: any, newFilters?: Filters) => void;
+    pagination: {
+        lastPage: number;
+        page: string;
+    },
+    items: any[],
+    filters: Filters
 };
 
-const Search: React.FC<RouteComponentProps> = ({
-    history
-}: RouteComponentProps) => {
-    const [items, setItems] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [lastPage, setLastPage] = useState(1);
-    const [filters, setFilters] = useState<Filters>({
-        brandNames: [],
-        modelNames: [],
-        coupeTypes: [],
-        fromYear: '',
-        toYear: '',
-        fromPower: '',
-        toPower: '',
-        page: '1'
-    });
-
+const Search: React.FC<SearchProps> = ({
+    loading,
+    onSubmit,
+    pagination,
+    items,
+    filters
+}: SearchProps) => {
     const {
         mappers: { brandsMapper }
     } = useEnums();
 
-    useEffect(() => {
-        const search = history.location.search;
-        const query = queryToObject(search);
-        const filt = queryToFilters(query);
-        setFilters(filt);
-        
-        fetchData(query);
-    }, [history.location.search]);
-
-    useEffect(() => {
-        $('html,body').animate({ scrollTop: 0 }, 1000);
-    }, [history.location.search]);
-
-    const fetchData = async(search: {
-        [key: string]: string | string[] 
-    }) => {
-        setLoading(true);
-        const {data} = await getData('/search/advanced', {...search, pageSize: 24});
-        setItems(data.items);
-        setLastPage(data.totalPagesCount);
-        setLoading(false);
-    };
-
-    const onSubmit = (_: any, newFilters?: Filters) => {
-        const updateFilters = newFilters ? newFilters : {...filters, page: '1'};
-        history.push(`/search${queryToString(updateFilters)}`);
-    };
-
     return (
         <div className='search-page'>
-            <AdvancedSearch
-                filters={filters}
-                setFilters={setFilters}
-                onSubmit={onSubmit}/>
             {loading ? (
                 <LoadingIndicator style={{
                     display: 'flex',
@@ -92,42 +41,23 @@ const Search: React.FC<RouteComponentProps> = ({
                         style={{
                             marginTop: 20
                         }}
-                        page={parseInt(filters.page, 10)}
-                        lastPage={lastPage}
+                        page={parseInt(pagination.page, 10)}
+                        lastPage={pagination.lastPage}
                         onChange={(newPage) => {
                             onSubmit(null, {
                                 ...filters,
                                 page: newPage.toString()
                             });
                         }}/>
-                    <div className='row clean items-container'>
-                        {items.map((item: any, i) => (
-                            <div key={i}
-                                className='col-lg-3 col-md-4 col-sm-6 column-element'>
-                                <Link className='details-container' to={`/modifications/${item.id}`}>
-                                    <Card imageHref={item.imageHref.replace('/thumb', '')}
-                                        content={() => (
-                                            <div className='description-wrapper'>
-                                                <h5 className='title'>
-                                                    {brandsMapper[item.brandShortName]} {item.modelName} {item.name}
-                                                </h5>
-                                            </div>
-                                        )}
-                                        style={{
-                                            margin: '10px auto'
-                                        }}/>
-                                </Link>
-                            </div>
-                        ))}
-                    </div>
+                    <SearchItemsList items={items} brandsMapper={brandsMapper}/>
                 </>
             )}
             <Pagination
                 style={{
                     marginBottom: 20
                 }}
-                page={parseInt(filters.page, 10)}
-                lastPage={lastPage}
+                page={parseInt(pagination.page, 10)}
+                lastPage={pagination.lastPage}
                 onChange={(newPage) => {
                     onSubmit(null, {
                         ...filters,

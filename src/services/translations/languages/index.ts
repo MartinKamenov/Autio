@@ -54,9 +54,18 @@ export const languageKeys: TranslationObject = {
         toLabel: 'advancedSearch.toLabel',
         coupeTypes: 'advancedSearch.coupeTypes',
         coupeTypesPlaceholder: 'advancedSearch.coupeTypesPlaceholder',
-        searchSubmit: 'advancedSearch.searchSubmit'
+        searchSubmit: 'advancedSearch.searchSubmit',
     },
-    toggle: 'toggle'
+    toggle: 'toggle',
+    search: {
+        sortBy: 'search.sortBy',
+        submitSearch: 'search.submitSearch'
+    },
+    sorting: {
+        year: 'sorting.year',
+        brandName: 'sorting.brandName',
+        power: 'sorting.power'
+    }
 };
 
 const defaultExport = {

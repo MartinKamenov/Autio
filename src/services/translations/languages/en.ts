@@ -65,7 +65,16 @@ const translationObject: TranslationObject = {
         coupeTypesPlaceholder: 'No coupe type is selected',
         searchSubmit: 'SEARCH'
     },
-    toggle: 'Change language'
+    toggle: 'Change language',
+    search: {
+        sortBy: 'Sort By',
+        submitSearch: 'Apply filters'
+    },
+    sorting: {
+        year: 'Year',
+        brandName: 'Brand Name',
+        power: 'Horse Power'
+    }
 };
 
 export default translationObject;

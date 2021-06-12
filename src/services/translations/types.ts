@@ -52,7 +52,16 @@ export type TranslationObject = {
         coupeTypesPlaceholder: string,
         searchSubmit: string
     },
-    toggle: string
+    toggle: string,
+    search: {
+        sortBy: string,
+        submitSearch: string
+    },
+    sorting: {
+        year: string,
+        brandName: string,
+        power: string
+    }
 };
 
 export type LanguageState = {

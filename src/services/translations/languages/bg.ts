@@ -55,7 +55,16 @@ const translationObject: TranslationObject = {
         coupeTypesPlaceholder: 'Няма селектиран тип на купе',
         searchSubmit: 'ТЪРСЕНЕ'
     },
-    toggle: 'Смяна езика'
+    toggle: 'Смяна езика',
+    search: {
+        sortBy: 'Сортиране по',
+        submitSearch: 'Търсене'
+    },
+    sorting: {
+        year: 'Година',
+        brandName: 'Марка',
+        power: 'Конски сили'
+    }
 };
 
 export default translationObject;

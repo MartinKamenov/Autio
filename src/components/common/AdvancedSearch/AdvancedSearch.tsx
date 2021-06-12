@@ -7,6 +7,8 @@ import {
 import { useEnums } from '../../../services/useEnums';
 import { useTranslation, languageKeys } from '../../../services/translations';
 
+export type SortingDirection = 'ASC' | 'DESC';
+
 export type Filters = {
     brandNames: string[];
     modelNames: string[];
@@ -16,6 +18,8 @@ export type Filters = {
     fromPower: string;
     toPower: string;
     page: string;
+    sortBy: string;
+    sortDir: SortingDirection;
 };
 
 export interface AdvancedSearchProps {

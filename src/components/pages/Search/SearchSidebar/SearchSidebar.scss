@@ -5,6 +5,7 @@
         height: calc(100% - 60px);
         padding-left: 10px;
         padding-right: 10px;
+        overflow-y: auto;
         .header {
             padding: 20px 10px 5px 10px;
             display: flex;

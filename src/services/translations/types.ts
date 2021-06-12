@@ -61,6 +61,28 @@ export type TranslationObject = {
         year: string,
         brandName: string,
         power: string
+    },
+    visibleDropdown: {
+        visibleCount: string,
+        selectAll: string,
+        removeAll: string,
+    },
+    modificationDetails: {
+        backButton: string,
+        likes: string,
+        addLike: string,
+        removeLike: string,
+        voters: string,
+        leaveRating: string,
+        comments: string,
+        leaveComment: string,
+        brand: string,
+        model: string,
+        generation: string,
+        engine: string,
+        doors: string,
+        power: string,
+        maximumSpeed: string
     }
 };
 

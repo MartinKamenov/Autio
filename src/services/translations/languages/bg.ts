@@ -64,6 +64,28 @@ const translationObject: TranslationObject = {
         year: 'Година',
         brandName: 'Марка',
         power: 'Конски сили'
+    },
+    visibleDropdown: {
+        visibleCount: 'Избрани',
+        selectAll: 'Всички',
+        removeAll: 'Изчистване',
+    },
+    modificationDetails: {
+        backButton: 'Обратно към резултатите',
+        likes: 'харесвания',
+        addLike: 'Добавете към харесвани',
+        removeLike: 'Премахнете от харесвани',
+        voters: '',
+        leaveRating: 'Оставете рейтинг',
+        comments: 'коментари',
+        leaveComment: 'Напишете коментар',
+        brand: 'Марка',
+        model: 'Модел',
+        generation: 'Генерация',
+        engine: 'Двигател',
+        doors: 'Врати',
+        power: 'Мощност',
+        maximumSpeed: 'Максимална скорост'
     }
 };
 

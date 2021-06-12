@@ -58,7 +58,7 @@ const SearchSidebar: React.FC<SearchSidebarProps> = ({
                     value: b.name
                 }))} onChange={(coupeTypes) => setFilters({...filters, coupeTypes})}
                 className='custom-dropdown-filter'
-                value={filters.brandNames}/>
+                value={filters.coupeTypes}/>
             </div>
             <div className='search-sidebar-action-bar'>
                 <MainButton onClick={onSubmit} className='action-button'>

@@ -90,6 +90,7 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                                             }}/>
                                             <div style={{
                                                 fontWeight: 'bold',
+                                                fontSize: 24,
                                                 marginLeft: 3,
                                                 marginRight: 3
                                             }}>233</div>
@@ -111,6 +112,7 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                                             }}/>
                                             <div style={{
                                                 fontWeight: 'bold',
+                                                fontSize: 24,
                                                 marginLeft: 3,
                                                 marginRight: 3
                                             }}>4.2</div>
@@ -130,6 +132,7 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                                             }}/>
                                             <div style={{
                                                 fontWeight: 'bold',
+                                                fontSize: 24,
                                                 marginLeft: 3,
                                                 marginRight: 3
                                             }}>233</div>

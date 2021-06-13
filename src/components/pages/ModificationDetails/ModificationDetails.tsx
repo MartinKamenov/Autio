@@ -82,56 +82,64 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                                 {data.information.name}
                             </h3>
                             <div className='row clean engagement-section'>
-                                <div className='col-md-4 engagement-detail'>
-                                    <div className='engagement-header'>
-                                        <Icon icon='heart' style={{
-                                            color: '#DA7F82'
-                                        }}/>
-                                        <div style={{
-                                            fontWeight: 'bold',
-                                            marginLeft: 3,
-                                            marginRight: 3
-                                        }}>233</div>
-                                        <div>{t(languageKeys.modificationDetails.likes)}</div>
+                                <div className='col-md-4'>
+                                    <div className='engagement-detail'>
+                                        <div className='engagement-header'>
+                                            <Icon icon='heart' style={{
+                                                color: '#DA7F82'
+                                            }}/>
+                                            <div style={{
+                                                fontWeight: 'bold',
+                                                marginLeft: 3,
+                                                marginRight: 3
+                                            }}>233</div>
+                                            <div>{t(languageKeys.modificationDetails.likes)}</div>
+                                        </div>
+                                        <div className='engagement-action-button' style={{
+                                            backgroundColor: '#DA7F82',
+                                            color: 'white'
+                                        }}>
+                                            {t(languageKeys.modificationDetails.addLike)}
+                                        </div>
                                     </div>
-                                    <div className='engagement-action-button' style={{
-                                        backgroundColor: '#DA7F82',
-                                        color: 'white'
-                                    }}>{t(languageKeys.modificationDetails.addLike)}</div>
                                 </div>
-                                <div className='col-md-4 engagement-detail'>
-                                    <div className='engagement-header'>
-                                        <Icon icon='star' style={{
-                                            color: '#FFC500'
-                                        }}/>
-                                        <div style={{
-                                            fontWeight: 'bold',
-                                            marginLeft: 3,
-                                            marginRight: 3
-                                        }}>4.2</div>
-                                        <div>{t(languageKeys.modificationDetails.voters)}</div>
+                                <div className='col-md-4'>
+                                    <div className='engagement-detail'>
+                                        <div className='engagement-header'>
+                                            <Icon icon='star' style={{
+                                                color: '#FFC500'
+                                            }}/>
+                                            <div style={{
+                                                fontWeight: 'bold',
+                                                marginLeft: 3,
+                                                marginRight: 3
+                                            }}>4.2</div>
+                                            <div>{t(languageKeys.modificationDetails.voters)}</div>
+                                        </div>
+                                        <div className='engagement-action-button' style={{
+                                            backgroundColor: '#FFC500',
+                                            color: 'white'
+                                        }}>{t(languageKeys.modificationDetails.leaveRating)}</div>
                                     </div>
-                                    <div className='engagement-action-button' style={{
-                                        backgroundColor: '#FFC500',
-                                        color: 'white'
-                                    }}>{t(languageKeys.modificationDetails.leaveRating)}</div>
                                 </div>
-                                <div className='col-md-4 engagement-detail'>
-                                    <div className='engagement-header'>
-                                        <Icon icon='comment' style={{
-                                            color: '#CC2127'
-                                        }}/>
-                                        <div style={{
-                                            fontWeight: 'bold',
-                                            marginLeft: 3,
-                                            marginRight: 3
-                                        }}>233</div>
-                                        <div>{t(languageKeys.modificationDetails.comments)}</div>
+                                <div className='col-md-4'>
+                                    <div className='engagement-detail'>
+                                        <div className='engagement-header'>
+                                            <Icon icon='comment' style={{
+                                                color: '#CC2127'
+                                            }}/>
+                                            <div style={{
+                                                fontWeight: 'bold',
+                                                marginLeft: 3,
+                                                marginRight: 3
+                                            }}>233</div>
+                                            <div>{t(languageKeys.modificationDetails.comments)}</div>
+                                        </div>
+                                        <div className='engagement-action-button' style={{
+                                            backgroundColor: '#CC2127',
+                                            color: 'white'
+                                        }}>{t(languageKeys.modificationDetails.leaveComment)}</div>
                                     </div>
-                                    <div className='engagement-action-button' style={{
-                                        backgroundColor: '#CC2127',
-                                        color: 'white'
-                                    }}>{t(languageKeys.modificationDetails.leaveComment)}</div>
                                 </div>
                             </div>
                             <div className='table-row'>

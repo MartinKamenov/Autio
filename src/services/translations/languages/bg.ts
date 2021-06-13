@@ -75,7 +75,7 @@ const translationObject: TranslationObject = {
         likes: 'харесвания',
         addLike: 'Добавете към харесвани',
         removeLike: 'Премахнете от харесвани',
-        voters: '',
+        voters: 'рейтинг',
         leaveRating: 'Оставете рейтинг',
         comments: 'коментари',
         leaveComment: 'Напишете коментар',

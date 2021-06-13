@@ -9,6 +9,23 @@
     .image-mozaik {
         width: 30%;
         padding: 20px;
+
+        .chevron {
+            color: white;
+            font-size: 30px;
+            margin-left: 10px;
+            margin-right: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .mozaik-element {
+            border: 1px solid transparent;
+            cursor: pointer;
+            &:hover {
+                border: 1px solid black;
+            }
+        }
     }
     .details-container {
         padding: 20px;
@@ -27,7 +44,6 @@
             margin-bottom: 20px;
             .engagement-detail {
                 background: #EBEBEB;
-                widows: 100%;
                 height: 90px;
                 display: flex;
                 flex-direction: column;

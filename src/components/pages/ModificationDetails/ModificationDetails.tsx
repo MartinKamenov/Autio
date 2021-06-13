@@ -12,6 +12,7 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
     match
 }: RouteComponentProps<{id: string}>) => {
     const [data, setData] = useState<any>(null);
+    const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const {
         mappers: {
             brandsMapper
@@ -28,6 +29,7 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
     const getModificationData = async(id: string) => {
         const {data} = await getData(`/modifications/${id}`);
         console.log(data);
+        setSelectedImageIndex(0);
 
         setData(data);
     };
@@ -41,6 +43,11 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
         );
     }
 
+    const images = [
+        data.information.imageHref.replace('/thumb', ''),
+        ...data.information.images
+    ];
+
     return (
         <div className='search-tabs-container'>
             <div className='search-tabs-row'>
@@ -53,24 +60,44 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                 }}>
                     <div className='modification-content'>
                         <div className='image-mozaik'>
-                            <Image
-                                style={{width: '100%', aspectRatio: '1 / 1'}}
-                                imageHref={data.information.imageHref.replace('/thumb', '')}/>
+                            <div style={{width: '100%', aspectRatio: '1 / 1'}}>
+                                <Image
+                                    style={{width: '100%', height: '100%'}}
+                                    imageHref={images[selectedImageIndex] || ''}/>
+                                <div style={{float: 'left', zIndex: 2, marginTop: '-50%'}}>
+                                    <Icon
+                                        icon='chevron-left'
+                                        className='chevron'
+                                        onClick={() =>
+                                            setSelectedImageIndex((selectedImageIndex - 1) %
+                                        images.length)}/>
+                                </div>
+                                <div style={{float: 'right', zIndex: 2, marginTop: '-50%'}}>
+                                    <Icon
+                                        icon='chevron-right'
+                                        className='chevron'
+                                        onClick={() =>
+                                            setSelectedImageIndex((selectedImageIndex + 1) %
+                                        images.length)}/>
+                                </div>
+                            </div>
                             <div className='row clean' style={{
                                 marginLeft: -4,
                                 marginRight: -4,
                                 marginTop: 10
                             }}>
-                                {[0, 1, 2, 3, 4].map((k) => (
-                                    <div key={k} className='col-lg-4 col-md-6' style={{
+                                {images.map((image: any, i: number) => (
+                                    <div key={i} className='col-lg-4 col-md-6' style={{
                                         padding: 4
                                     }}>
                                         <Image
+                                            className='mozaik-element'
                                             style={{
                                                 width: '100%',
                                                 aspectRatio: '16 / 9'
                                             }}
-                                            imageHref={data.information.imageHref.replace('/thumb', '')}/>
+                                            imageHref={image}
+                                            onClick={() => setSelectedImageIndex(i)}/>
                                     </div>
                                 ))}
                             </div>

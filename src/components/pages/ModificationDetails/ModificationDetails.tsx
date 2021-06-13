@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router';
-import { LoadingIndicator, Image } from '../../base';
+import { LoadingIndicator, Image, Icon } from '../../base';
 import { getData } from '../../../services/apiService';
 import { NAVBAR_HEIGHT } from '../../../constants/other';
 import { MainButton } from '../../base/BaseUI/BaseUI';
@@ -62,7 +62,7 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                                 marginTop: 10
                             }}>
                                 {[0, 1, 2, 3, 4].map((k) => (
-                                    <div key={k} className='col-md-4' style={{
+                                    <div key={k} className='col-lg-4 col-md-6' style={{
                                         padding: 4
                                     }}>
                                         <Image
@@ -76,8 +76,64 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                             </div>
                         </div>
                         <div className='details-container'>
-                            <h3>{brandsMapper[data.information.brandShortName]} ({data.information.modelName})</h3>
-                            <div>{data.information.name}</div>
+                            <h3>
+                                {brandsMapper[data.information.brandShortName] + ' '}
+                                {data.information.modelName + ' '}
+                                {data.information.name}
+                            </h3>
+                            <div className='row clean engagement-section'>
+                                <div className='col-md-4 engagement-detail'>
+                                    <div className='engagement-header'>
+                                        <Icon icon='heart' style={{
+                                            color: '#DA7F82'
+                                        }}/>
+                                        <div style={{
+                                            fontWeight: 'bold',
+                                            marginLeft: 3,
+                                            marginRight: 3
+                                        }}>233</div>
+                                        <div>{t(languageKeys.modificationDetails.likes)}</div>
+                                    </div>
+                                    <div className='engagement-action-button' style={{
+                                        backgroundColor: '#DA7F82',
+                                        color: 'white'
+                                    }}>{t(languageKeys.modificationDetails.addLike)}</div>
+                                </div>
+                                <div className='col-md-4 engagement-detail'>
+                                    <div className='engagement-header'>
+                                        <Icon icon='star' style={{
+                                            color: '#FFC500'
+                                        }}/>
+                                        <div style={{
+                                            fontWeight: 'bold',
+                                            marginLeft: 3,
+                                            marginRight: 3
+                                        }}>4.2</div>
+                                        <div>{t(languageKeys.modificationDetails.voters)}</div>
+                                    </div>
+                                    <div className='engagement-action-button' style={{
+                                        backgroundColor: '#FFC500',
+                                        color: 'white'
+                                    }}>{t(languageKeys.modificationDetails.leaveRating)}</div>
+                                </div>
+                                <div className='col-md-4 engagement-detail'>
+                                    <div className='engagement-header'>
+                                        <Icon icon='comment' style={{
+                                            color: '#CC2127'
+                                        }}/>
+                                        <div style={{
+                                            fontWeight: 'bold',
+                                            marginLeft: 3,
+                                            marginRight: 3
+                                        }}>233</div>
+                                        <div>{t(languageKeys.modificationDetails.comments)}</div>
+                                    </div>
+                                    <div className='engagement-action-button' style={{
+                                        backgroundColor: '#CC2127',
+                                        color: 'white'
+                                    }}>{t(languageKeys.modificationDetails.leaveComment)}</div>
+                                </div>
+                            </div>
                             <div className='table-row'>
                                 <div>{t(languageKeys.modificationDetails.brand)}</div>
                                 <div>{brandsMapper[data.information.brandShortName]}</div>
@@ -88,7 +144,7 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                             </div>
                             <div className='table-row'>
                                 <div>{t(languageKeys.modificationDetails.generation)}</div>
-                                <div>{data.information.generation}</div>
+                                <div>{data.information.generationName}</div>
                             </div>
                             <div className='table-row'>
                                 <div>{t(languageKeys.modificationDetails.engine)}</div>
@@ -100,11 +156,19 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                             </div>
                             <div className='table-row'>
                                 <div>{t(languageKeys.modificationDetails.power)}</div>
-                                <div>{data.information.power}</div>
+                                <div>{data.information.power} {t(languageKeys.constants.hp)}</div>
                             </div>
                             <div className='table-row'>
                                 <div>{t(languageKeys.modificationDetails.maximumSpeed)}</div>
-                                <div>{data.information.max_speed}</div>
+                                <div>{data.information.max_speed} {t(languageKeys.constants.kmh)}</div>
+                            </div>
+                            <div className='table-row'>
+                                <div>{t(languageKeys.modificationDetails.startYear)}</div>
+                                <div>{data.information.start}</div>
+                            </div>
+                            <div className='table-row'>
+                                <div>{t(languageKeys.modificationDetails.endYear)}</div>
+                                <div>{data.information.end}</div>
                             </div>
                         </div>
                     </div>

@@ -16,6 +16,35 @@
         display: flex;
         flex-direction: column;
 
+        .engagement-section {
+            // margin-left: -4px;
+            // margin-right: -4px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            .engagement-detail {
+                background: #EBEBEB;
+                padding: 4px;
+                height: 90px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+                .engagement-header {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    margin-bottom: 10px;
+                }
+
+                .engagement-action-button {
+                    border-radius: 2px;
+                    width: 200px;
+                    text-align: center;
+                }
+            }
+        }
+
         .table-row {
             padding: 10px 50px;
             display: flex;

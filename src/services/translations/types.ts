@@ -82,7 +82,17 @@ export type TranslationObject = {
         engine: string,
         doors: string,
         power: string,
-        maximumSpeed: string
+        maximumSpeed: string,
+        startYear: string,
+        endYear: string
+    },
+    constants: {
+        hp: string,
+        horsePower: string,
+        mph: string,
+        mphLong: string,
+        kmh: string,
+        kmhLong: string
     }
 };
 

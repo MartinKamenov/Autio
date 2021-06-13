@@ -86,7 +86,17 @@ export const languageKeys: TranslationObject = {
         engine: 'modificationDetails.engine',
         doors: 'modificationDetails.doors',
         power: 'modificationDetails.power',
-        maximumSpeed: 'modificationDetails.maximumSpeed'
+        maximumSpeed: 'modificationDetails.maximumSpeed',
+        startYear: 'modificationDetails.startYear',
+        endYear: 'modificationDetails.endYear'
+    },
+    constants: {
+        hp: 'constants.hp',
+        horsePower: 'constants.horsePower',
+        mph: 'constants.mph',
+        mphLong: 'constants.mphLong',
+        kmh: 'constants.kmh',
+        kmhLong: 'constants.kmhLong'
     }
 };
 

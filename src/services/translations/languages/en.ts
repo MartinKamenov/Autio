@@ -95,7 +95,17 @@ const translationObject: TranslationObject = {
         engine: 'Engine',
         doors: 'Doors',
         power: 'Power',
-        maximumSpeed: 'Maximum speed'
+        maximumSpeed: 'Maximum speed',
+        startYear: 'Release year',
+        endYear: 'Last production year'
+    },
+    constants: {
+        hp: 'hp',
+        horsePower: 'horse power',
+        mph: 'mph',
+        mphLong: 'miles per hour',
+        kmh: 'km/h',
+        kmhLong: 'kilometers per hour'
     }
 };
 

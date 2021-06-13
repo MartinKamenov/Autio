@@ -85,7 +85,17 @@ const translationObject: TranslationObject = {
         engine: 'Двигател',
         doors: 'Врати',
         power: 'Мощност',
-        maximumSpeed: 'Максимална скорост'
+        maximumSpeed: 'Максимална скорост',
+        startYear: 'Първа година на производство',
+        endYear: 'Последна година на производство'
+    },
+    constants: {
+        hp: 'кс',
+        horsePower: 'конски сили',
+        mph: 'м/ч',
+        mphLong: 'мили в час',
+        kmh: 'км/ч',
+        kmhLong: 'километра в час'
     }
 };
 

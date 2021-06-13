@@ -68,17 +68,19 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                                     <Icon
                                         icon='chevron-left'
                                         className='chevron'
-                                        onClick={() =>
-                                            setSelectedImageIndex((selectedImageIndex - 1) %
-                                        images.length)}/>
+                                        onClick={() => {
+                                            setSelectedImageIndex((selectedImageIndex + (images.length - 1)) %
+                                            images.length);
+                                        }}/>
                                 </div>
                                 <div style={{float: 'right', zIndex: 2, marginTop: '-50%'}}>
                                     <Icon
                                         icon='chevron-right'
                                         className='chevron'
-                                        onClick={() =>
+                                        onClick={() => {
                                             setSelectedImageIndex((selectedImageIndex + 1) %
-                                        images.length)}/>
+                                            images.length);
+                                        }}/>
                                 </div>
                             </div>
                             <div className='row clean' style={{

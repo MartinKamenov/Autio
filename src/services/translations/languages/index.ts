@@ -65,6 +65,38 @@ export const languageKeys: TranslationObject = {
         year: 'sorting.year',
         brandName: 'sorting.brandName',
         power: 'sorting.power'
+    },
+    visibleDropdown: {
+        visibleCount: 'visibleDropdown.visibleCount',
+        selectAll: 'visibleDropdown.selectAll',
+        removeAll: 'visibleDropdown.removeAll',
+    },
+    modificationDetails: {
+        backButton: 'modificationDetails.backButton',
+        likes: 'modificationDetails.likes',
+        addLike: 'modificationDetails.addLike',
+        removeLike: 'modificationDetails.removeLike',
+        voters: 'modificationDetails.voters',
+        leaveRating: 'modificationDetails.leaveRating',
+        comments: 'modificationDetails.comments',
+        leaveComment: 'modificationDetails.leaveComment',
+        brand: 'modificationDetails.brand',
+        model: 'modificationDetails.model',
+        generation: 'modificationDetails.generation',
+        engine: 'modificationDetails.engine',
+        doors: 'modificationDetails.doors',
+        power: 'modificationDetails.power',
+        maximumSpeed: 'modificationDetails.maximumSpeed',
+        startYear: 'modificationDetails.startYear',
+        endYear: 'modificationDetails.endYear'
+    },
+    constants: {
+        hp: 'constants.hp',
+        horsePower: 'constants.horsePower',
+        mph: 'constants.mph',
+        mphLong: 'constants.mphLong',
+        kmh: 'constants.kmh',
+        kmhLong: 'constants.kmhLong'
     }
 };
 

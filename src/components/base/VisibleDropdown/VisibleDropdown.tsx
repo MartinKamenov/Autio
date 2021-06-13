@@ -38,7 +38,7 @@ const VisibleDropdown: React.SFC<VisibleDropdownProps> = ({
     }>((acc, cur) => ({
         ...acc,
         [cur]: true
-    }),{});
+    }), {});
 
     return (
         <div className={`custom-all-visible-dropdwn ${className ? className : ''}`}

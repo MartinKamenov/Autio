@@ -6,7 +6,10 @@ import {
     IconDefinition,
     faCheckCircle,
     faChevronDown,
-    faChevronUp
+    faChevronUp,
+    faHeart,
+    faStar,
+    faComment
 } from '@fortawesome/free-solid-svg-icons';
 
 const iconMapper: {
@@ -15,7 +18,10 @@ const iconMapper: {
     'search': faSearch,
     'check-circle': faCheckCircle,
     'chevron-down': faChevronDown,
-    'chevron-up': faChevronUp
+    'chevron-up': faChevronUp,
+    'heart': faHeart,
+    'star': faStar,
+    'comment': faComment
 };
 
 export interface IconProps {

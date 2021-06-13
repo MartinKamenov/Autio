@@ -74,6 +74,38 @@ const translationObject: TranslationObject = {
         year: 'Year',
         brandName: 'Brand Name',
         power: 'Horse Power'
+    },
+    visibleDropdown: {
+        visibleCount: 'Selected',
+        selectAll: 'All',
+        removeAll: 'Clear',
+    },
+    modificationDetails: {
+        backButton: 'Back to results',
+        likes: 'likes',
+        addLike: 'Add to liked',
+        removeLike: 'Remove from liked',
+        voters: 'voters',
+        leaveRating: 'Leave a rating',
+        comments: 'comments',
+        leaveComment: 'Leave a comment',
+        brand: 'Brand',
+        model: 'Model',
+        generation: 'Generation',
+        engine: 'Engine',
+        doors: 'Doors',
+        power: 'Power',
+        maximumSpeed: 'Maximum speed',
+        startYear: 'Release year',
+        endYear: 'Last production year'
+    },
+    constants: {
+        hp: 'hp',
+        horsePower: 'horse power',
+        mph: 'mph',
+        mphLong: 'miles per hour',
+        kmh: 'km/h',
+        kmhLong: 'kilometers per hour'
     }
 };
 

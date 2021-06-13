@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router';
-import { LoadingIndicator } from '../../base';
+import { LoadingIndicator, Image } from '../../base';
 import { getData } from '../../../services/apiService';
 import { NAVBAR_HEIGHT } from '../../../constants/other';
 import { MainButton } from '../../base/BaseUI/BaseUI';
@@ -53,10 +53,27 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                 }}>
                     <div className='modification-content'>
                         <div className='image-mozaik'>
-                            <img
-                                style={{width: 300}}
-                                src={data.information.imageHref.replace('/thumb', '')}
-                                alt={data.information.name}/>
+                            <Image
+                                style={{width: '100%', aspectRatio: '1 / 1'}}
+                                imageHref={data.information.imageHref.replace('/thumb', '')}/>
+                            <div className='row clean' style={{
+                                marginLeft: -4,
+                                marginRight: -4,
+                                marginTop: 10
+                            }}>
+                                {[0, 1, 2, 3, 4].map((k) => (
+                                    <div key={k} className='col-md-4' style={{
+                                        padding: 4
+                                    }}>
+                                        <Image
+                                            style={{
+                                                width: '100%',
+                                                aspectRatio: '16 / 9'
+                                            }}
+                                            imageHref={data.information.imageHref.replace('/thumb', '')}/>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                         <div className='details-container'>
                             <h3>{brandsMapper[data.information.brandShortName]} ({data.information.modelName})</h3>

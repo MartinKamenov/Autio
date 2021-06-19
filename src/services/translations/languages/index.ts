@@ -97,6 +97,22 @@ export const languageKeys: TranslationObject = {
         mphLong: 'constants.mphLong',
         kmh: 'constants.kmh',
         kmhLong: 'constants.kmhLong'
+    },
+    engagements: {
+        views: 'engagements.views',
+        commentsHeader: 'engagements.commentsHeader',
+        ratingsHeader: 'engagements.ratingsHeader',
+        username: 'engagements.username',
+        updateDate: 'engagements.updateDate',
+        createDate: 'engagements.createDate',
+        rating: 'engagements.rating',
+        addComment: 'engagements.addComment',
+        editComment: 'engagements.editComment',
+        deleteComment: 'engagements.deleteComment',
+        addRating: 'engagements.addRating',
+        deleteRating: 'engagements.deleteRating',
+        noComments: 'engagements.noComments',
+        noRatings: 'engagements.noRatings'
     }
 };
 

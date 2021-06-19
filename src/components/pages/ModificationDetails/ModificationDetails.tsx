@@ -115,7 +115,10 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                         height: `calc(100vh - ${NAVBAR_HEIGHT})`,
                         overflowY: 'auto'
                     }}>
-                        <div className='modification-content'>
+                        <div className='modification-content' style={{
+                            height: `calc(100vh - ${NAVBAR_HEIGHT})`,
+                            overflowY: 'auto'
+                        }}>
                             <div className='image-mozaik'>
                                 <div style={{width: '100%', aspectRatio: '1 / 1'}}>
                                     <Image
@@ -281,7 +284,7 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                             </div>
                         </div>
                         <EngagementSection
-                            readOnly={!user}
+                            readOnly={false}
                             engagement={engagement}
                             addComment={addComment}
                             addRating={addRating}/>

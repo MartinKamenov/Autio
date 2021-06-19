@@ -96,6 +96,22 @@ const translationObject: TranslationObject = {
         mphLong: 'мили в час',
         kmh: 'км/ч',
         kmhLong: 'километра в час'
+    },
+    engagements: {
+        views: 'преглеждания',
+        commentsHeader: 'Коментари',
+        ratingsHeader: 'Рейтинг',
+        username: 'Потребител',
+        updateDate: 'Последна промяна на',
+        createDate: 'Създаден на',
+        rating: 'рейтинг',
+        addComment: 'Добавяне на коментар',
+        editComment: 'Промяна на коментар',
+        deleteComment: 'Премахване на коментар',
+        addRating: 'Добавяне на рейтинг',
+        deleteRating: 'Премахване на рейтинг',
+        noComments: 'Няма коментари',
+        noRatings: 'Няма рейтинг'
     }
 };
 

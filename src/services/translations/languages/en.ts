@@ -106,6 +106,22 @@ const translationObject: TranslationObject = {
         mphLong: 'miles per hour',
         kmh: 'km/h',
         kmhLong: 'kilometers per hour'
+    },
+    engagements: {
+        views: 'views',
+        commentsHeader: 'Comments',
+        ratingsHeader: 'Ratings',
+        username: 'username',
+        updateDate: 'Last updated on',
+        createDate: 'Created on',
+        rating: 'rating',
+        addComment: 'Add comment',
+        editComment: 'Edit comment',
+        deleteComment: 'Delete comment',
+        addRating: 'Add rating',
+        deleteRating: 'Remove rating',
+        noComments: 'No comments found',
+        noRatings: 'No ratings posted'
     }
 };
 

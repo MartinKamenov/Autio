@@ -93,6 +93,22 @@ export type TranslationObject = {
         mphLong: string,
         kmh: string,
         kmhLong: string
+    },
+    engagements: {
+        views: string,
+        commentsHeader: string,
+        ratingsHeader: string,
+        username: string,
+        updateDate: string,
+        createDate: string,
+        rating: string,
+        addComment: string,
+        editComment: string,
+        deleteComment: string,
+        addRating: string,
+        deleteRating: string,
+        noComments: string,
+        noRatings: string
     }
 };
 

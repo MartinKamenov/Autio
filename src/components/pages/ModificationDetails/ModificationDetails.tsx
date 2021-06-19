@@ -283,13 +283,13 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                                 </div>
                             </div>
                         </div>
-                        <EngagementSection
-                            readOnly={false}
-                            engagement={engagement}
-                            addComment={addComment}
-                            addRating={addRating}/>
                     </div>
                 </div>
+                <EngagementSection
+                    readOnly={false}
+                    engagement={engagement}
+                    addComment={addComment}
+                    addRating={addRating}/>
             </div>
         </>
     );

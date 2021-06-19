@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router';
 import { LoadingIndicator, Image, Icon } from '../../base';
-import { getData } from '../../../services/apiService';
+import { getData, postData } from '../../../services/apiService';
 import { NAVBAR_HEIGHT } from '../../../constants/other';
 import { MainButton } from '../../base/BaseUI/BaseUI';
 import { useTranslation, languageKeys } from '../../../services/translations';
 import './ModificationDetails.scss';
 import { useEnums } from '../../../services/useEnums';
 import ReactFullscreenSlideshow from 'react-fullscreen-slideshow';
+import * as COLORS from '../../../constants/colors';
+import { EngagementSection } from '../../common';
+import { useUser } from '../../../services/user';
  
 const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
     match
@@ -15,11 +18,15 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
     const [data, setData] = useState<any>(null);
     const [open, setOpen] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+    const [engagement, setEngagement] = useState<any>(null);
     const {
         mappers: {
             brandsMapper
         }
     } = useEnums();
+    const {user} = useUser();
+    const userId = '123456';
+    const isLiked = engagement ? engagement.likes.indexOf(userId) !== -1 : false;
     const {t} = useTranslation();
     useEffect(() => {
         const id = match.params.id;
@@ -28,12 +35,53 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
         getModificationData(id);
     }, [match.params.id]);
 
+    useEffect(() => {
+        updateViews();
+    }, []);
+
+    const updateViews = async() => {
+        const id = match.params.id;
+        const {data: engagementData} = await postData(`/engagements/${id}/views`, {
+            userId,
+        });
+        setEngagement(engagementData);
+    };
+
     const getModificationData = async(id: string) => {
         const {data} = await getData(`/modifications/${id}`);
+        setEngagement(data.engagement);
+
         console.log(data);
         setSelectedImageIndex(0);
 
         setData(data);
+    };
+
+    const addLike = async() => {
+        const id = match.params.id;
+        const {data: engagementData} = await postData(`/engagements/${id}/likes`, {
+            userId
+        });
+        setEngagement(engagementData);
+    };
+
+    const addComment = async(message: string) => {
+        const id = match.params.id;
+        const {data: engagementData} = await postData(`/engagements/${id}/comments`, {
+            message,
+            userId,
+            username: 'pesho'
+        });
+        setEngagement(engagementData);
+    };
+
+    const addRating = async(vote: number) => {
+        const id = match.params.id;
+        const {data: engagementData} = await postData(`/engagements/${id}/ratings`, {
+            vote,
+            userId
+        });
+        setEngagement(engagementData);
     };
 
     if(!data) {
@@ -115,31 +163,41 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                                 </div>
                             </div>
                             <div className='details-container'>
-                                <h3>
-                                    {brandsMapper[data.information.brandShortName] + ' '}
-                                    {data.information.modelName + ' '}
-                                    {data.information.name}
-                                </h3>
+                                <div className='details-header'>
+                                    <h3>
+                                        {brandsMapper[data.information.brandShortName] + ' '}
+                                        {data.information.modelName + ' '}
+                                        {data.information.name}
+                                    </h3>
+                                    <div className='details-view'>
+                                        <Icon icon='eye' style={{
+                                            color: COLORS.ALTERNATIVE_FONT,
+                                            marginRight: 5
+                                        }}/>
+                                        <div className='likes-count'>{engagement.totalViews}</div>
+                                    </div>
+                                </div>
                                 <div className='row clean engagement-section'>
                                     <div className='col-md-4'>
                                         <div className='engagement-detail'>
                                             <div className='engagement-header'>
                                                 <Icon icon='heart' style={{
-                                                    color: '#DA7F82'
+                                                    color: isLiked ? '#d45b5f' : '#DA7F82'
                                                 }}/>
                                                 <div style={{
                                                     fontWeight: 'bold',
                                                     fontSize: 24,
                                                     marginLeft: 3,
                                                     marginRight: 3
-                                                }}>233</div>
+                                                }}>{engagement.likes.length}</div>
                                                 <div>{t(languageKeys.modificationDetails.likes)}</div>
                                             </div>
                                             <div className='engagement-action-button' style={{
                                                 backgroundColor: '#DA7F82',
                                                 color: 'white'
-                                            }}>
-                                                {t(languageKeys.modificationDetails.addLike)}
+                                            }} onClick={addLike}>
+                                                {isLiked ? t(languageKeys.modificationDetails.removeLike) : 
+                                                    t(languageKeys.modificationDetails.addLike)}
                                             </div>
                                         </div>
                                     </div>
@@ -154,7 +212,7 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                                                     fontSize: 24,
                                                     marginLeft: 3,
                                                     marginRight: 3
-                                                }}>4.2</div>
+                                                }}>{engagement.ratings.length}</div>
                                                 <div>{t(languageKeys.modificationDetails.voters)}</div>
                                             </div>
                                             <div className='engagement-action-button' style={{
@@ -174,7 +232,7 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                                                     fontSize: 24,
                                                     marginLeft: 3,
                                                     marginRight: 3
-                                                }}>233</div>
+                                                }}>{engagement.comments.length}</div>
                                                 <div>{t(languageKeys.modificationDetails.comments)}</div>
                                             </div>
                                             <div className='engagement-action-button' style={{
@@ -222,6 +280,11 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                                 </div>
                             </div>
                         </div>
+                        <EngagementSection
+                            readOnly={!user}
+                            engagement={engagement}
+                            addComment={addComment}
+                            addRating={addRating}/>
                     </div>
                 </div>
             </div>

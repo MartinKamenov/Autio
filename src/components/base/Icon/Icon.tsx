@@ -11,7 +11,8 @@ import {
     faStar,
     faComment,
     faChevronLeft,
-    faChevronRight
+    faChevronRight,
+    faEye
 } from '@fortawesome/free-solid-svg-icons';
 
 const iconMapper: {
@@ -25,7 +26,8 @@ const iconMapper: {
     'chevron-right': faChevronRight,
     'heart': faHeart,
     'star': faStar,
-    'comment': faComment
+    'comment': faComment,
+    'eye': faEye
 };
 
 export interface IconProps {

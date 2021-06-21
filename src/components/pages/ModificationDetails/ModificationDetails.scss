@@ -10,6 +10,14 @@
         width: 30%;
         padding: 20px;
 
+        .selected-image {
+            border: 1px solid transparent;
+            cursor: pointer;
+            &:hover {
+                border: 1px solid black;
+            }
+        }
+
         .chevron {
             color: white;
             font-size: 30px;

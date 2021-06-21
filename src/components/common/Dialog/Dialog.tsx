@@ -37,8 +37,8 @@ const Dialog: React.FC = () => {
 
     return (
         <div className='dialog-container'>
-            <div className='top-right-actions'>
-                <Icon icon='delete' onClick={closeDialog} className='close-icon'/>
+            <div className='top-right-actions' onClick={closeDialog} >
+                <Icon icon='delete' className='close-icon'/>
             </div>
             {getDialogContentComponent()}
         </div>

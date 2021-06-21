@@ -20,6 +20,10 @@
         align-items: center;
         cursor: pointer;
 
+        &:hover {
+            background-color: #eee;
+        }
+
         .close-icon {
             font-size: 30px;
             color: black;

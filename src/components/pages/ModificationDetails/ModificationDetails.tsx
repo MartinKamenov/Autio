@@ -124,6 +124,7 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                             <div className='image-mozaik'>
                                 <div style={{width: '100%', aspectRatio: '1 / 1'}}>
                                     <Image
+                                        className='selected-image'
                                         onClick={() => openSlideShow(images)}
                                         style={{width: '100%', height: '100%'}}
                                         imageHref={images[selectedImageIndex] || ''}/>

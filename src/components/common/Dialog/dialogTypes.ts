@@ -1,0 +1,1 @@
+export const SLIDESHOW_DIALOG = 'SLIDESHOW_DIALOG';

@@ -2,7 +2,7 @@ import React from 'react';
 import { useUser } from '.';
 
 export type UserProviderProps = {
-    children: React.ReactChild
+    children: React.ReactChild | React.ReactChild[]
 };
 
 const UserProvider: React.FC<UserProviderProps> = ({

@@ -7,16 +7,16 @@ import { MainButton } from '../../base/BaseUI/BaseUI';
 import { useTranslation, languageKeys } from '../../../services/translations';
 import './ModificationDetails.scss';
 import { useEnums } from '../../../services/useEnums';
-import ReactFullscreenSlideshow from 'react-fullscreen-slideshow';
 import * as COLORS from '../../../constants/colors';
 import { EngagementSection } from '../../common';
 import { useUser } from '../../../services/user';
+import { useDispatch } from 'react-redux';
+import { openSlideshowDialog } from '../../common/Dialog/actions';
  
 const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
     match
 }: RouteComponentProps<{id: string}>) => {
     const [data, setData] = useState<any>(null);
-    const [open, setOpen] = useState(false);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const [engagement, setEngagement] = useState<any>(null);
     const {
@@ -28,6 +28,7 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
     const userId = '123456';
     const isLiked = engagement ? engagement.likes.indexOf(userId) !== -1 : false;
     const {t} = useTranslation();
+    const dispatch = useDispatch();
     useEffect(() => {
         const id = match.params.id;
         document.body.scrollTop = 0; // For Safari
@@ -84,6 +85,17 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
         setEngagement(engagementData);
     };
 
+    const openSlideShow = (images: any[]) => {
+        const params = {
+            images: images.map(image => ({
+                image,
+                caption: ''
+            })),
+            title: 'Example Image slideshow'
+        };
+        dispatch(openSlideshowDialog(params));
+    };
+
     if(!data) {
         return (
             <LoadingIndicator style={{
@@ -100,12 +112,6 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
 
     return (
         <>
-            {open && <ReactFullscreenSlideshow
-                images={images.map(image => ({
-                    image,
-                    caption: ''
-                }))}
-                title={'Example Image slideshow'}/>}
             <div className='search-tabs-container'>
                 <div className='search-tabs-row'>
                     <div className='navigation'>
@@ -122,7 +128,7 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                             <div className='image-mozaik'>
                                 <div style={{width: '100%', aspectRatio: '1 / 1'}}>
                                     <Image
-                                        onClick={() => setOpen(true)}
+                                        onClick={() => openSlideShow(images)}
                                         style={{width: '100%', height: '100%'}}
                                         imageHref={images[selectedImageIndex] || ''}/>
                                     <div style={{float: 'left', zIndex: 2, marginTop: '-50%'}}>

@@ -52,7 +52,6 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
         const {data} = await getData(`/modifications/${id}`);
         setEngagement(data.engagement);
 
-        console.log(data);
         setSelectedImageIndex(0);
 
         setData(data);
@@ -87,11 +86,8 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
 
     const openSlideShow = (images: any[]) => {
         const params = {
-            images: images.map(image => ({
-                image,
-                caption: ''
-            })),
-            title: 'Example Image slideshow'
+            images,
+            initialIndex: selectedImageIndex
         };
         dispatch(openSlideshowDialog(params));
     };

@@ -2,9 +2,10 @@ import React from 'react';
 import './Dialog.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { SLIDESHOW_DIALOG } from './dialogTypes';
-import ReactFullscreenSlideshow from 'react-fullscreen-slideshow';
+//import ReactFullscreenSlideshow from 'react-fullscreen-slideshow';
 import { Icon } from '../../base';
 import { closeDialog as closeDialogAction } from './actions';
+import SlideshowDialog from './SlideshowDialog';
  
 const Dialog: React.FC = () => {
     const {
@@ -12,18 +13,13 @@ const Dialog: React.FC = () => {
         component,
         params
     } = useSelector((globalState: any) => globalState.dialog);
-    console.log({
-        open,
-        component,
-        params
-    });
 
     const dispatch = useDispatch();
 
     const getDialogContentComponent = () => {
         switch(component) {
         case SLIDESHOW_DIALOG: {
-            return <ReactFullscreenSlideshow {...params}/>;
+            return <SlideshowDialog {...params}/>;
         }
         default: {
             return null;

@@ -12,10 +12,21 @@ import { EngagementSection } from '../../common';
 import { useUser } from '../../../services/user';
 import { useDispatch } from 'react-redux';
 import { openSlideshowDialog } from '../../common/Dialog/actions';
+
+export type ModificationDetailsProps = {
+    history: {
+        location: {
+            state?: {
+                prevPath: string
+            }
+        }
+    } & RouteComponentProps['history']
+} & RouteComponentProps<{id: string}>;
  
-const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
-    match
-}: RouteComponentProps<{id: string}>) => {
+const ModificationDetails: React.FC<ModificationDetailsProps> = ({
+    match,
+    history
+}: ModificationDetailsProps) => {
     const [data, setData] = useState<any>(null);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const [engagement, setEngagement] = useState<any>(null);
@@ -92,6 +103,15 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
         dispatch(openSlideshowDialog(params));
     };
 
+    const returnToSearch = () => {
+        const defaultNewLoaction = '/search';
+        const state = history.location.state;
+        const newLocation = state ?
+            state.prevPath.includes(defaultNewLoaction) ?
+                state.prevPath : defaultNewLoaction : defaultNewLoaction;
+        history.push(newLocation);
+    };
+
     if(!data) {
         return (
             <LoadingIndicator style={{
@@ -110,10 +130,12 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
         <>
             <div className='search-tabs-container'>
                 <div className='search-tabs-row'>
-                    <div className='navigation'>
-                        <MainButton>{t(languageKeys.modificationDetails.backButton)}</MainButton>
+                    <div className='navigation no-mobile' style={{width: '15%'}}>
+                        <MainButton onClick={returnToSearch}>
+                            {t(languageKeys.modificationDetails.backButton)}
+                        </MainButton>
                     </div>
-                    <div className='search-content' style={{
+                    <div className='search-content fullscreen-mobile' style={{
                         height: `calc(100vh - ${NAVBAR_HEIGHT})`,
                         overflowY: 'auto'
                     }}>
@@ -122,6 +144,20 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                             overflowY: 'auto'
                         }}>
                             <div className='image-mozaik'>
+                                <div className='details-header only-mobile'>
+                                    <h3>
+                                        {brandsMapper[data.information.brandShortName] + ' '}
+                                        {data.information.modelName + ' '}
+                                        {data.information.name}
+                                    </h3>
+                                    <div className='details-view'>
+                                        <Icon icon='eye' style={{
+                                            color: COLORS.ALTERNATIVE_FONT,
+                                            marginRight: 5
+                                        }}/>
+                                        <div className='likes-count'>{engagement.totalViews}</div>
+                                    </div>
+                                </div>
                                 <div style={{width: '100%', aspectRatio: '1 / 1'}}>
                                     <Image
                                         className='selected-image'
@@ -147,7 +183,7 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                                             }}/>
                                     </div>
                                 </div>
-                                <div className='row clean' style={{
+                                <div className='row clean no-mobile' style={{
                                     marginLeft: -4,
                                     marginRight: -4,
                                     marginTop: 10
@@ -168,8 +204,8 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
                                     ))}
                                 </div>
                             </div>
-                            <div className='details-container'>
-                                <div className='details-header'>
+                            <div className='details-container fullscreen-mobile'>
+                                <div className='details-header no-mobile'>
                                     <h3>
                                         {brandsMapper[data.information.brandShortName] + ' '}
                                         {data.information.modelName + ' '}

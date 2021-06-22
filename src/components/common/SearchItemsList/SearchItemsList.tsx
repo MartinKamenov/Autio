@@ -15,7 +15,11 @@ const SearchItemsList: React.FC<SearchItemsListProps> = ({
         {items.map((item: any, i) => (
             <div key={i}
                 className='col-lg-3 col-md-4 col-sm-6 column-element'>
-                <Link className='details-container' to={`/modifications/${item.id}`}>
+                <Link className='details-container' to={{
+                    pathname: `/modifications/${item.id}`,
+                    state: {
+                        prevPath: `${location.pathname}${location.search}`
+                    }}}>
                     <Card imageHref={item.imageHref.replace('/thumb', '')}
                         content={() => (
                             <div className='description-wrapper'>

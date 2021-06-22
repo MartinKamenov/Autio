@@ -12,7 +12,7 @@ const useStatistics = () => {
     const {user} = useUser();
 
     const fetchLocation = async() => {
-        const {data} = await axios.get('http://ipinfo.io?token=a68019101fd695');
+        const {data} = await axios.get('https://ipinfo.io?token=a68019101fd695');
         setLocationData(data);
     };
 

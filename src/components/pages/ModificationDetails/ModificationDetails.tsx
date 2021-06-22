@@ -130,12 +130,12 @@ const ModificationDetails: React.FC<ModificationDetailsProps> = ({
         <>
             <div className='search-tabs-container'>
                 <div className='search-tabs-row'>
-                    <div className='navigation'>
+                    <div className='navigation no-mobile' style={{width: '15%'}}>
                         <MainButton onClick={returnToSearch}>
                             {t(languageKeys.modificationDetails.backButton)}
                         </MainButton>
                     </div>
-                    <div className='search-content' style={{
+                    <div className='search-content fullscreen-mobile' style={{
                         height: `calc(100vh - ${NAVBAR_HEIGHT})`,
                         overflowY: 'auto'
                     }}>
@@ -144,6 +144,20 @@ const ModificationDetails: React.FC<ModificationDetailsProps> = ({
                             overflowY: 'auto'
                         }}>
                             <div className='image-mozaik'>
+                                <div className='details-header only-mobile'>
+                                    <h3>
+                                        {brandsMapper[data.information.brandShortName] + ' '}
+                                        {data.information.modelName + ' '}
+                                        {data.information.name}
+                                    </h3>
+                                    <div className='details-view'>
+                                        <Icon icon='eye' style={{
+                                            color: COLORS.ALTERNATIVE_FONT,
+                                            marginRight: 5
+                                        }}/>
+                                        <div className='likes-count'>{engagement.totalViews}</div>
+                                    </div>
+                                </div>
                                 <div style={{width: '100%', aspectRatio: '1 / 1'}}>
                                     <Image
                                         className='selected-image'
@@ -169,7 +183,7 @@ const ModificationDetails: React.FC<ModificationDetailsProps> = ({
                                             }}/>
                                     </div>
                                 </div>
-                                <div className='row clean' style={{
+                                <div className='row clean no-mobile' style={{
                                     marginLeft: -4,
                                     marginRight: -4,
                                     marginTop: 10
@@ -190,8 +204,8 @@ const ModificationDetails: React.FC<ModificationDetailsProps> = ({
                                     ))}
                                 </div>
                             </div>
-                            <div className='details-container'>
-                                <div className='details-header'>
+                            <div className='details-container fullscreen-mobile'>
+                                <div className='details-header no-mobile'>
                                     <h3>
                                         {brandsMapper[data.information.brandShortName] + ' '}
                                         {data.information.modelName + ' '}

@@ -50,3 +50,22 @@ h1, h2 {
 input.big-checkbox {
   transform: scale(1.2);
 }
+
+@media screen and (max-width: 576px) {
+  .no-mobile {
+    display: none !important;
+  }
+  .fullscreen-mobile {
+    width: 100% !important;
+  }
+
+  .only-mobile {
+    display: initial;
+  }
+}
+
+@media screen and (min-width: 577px) {
+  .only-mobile {
+    display: none !important;
+  }
+}

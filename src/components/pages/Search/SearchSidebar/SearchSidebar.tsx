@@ -7,13 +7,14 @@ import { MainButton } from '../../../base/BaseUI/BaseUI';
 import { useTranslation, languageKeys } from '../../../../services/translations';
 import { NAVBAR_HEIGHT, getSortingValues } from '../../../../constants/other';
 import { Dropdown } from '../../../base';
+import { cloneDeep } from 'lodash';
 
 export interface SearchSidebarProps {
     filters: Filters,
     setFilters: (filters: Filters) => void,
     onSubmit: (_: any, newFilters?: Filters) => void
 }
- 
+
 const SearchSidebar: React.FC<SearchSidebarProps> = ({
     filters,
     setFilters,
@@ -28,7 +29,31 @@ const SearchSidebar: React.FC<SearchSidebarProps> = ({
             brandsMapper
         }
     } = useEnums();
-    const {t} = useTranslation();
+    const { t } = useTranslation();
+
+    const getModels = (): { label: string, value: string, groupKey: string }[] => {
+        let modelOptions: { label: string, value: string, groupKey: string }[] = [];
+        if (filters && filters.brandNames && filters.brandNames.length > 0) {
+            filters.brandNames.forEach(brandName => {
+                const selectedBrand = brandOptions.find(option => option.shortName === brandName);
+                if (selectedBrand) {                
+                    const brandModels = cloneDeep(selectedBrand?.models);
+                    const brandFullName = selectedBrand.name;
+                    if (brandModels) {
+                        const options = brandModels.map((model) => {
+                            return {
+                                label: model.name,
+                                value: model.name,
+                                groupKey: brandFullName
+                            };
+                        });
+                        modelOptions = modelOptions.concat(options);
+                    }
+                }
+            });
+        }
+        return modelOptions;
+    };
 
     return (
         <div className='search-sidebar' style={{
@@ -40,25 +65,31 @@ const SearchSidebar: React.FC<SearchSidebarProps> = ({
                 </div>
                 <Dropdown options={getSortingValues(t)}
                     value={filters.sortBy}
-                    onChange={(sortBy) => setFilters({...filters, sortBy})}
-                    style={{width: '100%'}}/>
+                    onChange={(sortBy) => setFilters({ ...filters, sortBy })}
+                    style={{ width: '100%' }} />
                 <div className='header'>
                     <h5>{t(languageKeys.advancedSearch.brand)}</h5>
                 </div>
                 <VisibleDropdown options={brandOptions.map((b) => ({
                     value: b.shortName,
                     label: brandsMapper[b.shortName]
-                }))} onChange={(brandNames) => setFilters({...filters, brandNames})}
+                }))} onChange={(brandNames) => setFilters({ ...filters, brandNames })}
                 className='custom-dropdown-filter'
-                value={filters.brandNames}/>
+                value={filters.brandNames} />
+                <div className='header'>
+                    <h5>{t(languageKeys.advancedSearch.model)}</h5>
+                </div>
+                <VisibleDropdown options={getModels()} onChange={(coupeTypes) => setFilters({ ...filters, coupeTypes })}
+                    className='custom-dropdown-filter'
+                    value={[]} />
                 <div className='header'>
                     <h5>{t(languageKeys.advancedSearch.coupeTypes)}</h5>
                 </div>
                 <VisibleDropdown options={coupeTypeOptions.map((b) => ({
                     value: b.name
-                }))} onChange={(coupeTypes) => setFilters({...filters, coupeTypes})}
+                }))} onChange={(coupeTypes) => setFilters({ ...filters, coupeTypes })}
                 className='custom-dropdown-filter'
-                value={filters.coupeTypes}/>
+                value={filters.coupeTypes} />
             </div>
             <div className='search-sidebar-action-bar'>
                 <MainButton onClick={onSubmit} className='action-button'>
@@ -68,5 +99,5 @@ const SearchSidebar: React.FC<SearchSidebarProps> = ({
         </div>
     );
 };
- 
+
 export default SearchSidebar;

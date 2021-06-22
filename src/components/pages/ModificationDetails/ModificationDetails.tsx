@@ -12,10 +12,21 @@ import { EngagementSection } from '../../common';
 import { useUser } from '../../../services/user';
 import { useDispatch } from 'react-redux';
 import { openSlideshowDialog } from '../../common/Dialog/actions';
+
+export type ModificationDetailsProps = {
+    history: {
+        location: {
+            state?: {
+                prevPath: string
+            }
+        }
+    } & RouteComponentProps['history']
+} & RouteComponentProps<{id: string}>;
  
-const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
-    match
-}: RouteComponentProps<{id: string}>) => {
+const ModificationDetails: React.FC<ModificationDetailsProps> = ({
+    match,
+    history
+}: ModificationDetailsProps) => {
     const [data, setData] = useState<any>(null);
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
     const [engagement, setEngagement] = useState<any>(null);
@@ -92,6 +103,15 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
         dispatch(openSlideshowDialog(params));
     };
 
+    const returnToSearch = () => {
+        const defaultNewLoaction = '/search';
+        const state = history.location.state;
+        const newLocation = state ?
+            state.prevPath.includes(defaultNewLoaction) ?
+                state.prevPath : defaultNewLoaction : defaultNewLoaction;
+        history.push(newLocation);
+    };
+
     if(!data) {
         return (
             <LoadingIndicator style={{
@@ -111,7 +131,9 @@ const ModificationDetails: React.FC<RouteComponentProps<{id: string}>> = ({
             <div className='search-tabs-container'>
                 <div className='search-tabs-row'>
                     <div className='navigation'>
-                        <MainButton>{t(languageKeys.modificationDetails.backButton)}</MainButton>
+                        <MainButton onClick={returnToSearch}>
+                            {t(languageKeys.modificationDetails.backButton)}
+                        </MainButton>
                     </div>
                     <div className='search-content' style={{
                         height: `calc(100vh - ${NAVBAR_HEIGHT})`,

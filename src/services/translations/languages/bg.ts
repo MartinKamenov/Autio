@@ -27,9 +27,22 @@ const translationObject: TranslationObject = {
     },
     informationSection: {
         header1: 'Търсите нова кола?',
-        description1: 'Имаме точния уебсайт за вас! Audio Ви позволява да виждате информацията за всяка кола която обмисляте като следваща покупка. Също така можете да разберете повече за колата от реални собственици.',
-        header2: 'За вдъхновени ентусиасти',
-        description2: 'Autio е за всички вас любители на колите'
+        description1: {
+            description1Part1: 'Имаме точния уебсайт за вас!',
+            description1Part2: 'Autio Ви позволява да виждате информацията за',
+            description1Part3: 'всяка кола, която обмисляте',
+            description1Part4: ' като следваща покупка.',
+            description1Part5: 'Също така можете да разберете повече',
+            description1Part6: 'за колата от реални собственици.'
+        },
+        header2Part1: 'За запалените',
+        header2Part2: 'автолюбители',
+        description2: {
+            description2Part1: 'Autio е за всички любители на коли,',
+            description2Part2: 'които се интересуват от най-последните промени',
+            description2Part3: 'и иновации в индустрията. Разполагаме с огромна база',
+            description2Part4: 'данни, в която да намерите автомобила, който търсите!',
+        }
     },
     authentication: {
         loginHeader: 'Влизане',

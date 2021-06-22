@@ -27,19 +27,22 @@ const translationObject: TranslationObject = {
     },
     informationSection: {
         header1: 'Looking for a new car?',
-        description1: `
-        We have just the tool for you!
-        Autio allows you to see all the information you need about
-        every car you may be considering or just want to look up. You
-        can also read through informative reviews from real owners to
-        help you make the best choice!
-        `,
-        header2: 'For the passionate car enthusiast',
-        description2: `
-        Autio is for all you car lovers out there,
-        who love to stay up to date with the latest releases
-        and innovations in the industry. We have a huge car database
-        to make sure that you'll find the model you're looking for!`
+        description1: {
+            description1Part1: 'We have just the tool for you!',
+            description1Part2: 'Autio allows you to see all the information you need about',
+            description1Part3: 'every car you may be considering',
+            description1Part4: 'or just want to look up. You',
+            description1Part5: 'can also read through informative reviews from real owners to',
+            description1Part6: 'help you make the best choice!',
+        },
+        header2Part1: 'For the passionate',
+        header2Part2: ' car enthusiast',
+        description2: {
+            description2Part1: 'Autio is for all you car lovers out there,',
+            description2Part2: 'who love to stay up to date with the latest releases',
+            description2Part3: 'and innovations in the industry. We have a huge car database',
+            description2Part4: ' to make sure that you will find the model you аre looking for!'
+        }
     },
     authentication: {
         loginHeader: 'Log in',

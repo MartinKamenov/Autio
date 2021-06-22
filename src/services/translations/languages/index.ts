@@ -28,9 +28,22 @@ export const languageKeys: TranslationObject = {
     },
     informationSection: {
         header1: 'informationSection.header1',
-        description1: 'informationSection.description1',
-        header2: 'informationSection.header2',
-        description2: 'informationSection.description2'
+        description1: {
+            description1Part1: 'informationSection.description1.description1Part1',
+            description1Part2: 'informationSection.description1.description1Part2',
+            description1Part3: 'informationSection.description1.description1Part3',
+            description1Part4: 'informationSection.description1.description1Part4',
+            description1Part5: 'informationSection.description1.description1Part5',
+            description1Part6: 'informationSection.description1.description1Part6'
+        },        
+        header2Part1: 'informationSection.header2Part1',
+        header2Part2: 'informationSection.header2Part2',
+        description2: {
+            description2Part1: 'informationSection.description2.description2Part1',
+            description2Part2: 'informationSection.description2.description2Part2',
+            description2Part3: 'informationSection.description2.description2Part3',
+            description2Part4: 'informationSection.description2.description2Part4',
+        }
     },
     authentication: {
         loginHeader: 'authentication.loginHeader',

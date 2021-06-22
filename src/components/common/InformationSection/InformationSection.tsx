@@ -3,7 +3,7 @@ import './InformationSection.scss';
 import { useTranslation, languageKeys } from '../../../services/translations';
 
 export const InformationSection = () => {
-    const {t} = useTranslation();
+    const { t } = useTranslation();
     return (
         <div className='information-section-container'>
             <div className="info-container">
@@ -12,29 +12,28 @@ export const InformationSection = () => {
                 </div>
                 <div className="text-container">
                     <h1 className="title">{t(languageKeys.informationSection.header1)}</h1>
-                    <div>We have just the tool for you! <br />
-                    Autio allows you to see all the information you need about
+                    <div>{t(languageKeys.informationSection.description1.description1Part1)}<br />
+                        {t(languageKeys.informationSection.description1.description1Part2)}
                         <br />
-                    every car you may be considering
-                    or just want to look up. You
+                        {t(languageKeys.informationSection.description1.description1Part3)}
+                        {t(languageKeys.informationSection.description1.description1Part4)}
                         <br />
-                    can also read through informative reviews from real owners to
-                        <br /> help you make the best choice!</div>
+                        {t(languageKeys.informationSection.description1.description1Part5)}
+                        <br /> {t(languageKeys.informationSection.description1.description1Part6)}</div>
                 </div>
             </div>
-            <div className="bottom-info-container" style={{ justifyContent: 'flex-end'}}>                
+            <div className="bottom-info-container" style={{ justifyContent: 'flex-end' }}>
                 <div className="left-text">
-                    <h1 className="bottom-title">For the passionate
+                    <h1 className="bottom-title">{t(languageKeys.informationSection.header2Part1)}
                         <br />
-                        car enthusiast
+                        {t(languageKeys.informationSection.header2Part2)}
                     </h1>
                     <div className="bottom-text">
-                        Autio is for all you car lovers out there,
+                        {t(languageKeys.informationSection.description2.description2Part1)}
                         <br />
-                        who love to stay up to date with the latest releases
-                        <br /> and innovations
-                        in the industry. We have a huge car database
-                        <br /> to make sure that you&apos;ll find the model you&apos;re looking for!
+                        {t(languageKeys.informationSection.description2.description2Part2)}
+                        <br /> {t(languageKeys.informationSection.description2.description2Part3)}
+                        <br />{t(languageKeys.informationSection.description2.description2Part4)}
                     </div>
                 </div>
                 <div className="image">

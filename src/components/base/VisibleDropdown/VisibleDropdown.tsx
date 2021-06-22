@@ -74,7 +74,7 @@ const VisibleDropdown: React.SFC<VisibleDropdownProps> = ({
                             <input
                                 className='big-checkbox'
                                 type='checkbox'
-                                checked={false}
+                                checked={valueMapper[option.value]}
                                 onChange={(ev) => {
                                     ev.stopPropagation();
                                     localOnChange(option.value);

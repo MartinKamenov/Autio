@@ -79,9 +79,9 @@ const SearchSidebar: React.FC<SearchSidebarProps> = ({
                 <div className='header'>
                     <h5>{t(languageKeys.advancedSearch.model)}</h5>
                 </div>
-                <VisibleDropdown options={getModels()} onChange={(coupeTypes) => setFilters({ ...filters, coupeTypes })}
+                <VisibleDropdown options={getModels()} onChange={(modelNames) => setFilters({ ...filters, modelNames })}
                     className='custom-dropdown-filter'
-                    value={[]} />
+                    value={filters.modelNames} />
                 <div className='header'>
                     <h5>{t(languageKeys.advancedSearch.coupeTypes)}</h5>
                 </div>

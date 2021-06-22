@@ -1,3 +1,4 @@
+/*eslint-disable react/display-name*/
 import React from 'react';
 import {
     Switch,
@@ -19,10 +20,19 @@ import {
 } from '../../common';
 import { NAVBAR_HEIGHT } from '../../../constants/other';
 import { AuthPage } from '../../pages/Auth/Auth';
+import { useStatistics } from '../../../services/statistics';
+
+const withRouter = (Component: any) => (props: any) => (
+    <Router>
+        <Component {...props}/>
+    </Router>
+);
  
 const MainRouter: React.FC = () => {
+    useStatistics();
+    
     return (
-        <Router>
+        <>
             <Navbar/>
             <div className='routing-content' style={{
                 marginTop: NAVBAR_HEIGHT
@@ -55,8 +65,8 @@ const MainRouter: React.FC = () => {
                 </Switch>
             </div>
             <Footer/>
-        </Router>
+        </>
     );
 };
  
-export default MainRouter;
+export default withRouter(MainRouter);

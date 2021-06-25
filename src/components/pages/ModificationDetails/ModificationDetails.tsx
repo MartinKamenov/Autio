@@ -35,7 +35,7 @@ const ModificationDetails: React.FC<ModificationDetailsProps> = ({
             brandsMapper
         }
     } = useEnums();
-    const {user} = useUser();
+    useUser();
     const userId = '123456';
     const isLiked = engagement ? engagement.likes.indexOf(userId) !== -1 : false;
     const {t} = useTranslation();

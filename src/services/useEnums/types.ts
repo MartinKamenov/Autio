@@ -1,4 +1,4 @@
-import { Brand } from "../../types";
+import { Brand } from '../../types';
 
 export type EnumDataResult = {
     id: string,

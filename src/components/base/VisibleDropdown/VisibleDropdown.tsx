@@ -46,14 +46,16 @@ const VisibleDropdown: React.SFC<VisibleDropdownProps> = ({
         value: string,
         groupKey?: string;
     }[]): string[] => {
-        const groups: string[] = options.map(option => option.groupKey ? option.groupKey.toString() : '');
-
-        const names: string[] = [];
-        groups.forEach(group => {
-            if (!names.includes(group)) {
-                names.push(group);
+        const namesObject = options.reduce((acc: any, option) => {
+            const groupKey: string = option?.groupKey ? option.groupKey.toString() : '';
+            if (groupKey !== '') {
+                acc[groupKey] = true;
             }
-        });
+        
+            return acc;
+        }, {});
+        
+        const names = Object.keys(namesObject);
 
         return names;
     };

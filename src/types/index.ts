@@ -6,3 +6,15 @@ export type CarEntry = {
     shortName?: string,
     brandShortName?: string,
 };
+
+export type Brand = {
+    imageHref: string;
+    models: Model[];
+    name: string;
+    shortName: string;
+};
+
+export type Model = {
+    imageHref: string;
+    name: string;
+}

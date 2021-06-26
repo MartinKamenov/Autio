@@ -24,9 +24,21 @@ export type TranslationObject = {
     },
     informationSection: {
         header1: string,
-        description1: string,
-        header2: string,
-        description2: string
+        description1: {
+            description1Part1: string,
+            description1Part2: string;
+            description1Part3: string;
+            description1Part4: string;
+            description1Part5: string;
+            description1Part6: string;
+        },
+        header2Part1: string;
+        header2Part2: string;
+        description2: {
+            description2Part1: string;
+            description2Part2: string;
+            description2Part3: string;
+            description2Part4: string;        }
     },
     authentication: {
         loginHeader: string,

@@ -1,3 +1,5 @@
+import { Brand } from '../../types';
+
 export type EnumDataResult = {
     id: string,
     values: {
@@ -16,7 +18,7 @@ export type EnumsState = {
     error: string,
     fetched: boolean,
     enums: {
-        brands: any[],
+        brands: Brand[],
         coupeTypes: any[]
     },
     mappers: {

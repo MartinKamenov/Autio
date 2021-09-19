@@ -56,7 +56,7 @@
     }
 
     // Big screen should have only one image in the wallpaper
-    @media screen and (max-width: 767px) {
+    @media screen and (max-width: 768px) {
         .images-row, .image-overlay {
             height: calc(99.2vw);
 

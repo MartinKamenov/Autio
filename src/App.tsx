@@ -3,18 +3,22 @@ import './App.css';
 import {Provider} from 'react-redux';
 import { MainRouter } from './components/routing';
 import { store } from './redux';
-import 'bootstrap/dist/css/bootstrap.css';
 import UserProvider from './services/user/UserProvider';
 import Dialog from './components/common/Dialog';
+import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
     return (
-        <Provider store={store}>
-            <UserProvider>
-                <Dialog/>
-                <MainRouter/>
-            </UserProvider>
-        </Provider>
+        <>
+            <div>Hello world</div>
+            <Provider store={store}>
+                <UserProvider>
+                    <Dialog/>
+                    <MainRouter/>
+                </UserProvider>
+            </Provider>
+            <div>Goodbay world</div>
+        </>
     );
 }
 
